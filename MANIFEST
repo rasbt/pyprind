@@ -4,4 +4,5 @@ README.md
 README.rst
 setup.py
 pyprind/__init__.py
-pyprind/pyprind.py
+pyprind/progbar.py
+pyprind/progpercent.py
