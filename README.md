@@ -72,7 +72,7 @@ for i in range(n):
     my_prbar.update()
 my_prbar.finish() </pre>
 
-####Screen Output:
+#### Screen Output:
 
 <pre>sebastian > ./python3 examples/ex_percentage_indicator.py 
 [100 %]
@@ -91,7 +91,7 @@ for i in range(n):
     my_perc.update()
 my_perc.finish() </pre>
 
-####Screen Output
+#### Screen Output
 
 <pre>sebastian > python3 examples/ex_progress_bar.py 
 0%                                    100%
