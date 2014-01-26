@@ -18,6 +18,5 @@ setup(name='PyPrind',
                    ],
       license='GPLv3',
       long_description = README_TEXT,
-      extras_require={'testing': ['pytest']},
       platforms='any',
     )
