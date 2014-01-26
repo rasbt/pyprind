@@ -24,7 +24,7 @@ or
 PyPrind consists of two class objects that can visualize the progress of a computation on the output screen.  
 Progress bars are visualized via  a `ProgBar()` object, and alternatively, the progress can be shown as an percentage via the `ProgPercent()` object.  
 
-The general usage of `ProgBar()` and ProgPercent()` consists of three steps:
+The general usage of `ProgBar()` and `ProgPercent()` consists of three steps:
 
 1) initialize a new `ProgBar()` or `ProgPercent()` object with the number of iterations of the computation that is to be performed  
 2) update the `ProgBar()` or `ProgPercent()`  object for each iteration via the `.update() `method  
@@ -72,7 +72,7 @@ for i in range(n):
     my_prbar.update()
 my_prbar.finish() </pre>
 
-#### Screen Output:
+**Screen Output**  
 
 <pre>sebastian > ./python3 examples/ex_percentage_indicator.py 
 [100 %]
@@ -91,7 +91,7 @@ for i in range(n):
     my_perc.update()
 my_perc.finish() </pre>
 
-#### Screen Output
+**Screen Output**  
 
 <pre>sebastian > python3 examples/ex_progress_bar.py 
 0%                                    100%
