@@ -25,8 +25,8 @@ of a computation on the output screen.
 alternatively, the progress can be shown as an percentage via the
 ``ProgPercent()`` object.
 
-The general usage of ``ProgBar()`` and ProgPercent()\` consists of three
-steps:
+The general usage of ``ProgBar()`` and ``ProgPercent()`` consists of
+three steps:
 
 1) initialize a new ``ProgBar()`` or ``ProgPercent()`` object with the
    number of iterations of the computation that is to be performed
@@ -76,8 +76,7 @@ PyPrind package.
        my_prbar.update()
    my_prbar.finish() </pre>
 
-Screen Output:
-^^^^^^^^^^^^^^
+**Screen Output**
 
 .. raw:: html
 
@@ -100,8 +99,7 @@ Example - Percentage Indicator
        my_perc.update()
    my_perc.finish() </pre>
 
-Screen Output
-^^^^^^^^^^^^^
+**Screen Output**
 
 .. raw:: html
 
@@ -117,4 +115,4 @@ Screen Output
 | If you have any questions or comments about PyPrind, please feel free
 to contact me via
 | eMail: se.raschka@gmail.com
-| or Twitter: `https://twitter.com/rasbt <@rasbt>`__
+| or Twitter: [@rasbt](https://twitter.com/rasbt)
