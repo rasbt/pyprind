@@ -105,4 +105,4 @@ Time elapsed: 0.7829 sec
 
 If you have any questions or comments about PyPrind, please feel free to contact me via  
 eMail: [se.raschka@gmail.com](mailto:se.raschka@gmail.com)  
-or Twitter: [https://twitter.com/rasbt](@rasbt)
+or Twitter: [@rasbt](https://twitter.com/rasbt)
