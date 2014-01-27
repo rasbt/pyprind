@@ -37,13 +37,13 @@ three steps:
 1) initialize a new ``ProgBar()`` or ``ProgPercent()`` object with the
    number of iterations of the computation that is to be performed
 2) update the ``ProgBar()`` or ``ProgPercent()`` object for each
-   iteration via the ``.update()``\ method
+   iteration via the ``.update()``  method
 3) complete the progress visualization via the ``.finish()`` method
    after the computation is completed
 
 
    ```n = 10000000
-   my_progress = pyprind.ProgBar(n) # 1) initialization with number of iterations
+   my_prbar = pyprind.ProgBar(n) # 1) initialization with number of iterations
    for i in range(n):  
        # do some computation
        my_prbar.update()            # 2) update the progress visualization
@@ -57,7 +57,7 @@ Optional parameters:
 
 ** Setting the width of the progress bar **
 
-``my_prog = pyrpind.ProgBar(width=70)    # default = 50``
+``my_prbar = pyrpind.ProgBar(width=70)    # default = 50``
 
 ** Set whether CPU time should be reported or not **
 
@@ -65,7 +65,7 @@ The optional ``cpu_time`` parameter can be set for both ``ProgBar()`` and
 ``ProgPercent()`` objects.
 
  E.g.,
- ``my_prog.finish(cpu_time=False) # (default = True)``
+ ``my_prbar.finish(cpu_time=False) # (default = True)``
 
 
 
@@ -92,7 +92,8 @@ Example - Progress Bar
    for i in range(n):
        # do some computation
        my_prbar.update()
-   my_prbar.finish() </pre>
+   my_prbar.finish()
+   ```
 
 
 **Progress Bar Screen Output**

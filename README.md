@@ -34,7 +34,7 @@ The general usage of `ProgBar()` and `ProgPercent()` consists of three steps:
 
 <pre>
 n = 10000000
-my_progress = pyprind.ProgBar(n)      # 1) initialization with number of iterations
+my_prbar = pyprind.ProgBar(n)      # 1) initialization with number of iterations
 for i in range(n):	
     # do some computation
     my_prbar.update()           # 2) update the progress visualization
@@ -52,7 +52,7 @@ my_prbar.finish()               # 3) complete the progress visualization
 ##### Set whether CPU time should be reported or not 
 The optional `cpu_time` parameter can be set for both `ProgBar()` and `ProgPercent()` objects.  
 E.g.,   
-`my_prog.finish(cpu_time=False) # (default = True)`
+`my_prbar.finish(cpu_time=False) # (default = True)`
 
 <br>
 <br>
