@@ -1,35 +1,72 @@
-<h1 id="pyprind">PyPrind</h1>
+<!DOCTYPE>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="format" content="complete">
+</head>
+<body>
+
+<h1>PyPrind</h1>
+
 <p>The PyPrind (Python Progress Indicator) module lets you visualize the progress of a programming task in Python via a progress bar or a percentage indicator.</p>
-<p><br> <br></p>
-<h2 id="installation">Installation</h2>
-<p>You can use the following command to install PyPrind:<br /><code>pip install pyprind</code> or<br /><code>easy_install pyprind</code></p>
-<p>Or you download the package manually, unzip it, and install it from the package folder via:</p>
-<p><code>python setup.py install</code> or <code>python3 setup.py install</code></p>
-<p><br> <br></p>
-<h2 id="documentation">Documentation</h2>
-<p>PyPrind consists of two class objects that can visualize the progress of a computation on the output screen.<br />Progress bars are visualized via a <code>ProgBar()</code> object, and alternatively, the progress can be shown as an percentage via the <code>ProgPercent()</code> object.</p>
+
+<h2>Installation</h2>
+
+<p>You can use the following command to install PyPrind:<br>
+<code>pip install pyprind</code><br>
+ or<br>
+<code>easy_install pyprind</code> </p>
+
+<p>Alternatively, you download the package manually, unzip it, and install it from the package folder via:</p>
+
+<p><code>python setup.py install</code><br>
+or<br>
+<code>python3 setup.py install</code> </p>
+
+<h2>Documentation</h2>
+
+<p>PyPrind consists of two class objects that can visualize the progress of a computation on the output screen.<br>
+Progress bars are visualized via a <code>ProgBar()</code> object, and alternatively, the progress can be shown as an percentage via the <code>ProgPercent()</code> object. </p>
+
 <p>The general usage of <code>ProgBar()</code> and <code>ProgPercent()</code> consists of three steps:</p>
-<ol style="list-style-type: decimal">
-<li>initialize a new <code>ProgBar()</code> or <code>ProgPercent()</code> object with the number of iterations of the computation that is to be performed<br /></li>
-<li>update the <code>ProgBar()</code> or <code>ProgPercent()</code> object for each iteration via the <code>.update()</code>method<br /></li>
-<li>complete the progress visualization via the <code>.finish()</code> method after the computation is completed</li>
-</ol>
+
+<p>1) initialize a new <code>ProgBar()</code> or <code>ProgPercent()</code> object with the number of iterations of the computation that is to be performed<br>
+2) update the <code>ProgBar()</code> or <code>ProgPercent()</code> object for each iteration via the <code>.update()</code>method<br>
+3) complete the progress visualization via the <code>.finish()</code> method after the computation is completed </p>
+
 <pre>
 n = 10000000
-my_prbar = pyprind.ProgBar(n)      # 1) initialization with number of iterations
+my_prbar = pyprind.ProgBar(n)   # 1) initialization with number of iterations
 for i in range(n):  
     # do some computation
     my_prbar.update()           # 2) update the progress visualization
 my_prbar.finish()               # 3) complete the progress visualization
 </pre>
 
-<p><br> ### Optional parameters : <br> ##### Setting the width of the progress bar</p>
+<p><br></p>
+
+<h3>Optional parameters :</h3>
+
+<h5>Setting the width of the progress bar</h5>
+
 <p><code>my_prog = pyrpind.ProgBar(width=70)    # default = 50</code></p>
-<p><br> ##### Set whether CPU time should be reported or not The optional <code>cpu_time</code> parameter can be set for both <code>ProgBar()</code> and <code>ProgPercent()</code> objects.<br />E.g.,<br /><code>my_prbar.finish(cpu_time=False) # (default = True)</code></p>
-<p><br> <br></p>
-<h2 id="examples">Examples</h2>
-<p>The following examples shall illustrate the typical usage of the PyPrind package.<br />An visualization can be viewed on YouTube: <a href="http://youtu.be/gjj5K8OWo7U">http://youtu.be/gjj5K8OWo7U</a></p>
-<p><br> ### Example - Progress Bar</p>
+
+<h5>Set whether CPU time should be reported or not</h5>
+
+<p>The optional <code>cpu_time</code> parameter can be set for both <code>ProgBar()</code> and <code>ProgPercent()</code> objects.<br>
+E.g.,<br>
+<code>my_prbar.finish(cpu_time=False) # default = True</code></p>
+
+<p><br>
+<br></p>
+
+<h2>Examples</h2>
+
+<p>The following examples shall illustrate the typical usage of the PyPrind package.<br>
+An visualization can be viewed on YouTube: <a href="http://youtu.be/gjj5K8OWo7U">http://youtu.be/gjj5K8OWo7U</a></p>
+
+<h3>Example - Progress Bar</h3>
+
 <pre>import pyprind
 
 n = 10000000
@@ -39,14 +76,15 @@ for i in range(n):
     my_prbar.update()
 my_prbar.finish() </pre>
 
-<p><strong>Screen Output</strong></p>
+<p><strong>Screen Output</strong> </p>
+
 <pre>sebastian > ./python3 examples/ex_percentage_indicator.py 
 [100 %]
 Time elapsed: 2.6364 sec
 </pre>
 
-<p><br></p>
-<h3 id="example---percentage-indicator">Example - Percentage Indicator</h3>
+<h3>Example - Percentage Indicator</h3>
+
 <pre>import pyprind
 
 n = 1000000
@@ -56,17 +94,19 @@ for i in range(n):
     my_perc.update()
 my_perc.finish() </pre>
 
-<p><strong>Screen Output</strong></p>
+<p><strong>Screen Output</strong> </p>
+
 <pre>sebastian > python3 examples/ex_progress_bar.py 
 0%                                    100%
 [########################################]
 Time elapsed: 0.7829 sec
 </pre>
- 
-<p><br> <br> ## Contact</p>
-<p>If you have any questions or comments about PyPrind, please feel free to contact me via<br />eMail: <script type="text/javascript">
-<!--
-h='&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;';a='&#64;';n='&#x73;&#x65;&#46;&#114;&#x61;&#x73;&#x63;&#104;&#x6b;&#x61;';e=n+a+h;
-document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'">'+e+'<\/'+'a'+'>');
-// -->
-</script><noscript>&#x73;&#x65;&#46;&#114;&#x61;&#x73;&#x63;&#104;&#x6b;&#x61;&#32;&#x61;&#116;&#32;&#x67;&#x6d;&#x61;&#x69;&#108;&#32;&#100;&#x6f;&#116;&#32;&#x63;&#x6f;&#x6d;</noscript><br />or Twitter: <span class="citation">[@rasbt]</span>(https://twitter.com/rasbt)</p>
+
+<h2>Contact</h2>
+
+<p>If you have any questions or comments about PyPrind, please feel free to contact me via<br>
+eMail: <a href="mailto:se.raschka@gmail.com">se.raschka@gmail.com</a><br>
+or Twitter: <a href="https://twitter.com/rasbt">@rasbt</a></p>
+
+</body>
+</html>
