@@ -1,7 +1,10 @@
 PyPrind
 =============
-The PyPrind (Python Progress Indicator) module lets you visualize the progress of a programming task   
-in Python via a progress bar or a percentage indicator.
+The PyPrind (Python Progress Indicator) module provides a progress bar and a percentage indicator  
+object that let you track the progress of a loop structure or other iterative computation.  
+Typical applications include the processing of large data sets to provide an intuitive estimate 
+at runtime about the progress of the computation.
+
 
 
 Installation
@@ -11,9 +14,7 @@ You can use the following command to install PyPrind:
  or    
 `easy_install pyprind`  
 
-
-Alternatively, you download the package manually, unzip it, and install it from 
-the package folder via:
+Alternatively, you download the package manually from the Python Package Index [https://pypi.python.org/pypi/PyPrind](https://pypi.python.org/pypi/PyPrind), unzip it, navigate into the package, and use the command:
 
 `python setup.py install`  
 or  
@@ -23,16 +24,14 @@ or
 
 Documentation
 =============
-
 PyPrind consists of two class objects that can visualize the progress of a computation on the output screen.  
-Progress bars are visualized via  a `ProgBar()` object, and alternatively, the progress can be shown as an percentage via the `ProgPercent()` object.  
+Progress bars are visualized via  a `ProgBar()` object, and alternatively, the progress can be tracked and shown as percentage via a `ProgPercent()` object.  
 
 The general usage of `ProgBar()` and `ProgPercent()` consists of three steps:
 
 1) initialize a new `ProgBar()` or `ProgPercent()` object with the number of iterations of the computation that is to be performed  
 2) update the `ProgBar()` or `ProgPercent()`  object for each iteration via the `.update() `method  
 3) complete the progress visualization via the `.finish()` method after the computation is completed  
-
 
 <pre>n = 10000000
 my_prbar = pyprind.ProgBar(n)   # 1) initialization with number of iterations
@@ -46,24 +45,24 @@ my_prbar.finish()               # 3) complete the progress visualization
 Optional parameters :
 --------------------------
 
-
 ##### Setting the width of the progress bar
-
-`my_prog = pyrpind.ProgBar(width=70)	# default = 50`
+`my_prog = pyprind.ProgBar(n, width=70)	# default = 50`
 
 
 ##### Set whether CPU time should be reported or not 
 The optional `cpu_time` parameter can be set for both `ProgBar()` and `ProgPercent()` objects.  
-E.g.,   
-`my_prbar.finish(cpu_time=False) # default = True`
-
+<pre>
+my_prbar = pyprind.ProgBar(n)  
+ ...
+my_prbar.finish(cpu_time=False) # default = True  
+</pre>
 
 
 Examples
 =============
 
 The following examples shall illustrate the typical usage of the PyPrind package.  
-An visualization can be viewed on YouTube: [http://youtu.be/gjj5K8OWo7U](http://youtu.be/gjj5K8OWo7U)
+A visualization can be viewed on YouTube: [http://youtu.be/gjj5K8OWo7U](http://youtu.be/gjj5K8OWo7U)
 
 
 Example - Progress Bar
@@ -90,7 +89,7 @@ Time elapsed: 2.6364 sec
 Example - Percentage Indicator
 --------------------------
 
-<pre> import pyprind
+<pre>import pyprind
 
 n = 1000000
 my_perc = pyprind.ProgPercent(n)
