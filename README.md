@@ -8,7 +8,9 @@ The PyPrind (Python Progress Indicator) module lets you visualize the progress o
 
 ## Installation
 You can use the following command to install PyPrind:  
-`pip install pyprind`
+`pip install pyprind` or  
+`easy_install pyprind`
+
 
 Or you download the package manually, unzip it, and install it from the package folder via:
 

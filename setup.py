@@ -6,7 +6,7 @@ readme.close()
 
 
 setup(name='PyPrind',
-      version='1.0.1dev',
+      version='1.0.1',
       description='Python Progress Indicator Utility',
       author='Sebastian Raschka',
       author_email='se.raschka@gmail.com',
@@ -20,6 +20,13 @@ setup(name='PyPrind',
                     ('examples', ['examples/ex_progress_bar.py']),
                    ],
       license='GPLv3',
-      long_description = README_TEXT,
       platforms='any',
+      classifiers=[
+          'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+          'Development Status :: 5 - Production/Stable',
+          'Programming Language :: Python :: 2.7',
+          'Programming Language :: Python :: 3',
+          'Environment :: Console',
+      ],
+      long_description = README_TEXT,
     )

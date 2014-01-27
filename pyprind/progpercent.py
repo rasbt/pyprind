@@ -1,3 +1,9 @@
+# Sebastian Raschka 01/26/2014
+#
+# Progress Percentage class to instantiate a percentage indicator object
+# that is printed to the standard output screen to visualize the
+# progress in a iterative Python procedure
+
 import sys
 import time
 
@@ -17,9 +23,11 @@ class ProgPercent():
         self.__print_percent()
 
     def __calc_percent(self):
+        """Calculates the rel. progress in percent and rounds it to an integer."""
         return round(self.cnt/self.max_iter * 100)
 
     def __print_percent(self):
+        """Prints formatted integer percentage to the screen."""
         sys.stdout.write('\r[%3d %%]' % (self.perc))
 
     def update(self):

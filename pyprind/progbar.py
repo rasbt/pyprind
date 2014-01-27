@@ -1,8 +1,14 @@
+# Sebastian Raschka 01/26/2014
+#
+# Progress Bar class to instantiate a progress bar object
+# that is printed to the standard output screen to visualize the
+# progress in a iterative Python procedure
+
 import sys
 import time
 
 class ProgBar():
-    """ Initializes a progress bar object that allows visuzalization
+    """Initializes a progress bar object that allows visuzalization
         of an iterational computation in the standard output screen. 
 
     Keyword Arguments:
@@ -19,10 +25,12 @@ class ProgBar():
         self.__init_bar()
 
     def __adjust_width(self):
+        """Shrinks bar if number of iterations is less than the bar width"""
         if self.bar_width > self.max_iter:
             self.bar_width = self.max_iter
 
     def __init_bar(self):
+        """Writes the initial bar frames to the output screen"""
         sys.stdout.write('0%% %s 100%%\n' %(' ' * (self.bar_width - 6)))
         sys.stdout.write('[%s]' % (' ' * self.bar_width))
         sys.stdout.flush()

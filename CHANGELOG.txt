@@ -3,5 +3,6 @@ VERSION 1.0.1
 
 2014-01-26 Sebastian Raschka:
 - added more README formats
+- added class descriptions
 - added example scripts to the distribution
 
