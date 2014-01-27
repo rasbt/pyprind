@@ -6,11 +6,12 @@ readme.close()
 
 
 setup(name='PyPrind',
-      version='1.0.1',
+      version='1.0.2',
       description='Python Progress Indicator Utility',
       author='Sebastian Raschka',
       author_email='se.raschka@gmail.com',
       url='https://github.com/rasbt/pyprind',
+      download_url='https://github.com/rasbt/pyprind/archive/1.0.1.tar.gz',
       packages=['pyprind'],
       data_files = [('', ['LICENSE.txt']),
                     ('', ['README.html']),

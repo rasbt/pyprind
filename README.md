@@ -52,7 +52,7 @@ my_prbar.finish()               # 3) complete the progress visualization
 ##### Set whether CPU time should be reported or not 
 The optional `cpu_time` parameter can be set for both `ProgBar()` and `ProgPercent()` objects.  
 E.g.,   
-`my_prbar.finish(cpu_time=False) # (default = True)`
+`my_prbar.finish(cpu_time=False) # default = True
 
 <br>
 <br>

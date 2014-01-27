@@ -25,9 +25,9 @@ package folder via:
 Documentation
 -------------
 
-| PyPrind consists of two class objects that can visualize the progress
+PyPrind consists of two class objects that can visualize the progress
 of a computation on the output screen.
-| Progress bars are visualized via a ``ProgBar()`` object, and
+Progress bars are visualized via a ``ProgBar()`` object, and
 alternatively, the progress can be shown as an percentage via the
 ``ProgPercent()`` object.
 
@@ -65,7 +65,7 @@ The optional ``cpu_time`` parameter can be set for both ``ProgBar()`` and
 ``ProgPercent()`` objects.
 
  E.g.,
- ``my_prbar.finish(cpu_time=False) # (default = True)``
+ ``my_prbar.finish(cpu_time=False) # default = True``
 
 
 
