@@ -65,7 +65,7 @@ The following examples shall illustrate the typical usage of the PyPrind package
 A visualization can be viewed on YouTube: [http://youtu.be/gjj5K8OWo7U](http://youtu.be/gjj5K8OWo7U)
 
 
-Example - Progress Bar
+Example 1 - Progress Bar
 --------------------------
 
 <pre>import pyprind
@@ -80,13 +80,14 @@ my_prbar.finish()
 
 **Screen Output**  
 
-<pre>sebastian > ./python3 examples/ex_percentage_indicator.py 
-[100 %]
-Time elapsed: 2.6364 sec
+<pre>sebastian > python3 examples/ex_progress_bar.py 
+0%                                    100%
+[########################################]
+Time elapsed: 0.7829 sec
 </pre>
 
 
-Example - Percentage Indicator
+Example 2 - Percentage Indicator
 --------------------------
 
 <pre>import pyprind
@@ -101,11 +102,11 @@ my_perc.finish()
 
 **Screen Output**  
 
-<pre>sebastian > python3 examples/ex_progress_bar.py 
-0%                                    100%
-[########################################]
-Time elapsed: 0.7829 sec
+<pre>sebastian > ./python3 examples/ex_percentage_indicator.py 
+[100 %]
+Time elapsed: 2.6364 sec
 </pre>
+
  
 
 
