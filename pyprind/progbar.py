@@ -1,4 +1,4 @@
-# Sebastian Raschka 01/26/2014
+# Sebastian Raschka 2014
 #
 # Progress Bar class to instantiate a progress bar object
 # that is printed to the standard output screen to visualize the

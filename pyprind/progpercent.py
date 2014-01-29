@@ -1,4 +1,4 @@
-# Sebastian Raschka 01/26/2014
+# Sebastian Raschka 2014
 #
 # Progress Percentage class to instantiate a percentage indicator object
 # that is printed to the standard output screen to visualize the
