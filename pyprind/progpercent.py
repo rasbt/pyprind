@@ -46,5 +46,3 @@ class ProgPercent():
         sys.stdout.write('\n')
         if cpu_time:
             print('Time elapsed: {0:.4f} sec'.format(self.time[2]))
-
-

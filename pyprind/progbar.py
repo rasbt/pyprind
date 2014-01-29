@@ -39,7 +39,7 @@ class ProgBar():
     def update(self):
         """Updates the progress bar in every iteration of the task."""
         self.cnt += 1
-        if self.cnt % self.bar_interv == 0:
+        if self.cnt % self.bar_interv == 0 and self.cnt <= self.max_iter:
             sys.stdout.write("#")
             sys.stdout.flush()
 
@@ -48,5 +48,7 @@ class ProgBar():
         self.time[1] = time.clock()
         self.time[2] = self.time[1] - self.time[0]
         sys.stdout.write('\n')
+        if self.cnt > self.max_iter:
+            print("WARNING: Number of iterations exceeded the the ProgBar() seed.")
         if cpu_time:
             print('Time elapsed: {0:.4f} sec'.format(self.time[2]))
