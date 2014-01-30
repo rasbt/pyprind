@@ -13,36 +13,36 @@ class ProgPercent():
 
     Keyword Arguments:
         iterations (int): number of iterations of the computation
+        track_time (bool): prints elapsed time
 
     """
-    def __init__(self, iterations):
-        self.cnt = 0
+    def __init__(self, iterations, track_time=True):
+        self.cnt = 1
         self.max_iter = float(iterations) # accommodation for Python 2.x users
         self.perc = 0
-        self.time = [time.clock(), None, None]
-        self.__print_percent()
+        self.time = [time.clock(), 0]
+        self.track = track_time
+        self.__print_update()
 
     def __calc_percent(self):
         """Calculates the rel. progress in percent and rounds it to an integer."""
         return round(self.cnt/self.max_iter * 100)
 
-    def __print_percent(self):
-        """Prints formatted integer percentage to the screen."""
+    def __print_update(self):
+        """Prints formatted integer percentage and tracked time to the screen."""
         sys.stdout.write('\r[%3d %%]' % (self.perc))
+        if self.track:
+            self.time[1] = time.clock()
+            sys.stdout.write('   elapsed: %.3f sec' % self.time[1])
 
     def update(self):
         """Updates the percentage indicator in every iteration of the task."""
-        self.cnt += 1
         next_perc = self.__calc_percent()
         if next_perc > self.perc:
             self.perc = next_perc
-            self.__print_percent()
+            self.__print_update()
             sys.stdout.flush()
-
-    def finish(self, cpu_time=True):
-        """Ends the progress tracking and prints the CPU time."""
-        self.time[1] = time.clock()
-        self.time[2] = self.time[1] - self.time[0]
-        sys.stdout.write('\n')
-        if cpu_time:
-            print('Time elapsed: {0:.4f} sec'.format(self.time[2]))
+        self.cnt += 1
+        if self.cnt == self.max_iter:
+            sys.stdout.write('\n') 
+ 

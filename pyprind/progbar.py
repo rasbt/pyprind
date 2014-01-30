@@ -14,14 +14,17 @@ class ProgBar():
     Keyword Arguments:
         iterations (int): number of iterations of the computation
         width (int): width of the progress bar in characters
+        track_time (bool): prints elapsed time when loop is finished
+
     """
-    def __init__(self, iterations, width=50):
+    def __init__(self, iterations, track_time=True, width=50):
         self.cnt = 0
         self.max_iter = iterations
         self.bar_width = width
         self.__adjust_width()
         self.bar_interv = self.max_iter // self.bar_width
-        self.time = [time.clock(), None, None]
+        self.time = [time.clock(), 0]
+        self.track = track_time
         self.__init_bar()
 
     def __adjust_width(self):
@@ -42,13 +45,9 @@ class ProgBar():
         if self.cnt % self.bar_interv == 0 and self.cnt <= self.max_iter:
             sys.stdout.write("#")
             sys.stdout.flush()
-
-    def finish(self, cpu_time=True):
-        """Ends the progress tracking and prints the CPU time."""
-        self.time[1] = time.clock()
-        self.time[2] = self.time[1] - self.time[0]
-        sys.stdout.write('\n')
-        if self.cnt > self.max_iter:
-            print("WARNING: Number of iterations exceeded the the ProgBar() seed.")
-        if cpu_time:
-            print('Time elapsed: {0:.4f} sec'.format(self.time[2]))
+        if self.cnt == self.max_iter:
+            sys.stdout.write('\n')
+            if self.track:
+                self.time[1] = time.clock()
+                sys.stdout.write('Total time elapsed: %.3f sec' % self.time[1])
+                sys.stdout.write('\n')

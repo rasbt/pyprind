@@ -1,4 +1,8 @@
-
+VERSION 1.1.0
+===============
+- Added live time tracking to percentage indicator
+- progress bar and percentage indicator complete automatically,
+  .finish() was removed
 
 
 VERSION 1.0.4
