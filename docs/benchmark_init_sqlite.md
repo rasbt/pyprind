@@ -48,7 +48,7 @@ Python version: 3.3.3
 
 Using PyPrind's progress bar visualization resulted in a 20.8347 sec longer CPU time for the 6,056,212 iterations in the data processing loop.  PyPrind's percentage indicator used a little bit more resources and added 40.4861 sec of CPU time.  
 The results (average values with variances as error bars) are shown in the bar plot below.  
-![https://raw2.github.com/rasbt/pyprind/master/benchmarks/benchmark_data_v1.1.1/init_sqlite_test/plots/barplot_nit_sqlite.png](https://raw2.github.com/rasbt/pyprind/master/benchmarks/benchmark_data_v1.1.1/init_sqlite_test/plots/barplot_nit_sqlite.png)
+![https://raw2.github.com/rasbt/pyprind/master/benchmarks/benchmark_data_v1.1.1/init_sqlite_test/plots/barplot_nit_sqlite.png](https://raw2.github.com/rasbt/pyprind/master/benchmarks/benchmark_data_v1.1.1/init_sqlite_test/plots/barplot_init_sqlite.png)
 
 The results indicate that the PyPrind progress visualization has a reasonable performance.  
 The cost can be calculated as follows: (total number of iterations) / (additional CPU time in sec)  
