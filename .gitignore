@@ -1,3 +1,4 @@
+*.sqlite
 id_list.txt
 gmon.out
 __pycache__

@@ -1,0 +1,34 @@
+(ENV)sebastian ~/Github/pyprind/benchmarks/benchmark_data_v1.1.1/init_sqlite_test/code> python3 init_sqlite.py
+Processing 6056212 lines ...
+Time elapsed: 284.4667 sec
+(ENV)sebastian ~/Github/pyprind/benchmarks/benchmark_data_v1.1.1/init_sqlite_test/code> python3 init_sqlite.py
+Processing 6056212 lines ...
+Time elapsed: 283.7801 sec
+(ENV)sebastian ~/Github/pyprind/benchmarks/benchmark_data_v1.1.1/init_sqlite_test/code> python3 init_sqlite.py
+Processing 6056212 lines ...
+Time elapsed: 289.3370 sec
+(ENV)sebastian ~/Github/pyprind/benchmarks/benchmark_data_v1.1.1/init_sqlite_test/code> python3 init_sqlite_progbar.py 
+Processing 6056212 lines ...
+0%                                              100%
+[##################################################]
+Total time elapsed: 307.125 sec
+(ENV)sebastian ~/Github/pyprind/benchmarks/benchmark_data_v1.1.1/init_sqlite_test/code> python3 init_sqlite_progbar.py 
+Processing 6056212 lines ...
+0%                                              100%
+[##################################################]
+Total time elapsed: 305.519 sec
+(ENV)sebastian ~/Github/pyprind/benchmarks/benchmark_data_v1.1.1/init_sqlite_test/code> python3 init_sqlite_progbar.py 
+Processing 6056212 lines ...
+0%                                              100%
+[##################################################]
+Total time elapsed: 307.444 sec
+(ENV)sebastian ~/Github/pyprind/benchmarks/benchmark_data_v1.1.1/init_sqlite_test/code> python3 init_sqlite_percentind.py 
+Processing 6056212 lines ...
+[100 %]   elapsed: 326.698 sec
+(ENV)sebastian ~/Github/pyprind/benchmarks/benchmark_data_v1.1.1/init_sqlite_test/code> python3 init_sqlite_percentind.py 
+Processing 6056212 lines ...
+[100 %]   elapsed: 325.433 sec
+(ENV)sebastian ~/Github/pyprind/benchmarks/benchmark_data_v1.1.1/init_sqlite_test/code> python3 init_sqlite_percentind.py 
+Processing 6056212 lines ...
+[100 %]   elapsed: 326.911 sec
+(ENV)sebastian ~/Github/pyprind/benchmarks/benchmark_data_v1.1.1/init_sqlite_test/code>
