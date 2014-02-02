@@ -60,7 +60,7 @@ Examples
 =============
 
 The following examples shall illustrate the typical usage of the PyPrind package.  
-A visualization can be viewed on YouTube: [http://youtu.be/GC2J0SMmiWQ](http://youtu.be/GC2J0SMmiWQ)
+A visualization can be viewed on YouTube: [http://youtu.be/gjj5K8OWo7U](http://youtu.be/gjj5K8OWo7U)
 
 
 Example - Progress Bar

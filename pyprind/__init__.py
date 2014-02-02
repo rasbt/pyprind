@@ -21,7 +21,6 @@ Example - Progress Bar
    for i in range(n):
        # do some computation
        my_prbar.update()
-   my_prbar.finish()
    ```
 
 
@@ -37,7 +36,6 @@ Example - Percentage Indicator
    for i in range(n):
        # do some computation
        my_perc.update()
-   my_perc.finish()
    ```
 
 """
@@ -45,4 +43,4 @@ Example - Percentage Indicator
 from .progbar import ProgBar
 from .progpercent import ProgPercent
 
-__version__ = '1.1.0'
+__version__ = '1.1.1'
