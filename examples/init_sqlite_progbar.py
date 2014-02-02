@@ -15,7 +15,7 @@ line_cnt = int(line_cnt.split()[0])
 
 print('Processing %d lines ...' % (line_cnt))
 
-# instatiating new progress bar object
+# instantiating new progress bar object
 my_bar = pyprind.ProgBar(line_cnt)
 
 # open connection and create a new database

@@ -15,7 +15,7 @@ line_cnt = int(line_cnt.split()[0])
 
 print('Processing %d lines ...' % (line_cnt))
 
-# instatiating new progress bar object
+# instantiating new percentage indicator object
 my_perc = pyprind.ProgPercent(line_cnt)
 
 # open connection and create a new database
