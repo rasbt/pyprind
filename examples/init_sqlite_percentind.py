@@ -30,7 +30,7 @@ with open(input_file, 'r') as in_file:
         c.execute('INSERT INTO my_db (id, rank) VALUES (%s, "%s")' 
             % (line[0],line[1]))
 
-        # update the progress bar
+        # update the percentage indicator
         my_perc.update()
 
 
