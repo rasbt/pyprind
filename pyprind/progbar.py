@@ -18,7 +18,7 @@ class ProgBar(Prog):
         track_time (bool): prints elapsed time when loop is finished
 
     """
-    def __init__(self, iterations, track_time=True, width=50, stream=1):
+    def __init__(self, iterations, track_time=True, width=50, stream=2):
         Prog.__init__(self, iterations, track_time, stream)
         self.bar_width = width
         self.__adjust_width()
