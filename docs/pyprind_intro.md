@@ -45,7 +45,7 @@ for i in range(n):
 </pre>
 
 
-For optional parameters, like adjusting the width of the progress bar and turning-off the live-time tracking of the percentage indicator, please refer to the documentation at [http://pythonhosted.org//PyPrind/](http://pythonhosted.org//PyPrind/)
+For optional parameters, like adjusting the width of the progress bar and turning-off the live-time tracking of the percentage indicator, please refer to the documentation at [http://pythonhosted.org/PyPrind/](http://pythonhosted.org/PyPrind/)
 
 
 ###Example Application - SQLite database operations

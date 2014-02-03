@@ -45,8 +45,10 @@ for i in range(n):
 
 **Screen Output**  
 
-<pre>sebastian > python3 ./examples/ex1_percentage_indicator.py 
-[100 %]   elapsed: 2.674 sec
+<pre>sebastian > python3 ./examples/ex1_progress_bar.py 
+0%                                    100%
+[########################################]
+Total time elapsed: 1.033 sec
 </pre>
 
 
@@ -64,10 +66,8 @@ for i in range(n):
 
 **Screen Output**  
 
-<pre>sebastian > python3 ./examples/ex1_progress_bar.py 
-0%                                    100%
-[########################################]
-Total time elapsed: 1.033 sec
+<pre>sebastian > python3 ./examples/ex1_percentage_indicator.py 
+[100 %]   elapsed: 2.674 sec
 </pre>
  
 
