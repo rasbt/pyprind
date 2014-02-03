@@ -5,7 +5,7 @@ import os
 class Prog():
     def __init__(self, iterations, track_time, stream):
         self.cnt = 0
-        self.max_iter = float(iterations) # accommodation for Python 2.x users
+        self.max_iter = iterations
         self.track = track_time
         self.time = [time.clock(), 0]
         self.stream = stream
