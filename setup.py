@@ -1,7 +1,7 @@
 from distutils.core import setup
 
 setup(name='PyPrind',
-      version='1.1.1',
+      version='2.0.0',
       description='Python Progress Indicator Utility',
       author='Sebastian Raschka',
       author_email='se.raschka@gmail.com',
@@ -24,6 +24,12 @@ setup(name='PyPrind',
           'Environment :: Console',
       ],
       long_description="""
+
+The PyPrind (Python Progress Indicator) module provides a progress bar and a percentage indicator  
+object that let you track the progress of a loop structure or other iterative computation.  
+Typical applications include the processing of large data sets to provide an intuitive estimate 
+at runtime about the progress of the computation.
+
 Examples
 =============
 
@@ -69,7 +75,23 @@ for i in range(n):
 <pre>sebastian > python3 ./examples/ex1_percentage_indicator.py 
 [100 %]   elapsed: 2.674 sec
 </pre>
+
+
  
+
+Changes in Version 2.0.0
+==========================
+- ProgBar and ProgPerc inherit data members from parent class Prog
+- Added ProgBar and ProgPerc default argument `stream=2` to write to stderr by
+  default. Set `stream=1` to write to stdout.
+
+    my_prbar = pyprind.ProgBar(n, stream=1) # writes to stdout
+    my_prbar = pyprind.ProgBar(n, stream=2) # writes to stderr, default
+
+
+- Does not redirect data to the standard output or error stream if program is not
+  outputting to a terminal
+
 
 
  Contact

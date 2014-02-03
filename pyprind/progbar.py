@@ -6,8 +6,9 @@
 
 import sys
 import time
+from pyprind.prog_class import Prog
 
-class ProgBar():
+class ProgBar(Prog):
     """Initializes a progress bar object that allows visuzalization
         of an iterational computation in the standard output screen. 
 
@@ -17,14 +18,11 @@ class ProgBar():
         track_time (bool): prints elapsed time when loop is finished
 
     """
-    def __init__(self, iterations, track_time=True, width=50):
-        self.cnt = 0
-        self.max_iter = iterations
+    def __init__(self, iterations, track_time=True, width=50, stream=1):
+        Prog.__init__(self, iterations, track_time, stream)
         self.bar_width = width
         self.__adjust_width()
         self.bar_interv = self.max_iter // self.bar_width
-        self.time = [time.clock(), 0]
-        self.track = track_time
         self.__init_bar()
 
     def __adjust_width(self):
@@ -34,20 +32,20 @@ class ProgBar():
 
     def __init_bar(self):
         """Writes the initial bar frames to the output screen"""
-        sys.stdout.write('0%% %s 100%%\n' %(' ' * (self.bar_width - 6)))
-        sys.stdout.write('[%s]' % (' ' * self.bar_width))
-        sys.stdout.flush()
-        sys.stdout.write('\b' * (self.bar_width + 1))
+        self._stream_out('0%% %s 100%%\n' %(' ' * (self.bar_width - 6)))
+        self._stream_out('[%s]' % (' ' * self.bar_width))
+        self._stream_flush()
+        self._stream_out('\b' * (self.bar_width + 1))
 
     def update(self):
         """Updates the progress bar in every iteration of the task."""
         self.cnt += 1
         if self.cnt % self.bar_interv == 0 and self.cnt <= self.max_iter:
-            sys.stdout.write("#")
-            sys.stdout.flush()
+            self._stream_out("#")
+            self._stream_flush()
         if self.cnt == self.max_iter:
-            sys.stdout.write('\n')
+            self._stream_out('\n')
             if self.track:
                 self.time[1] = time.clock()
-                sys.stdout.write('Total time elapsed: %.3f sec' % self.time[1])
-                sys.stdout.write('\n')
+                self._stream_out('Total time elapsed: %.3f sec' % self.time[1])
+                self._stream_out('\n')
