@@ -9,9 +9,9 @@ class Prog():
         self.track = track_time
         self.time = [time.clock(), 0]
         self.stream = stream
-        self.__check_stream()
+        self._check_stream()
         
-    def __check_stream(self):
+    def _check_stream(self):
         if self.stream == 1 and os.isatty(sys.stdout.fileno()):
             self._stream_out = sys.stdout.write
             self._stream_flush = sys.stdout.flush

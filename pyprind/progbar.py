@@ -21,16 +21,16 @@ class ProgBar(Prog):
     def __init__(self, iterations, track_time=True, width=50, stream=2):
         Prog.__init__(self, iterations, track_time, stream)
         self.bar_width = width
-        self.__adjust_width()
+        self._adjust_width()
         self.bar_interv = self.max_iter // self.bar_width
-        self.__init_bar()
+        self._init_bar()
 
-    def __adjust_width(self):
+    def _adjust_width(self):
         """Shrinks bar if number of iterations is less than the bar width"""
         if self.bar_width > self.max_iter:
             self.bar_width = self.max_iter
 
-    def __init_bar(self):
+    def _init_bar(self):
         """Writes the initial bar frames to the output screen"""
         self._stream_out('0%% %s 100%%\n' %(' ' * (self.bar_width - 6)))
         self._stream_out('[%s]' % (' ' * self.bar_width))

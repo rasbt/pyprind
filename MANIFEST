@@ -4,8 +4,11 @@ LICENSE.txt
 README.html
 README.txt
 setup.py
-examples/ex1_percentage_indicator.py
-examples/ex1_progress_bar.py
+examples/ex1_percentage_indicator_stderr.py
+examples/ex1_percentage_indicator_stdout.py
+examples/ex1_progress_bar_stderr.py
+examples/ex1_progress_bar_stdout.py
 pyprind/__init__.py
+pyprind/prog_class.py
 pyprind/progbar.py
 pyprind/progpercent.py

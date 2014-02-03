@@ -21,13 +21,13 @@ class ProgPercent(Prog):
         Prog.__init__(self, iterations, track_time, stream)
         self.perc = 0
         self.max_iter = float(self.max_iter) # accommodation for Python 2.x users
-        self.__print_update()
+        self._print_update()
 
-    def __calc_percent(self):
+    def _calc_percent(self):
         """Calculates the rel. progress in percent and rounds it to an integer."""
         return round(self.cnt/self.max_iter * 100)
 
-    def __print_update(self):
+    def _print_update(self):
         """Prints formatted integer percentage and tracked time to the screen."""
         self._stream_out('\r[%3d %%]' % (self.perc))
         if self.track:
@@ -38,10 +38,10 @@ class ProgPercent(Prog):
     def update(self):
         """Updates the percentage indicator in every iteration of the task."""
         self.cnt += 1
-        next_perc = self.__calc_percent()
+        next_perc = self._calc_percent()
         if next_perc > self.perc:
             self.perc = next_perc
-            self.__print_update()
+            self._print_update()
             self._stream_flush()
         if self.cnt == self.max_iter:
             self._stream_out('\n') 

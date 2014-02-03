@@ -1,7 +1,7 @@
 from distutils.core import setup
 
 setup(name='PyPrind',
-      version='2.0.0',
+      version='2.0.1',
       description='Python Progress Indicator Utility',
       author='Sebastian Raschka',
       author_email='se.raschka@gmail.com',
@@ -11,8 +11,11 @@ setup(name='PyPrind',
                     ('', ['README.html']),
                     ('', ['README.txt']),
                     ('', ['CHANGELOG.txt']),
-                    ('examples', ['examples/ex1_percentage_indicator.py']),
-                    ('examples', ['examples/ex1_progress_bar.py']),
+                    ('examples', ['examples/ex1_percentage_indicator_stderr.py']),
+                    ('examples', ['examples/ex1_percentage_indicator_stdout.py']),
+                    ('examples', ['examples/ex1_progress_bar_stderr.py']),
+                    ('examples', ['examples/ex1_progress_bar_stdout.py']),
+
                    ],
       license='GPLv3',
       platforms='any',
