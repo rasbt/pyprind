@@ -55,6 +55,16 @@ The optional `track_time` parameter can be set for both `ProgBar()` and `ProgPer
 `my_prbar = pyprind.ProgBar(n, track_time=False)  # default = True`  
 
 
+##### Selecting an output stream  
+By default, `pyprind` objects writes output to the Standard error stream (`stderr`). If you  
+want to direct the output to the Standard output (`stdout`), you can initialize `pyprind` 
+with the argument `stream=2`.
+
+<pre>
+my_prbar = pyprind.ProgBar(n, stream=1) # writes to stdout
+my_prbar = pyprind.ProgBar(n, stream=2) # writes to stderr, default
+</pre>
+
 
 Examples
 =============

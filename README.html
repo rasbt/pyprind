@@ -206,6 +206,18 @@ for i in range(n):
 
 <p><code>my_prbar = pyprind.ProgBar(n, track_time=False)  # default = True</code></p>
 
+<h5>Selecting an output stream</h5>
+
+<p>By default, <code>pyprind</code> objects writes output to the Standard error stream (<code>stderr</code>). If you<br/>
+want to direct the output to the Standard output (<code>stdout</code>), you can initialize <code>pyprind</code>
+with the argument <code>stream=2</code>.</p>
+
+<pre>
+my_prbar = pyprind.ProgBar(n, stream=1) # writes to stdout
+my_prbar = pyprind.ProgBar(n, stream=2) # writes to stderr, default
+</pre>
+
+
 <h1>Examples</h1>
 
 <p>The following examples shall illustrate the typical usage of the PyPrind package.<br/>
