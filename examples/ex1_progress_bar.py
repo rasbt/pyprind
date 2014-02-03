@@ -9,7 +9,6 @@ def example_1():
     my_bar = pyprind.ProgBar(n, width=40)
     for i in range(n):
        my_bar.update()
-    my_bar.finish() 
 
 
 if __name__ == '__main__':

@@ -1,38 +1,218 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #737373;
+    background-color: white;
+    margin: 10px 13px 10px 13px;
+}
+table {
+	margin: 10px 0 15px 0;
+	border-collapse: collapse;
+}
+td,th {	
+	border: 1px solid #ddd;
+	padding: 3px 10px;
+}
+th {
+	padding: 5px 10px;	
+}
+
+a {
+    color: #0069d6;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #fee9cc;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #fff;
+    color:#737373;
+    font-size: 11px;
+    padding: 0;
+}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:10px auto;
+    }
+}
+@media print {
+	body,code,pre code,h1,h2,h3,h4,h5,h6 {
+		color: black;
+	}
+	table, pre {
+		page-break-inside: avoid;
+	}
+}
+</style>
+<title>Setting the width of the progress bar</title>
+
+</head>
+<body>
 <h1>PyPrind</h1>
-<p>The PyPrind (Python Progress Indicator) module provides a progress bar and a percentage indicator<br>object that let you track the progress of a loop structure or other iterative computation.<br>Typical applications include the processing of large data sets to provide an intuitive estimate 
+
+<p>The PyPrind (Python Progress Indicator) module provides a progress bar and a percentage indicator<br/>
+object that let you track the progress of a loop structure or other iterative computation.<br/>
+Typical applications include the processing of large data sets to provide an intuitive estimate
 at runtime about the progress of the computation.</p>
+
 <h1>Installation</h1>
-<p>You can use the following command to install PyPrind:<br><code>pip install pyprind</code><br> or<br><code>easy_install pyprind</code>  </p>
-<p>Alternatively, you download the package manually from the Python Package Index <a href="https://pypi.python.org/pypi/PyPrind"><a href="https://pypi.python.org/pypi/PyPrind">https://pypi.python.org/pypi/PyPrind</a></a>, unzip it, navigate into the package, and use the command:</p>
-<p><code>python setup.py install</code><br>or<br><code>python3 setup.py install</code>  </p>
+
+<p>You can use the following command to install PyPrind:<br/>
+<code>pip install pyprind</code><br/>
+ or  <br/>
+<code>easy_install pyprind</code></p>
+
+<p>Alternatively, you download the package manually from the Python Package Index <a href="https://pypi.python.org/pypi/PyPrind">https://pypi.python.org/pypi/PyPrind</a>, unzip it, navigate into the package, and use the command:</p>
+
+<p><code>python setup.py install</code><br/>
+or<br/>
+<code>python3 setup.py install</code></p>
+
 <h1>Documentation</h1>
-<p>PyPrind consists of two class objects that can visualize the progress of a computation on the output screen.<br>Progress bars are visualized via  a <code>ProgBar()</code> object, and alternatively, the progress can be tracked and shown as percentage via a <code>ProgPercent()</code> object.  </p>
-<p>The general usage of <code>ProgBar()</code> and <code>ProgPercent()</code> consists of three steps:</p>
-<p>1) initialize a new <code>ProgBar()</code> or <code>ProgPercent()</code> object with the number of iterations of the computation that is to be performed<br>2) update the <code>ProgBar()</code> or <code>ProgPercent()</code>  object for each iteration via the <code>.update()</code>method<br>3) complete the progress visualization via the <code>.finish()</code> method after the computation is completed  </p>
+
+<p>PyPrind consists of two class objects that can visualize the progress of a computation on the output screen.<br/>
+Progress bars are visualized via  a <code>ProgBar()</code> object, and alternatively, the progress can be tracked and shown as percentage via a <code>ProgPercent()</code> object.</p>
+
+<p>The general usage of <code>ProgBar()</code> and <code>ProgPercent()</code> consists of 2 basic steps:</p>
+
+<p>1) initialize a new <code>ProgBar()</code> or <code>ProgPercent()</code> object with the number of iterations of the computation that is to be performed<br/>
+2) update the <code>ProgBar()</code> or <code>ProgPercent()</code>  object for each iteration via the <code>.update()</code>method</p>
+
 <pre>n = 10000000
 my_prbar = pyprind.ProgBar(n)   # 1) initialization with number of iterations
-for i in range(n):    
+for i in range(n):  
     # do some computation
     my_prbar.update()           # 2) update the progress visualization
-my_prbar.finish()               # 3) complete the progress visualization
 </pre>
 
 
 <h2>Optional parameters :</h2>
-<h5>Setting the width of the progress bar</h5>
-<p><code>my_prog = pyprind.ProgBar(n, width=70)    # default = 50</code></p>
-<h5>Set whether CPU time should be reported or not</h5>
-<p>The optional <code>cpu_time</code> parameter can be set for both <code>ProgBar()</code> and <code>ProgPercent()</code> objects.  </p>
-<pre>
-my_prbar = pyprind.ProgBar(n)  
- ...
-my_prbar.finish(cpu_time=False) # default = True  
-</pre>
 
+<h5>Setting the width of the progress bar</h5>
+
+<p><code>my_prog = pyprind.ProgBar(n, width=70) # default = 50</code></p>
+
+<h5>Set whether CPU time should be reported or not</h5>
+
+<p>The optional <code>track_time</code> parameter can be set for both <code>ProgBar()</code> and <code>ProgPercent()</code> objects.</p>
+
+<p><code>my_prbar = pyprind.ProgBar(n, track_time=False)  # default = True</code></p>
 
 <h1>Examples</h1>
-<p>The following examples shall illustrate the typical usage of the PyPrind package.<br>A visualization can be viewed on YouTube: <a href="http://youtu.be/gjj5K8OWo7U"><a href="http://youtu.be/gjj5K8OWo7U">http://youtu.be/gjj5K8OWo7U</a></a></p>
-<h2>Example 1 - Progress Bar</h2>
+
+<p>The following examples shall illustrate the typical usage of the PyPrind package.<br/>
+A visualization can be viewed on YouTube: <a href="http://youtu.be/GC2J0SMmiWQ">http://youtu.be/GC2J0SMmiWQ</a></p>
+
+<h2>Example - Progress Bar</h2>
+
 <pre>import pyprind
 
 n = 10000000
@@ -40,18 +220,20 @@ my_prbar = pyprind.ProgBar(n)
 for i in range(n):
     # do some computation
     my_prbar.update()
-my_prbar.finish() 
 </pre>
 
-<p><strong>Screen Output</strong>  </p>
-<pre>sebastian > python3 examples/ex_progress_bar.py 
+
+<p><strong>Screen Output</strong></p>
+
+<pre>sebastian > python3 ./examples/ex1_progress_bar.py 
 0%                                    100%
 [########################################]
-Time elapsed: 0.7829 sec
+Total time elapsed: 1.033 sec
 </pre>
 
 
-<h2>Example 2 - Percentage Indicator</h2>
+<h2>Example - Percentage Indicator</h2>
+
 <pre>import pyprind
 
 n = 1000000
@@ -59,17 +241,20 @@ my_perc = pyprind.ProgPercent(n)
 for i in range(n):
     # do some computation
     my_perc.update()
-my_perc.finish()
  </pre>
 
-<p><strong>Screen Output</strong>  </p>
-<pre>sebastian > ./python3 examples/ex_percentage_indicator.py 
-[100 %]
-Time elapsed: 2.6364 sec
+
+<p><strong>Screen Output</strong></p>
+
+<pre>sebastian > python3 ./examples/ex1_percentage_indicator.py 
+[100 %]   elapsed: 2.674 sec
 </pre>
 
 
-
-
 <h1> Contact</h1>
-<p>If you have any questions or comments about PyPrind, please feel free to contact me via<br>eMail: <a href="mailto:se.raschka@gmail.com">se.raschka@gmail.com</a><br>or Twitter: <a href="https://twitter.com/rasbt">@rasbt</a></p>
+
+<p>If you have any questions or comments about PyPrind, please feel free to contact me via<br/>
+eMail: <a href="mailto:se.raschka@gmail.com">se.raschka@gmail.com</a><br/>
+or Twitter: <a href="https://twitter.com/rasbt">@rasbt</a></p>
+</body>
+</html>

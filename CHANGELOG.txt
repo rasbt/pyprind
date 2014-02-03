@@ -1,4 +1,27 @@
+VERSION 2.0.0
+==============
+- ProgBar and ProgPerc inherit data members from parent class Prog
+- Added ProgBar and ProgPerc default argument `stream=2` to write to stderr by
+  default. Set `stream=1` to write to stdout.
 
+    my_prbar = pyprind.ProgBar(n, stream=1) # writes to stdout
+    my_prbar = pyprind.ProgBar(n, stream=2) # writes to stderr, default
+
+
+- Does not redirect data to the standard output or error stream if program is not
+  outputting to a terminal
+
+ 
+
+VERSION 1.1.1
+==============
+- fixed problem with packaging of example scripts
+
+VERSION 1.1.0
+===============
+- Added live time tracking to percentage indicator
+- progress bar and percentage indicator complete automatically,
+  .finish() was removed
 
 
 VERSION 1.0.4

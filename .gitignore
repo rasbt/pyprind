@@ -1,3 +1,5 @@
+*.txt
+*.sqlite
 gmon.out
 __pycache__
 *.pyc

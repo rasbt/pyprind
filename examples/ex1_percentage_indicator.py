@@ -9,7 +9,6 @@ def example_1():
     for i in range(n):
         # do some computation
         my_perc.update()
-    my_perc.finish()
 
 if __name__ == '__main__':
     example_1() 

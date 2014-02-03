@@ -27,18 +27,17 @@ Documentation
 PyPrind consists of two class objects that can visualize the progress of a computation on the output screen.  
 Progress bars are visualized via  a `ProgBar()` object, and alternatively, the progress can be tracked and shown as percentage via a `ProgPercent()` object.  
 
-The general usage of `ProgBar()` and `ProgPercent()` consists of three steps:
+The general usage of `ProgBar()` and `ProgPercent()` consists of 2 basic steps:
 
 1) initialize a new `ProgBar()` or `ProgPercent()` object with the number of iterations of the computation that is to be performed  
 2) update the `ProgBar()` or `ProgPercent()`  object for each iteration via the `.update() `method  
-3) complete the progress visualization via the `.finish()` method after the computation is completed  
+
 
 <pre>n = 10000000
 my_prbar = pyprind.ProgBar(n)   # 1) initialization with number of iterations
 for i in range(n):	
     # do some computation
     my_prbar.update()           # 2) update the progress visualization
-my_prbar.finish()               # 3) complete the progress visualization
 </pre>
 
 
@@ -46,26 +45,25 @@ Optional parameters :
 --------------------------
 
 ##### Setting the width of the progress bar
+
 `my_prog = pyprind.ProgBar(n, width=70)	# default = 50`
 
 
 ##### Set whether CPU time should be reported or not 
-The optional `cpu_time` parameter can be set for both `ProgBar()` and `ProgPercent()` objects.  
-<pre>
-my_prbar = pyprind.ProgBar(n)  
- ...
-my_prbar.finish(cpu_time=False) # default = True  
-</pre>
+The optional `track_time` parameter can be set for both `ProgBar()` and `ProgPercent()` objects.   
+
+`my_prbar = pyprind.ProgBar(n, track_time=False)  # default = True`  
+
 
 
 Examples
 =============
 
 The following examples shall illustrate the typical usage of the PyPrind package.  
-A visualization can be viewed on YouTube: [http://youtu.be/gjj5K8OWo7U](http://youtu.be/gjj5K8OWo7U)
+A visualization can be viewed on YouTube: [http://youtu.be/GC2J0SMmiWQ](http://youtu.be/GC2J0SMmiWQ)
 
 
-Example 1 - Progress Bar
+Example - Progress Bar
 --------------------------
 
 <pre>import pyprind
@@ -75,19 +73,18 @@ my_prbar = pyprind.ProgBar(n)
 for i in range(n):
     # do some computation
     my_prbar.update()
-my_prbar.finish() 
 </pre>
 
 **Screen Output**  
 
-<pre>sebastian > python3 examples/ex_progress_bar.py 
+<pre>sebastian > python3 ./examples/ex1_progress_bar.py 
 0%                                    100%
 [########################################]
-Time elapsed: 0.7829 sec
+Total time elapsed: 1.033 sec
 </pre>
 
 
-Example 2 - Percentage Indicator
+Example - Percentage Indicator
 --------------------------
 
 <pre>import pyprind
@@ -97,15 +94,15 @@ my_perc = pyprind.ProgPercent(n)
 for i in range(n):
     # do some computation
     my_perc.update()
-my_perc.finish()
  </pre>
+
 
 **Screen Output**  
 
-<pre>sebastian > ./python3 examples/ex_percentage_indicator.py 
-[100 %]
-Time elapsed: 2.6364 sec
+<pre>sebastian > python3 ./examples/ex1_percentage_indicator.py 
+[100 %]   elapsed: 2.674 sec
 </pre>
+
 
  
 

@@ -6,29 +6,33 @@
 
 import sys
 import time
+from pyprind.prog_class import Prog
 
-class ProgPercent():
+class ProgPercent(Prog):
     """Initializes a percentage indicator object that allows visuzalization
        of an iterational computation in the standard output screen. 
 
     Keyword Arguments:
         iterations (int): number of iterations of the computation
+        track_time (bool): prints elapsed time
 
     """
-    def __init__(self, iterations):
-        self.cnt = 0
-        self.max_iter = float(iterations) # accommodation for Python 2.x users
+    def __init__(self, iterations, track_time=True, stream=2):
+        Prog.__init__(self, iterations, track_time, stream)
         self.perc = 0
-        self.time = [time.clock(), None, None]
-        self.__print_percent()
+        self.__print_update()
 
     def __calc_percent(self):
         """Calculates the rel. progress in percent and rounds it to an integer."""
         return round(self.cnt/self.max_iter * 100)
 
-    def __print_percent(self):
-        """Prints formatted integer percentage to the screen."""
-        sys.stdout.write('\r[%3d %%]' % (self.perc))
+    def __print_update(self):
+        """Prints formatted integer percentage and tracked time to the screen."""
+        self._stream_out('\r[%3d %%]' % (self.perc))
+        if self.track:
+            self.time[1] = time.clock()
+            self._stream_out('   elapsed: %.3f sec' % self.time[1])
+            self._stream_flush()
 
     def update(self):
         """Updates the percentage indicator in every iteration of the task."""
@@ -36,13 +40,8 @@ class ProgPercent():
         next_perc = self.__calc_percent()
         if next_perc > self.perc:
             self.perc = next_perc
-            self.__print_percent()
-            sys.stdout.flush()
-
-    def finish(self, cpu_time=True):
-        """Ends the progress tracking and prints the CPU time."""
-        self.time[1] = time.clock()
-        self.time[2] = self.time[1] - self.time[0]
-        sys.stdout.write('\n')
-        if cpu_time:
-            print('Time elapsed: {0:.4f} sec'.format(self.time[2]))
+            self.__print_update()
+            self._stream_flush()
+        if self.cnt == self.max_iter:
+            self._stream_out('\n') 
+ 
