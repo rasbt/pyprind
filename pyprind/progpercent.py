@@ -20,6 +20,7 @@ class ProgPercent(Prog):
     def __init__(self, iterations, track_time=True, stream=2):
         Prog.__init__(self, iterations, track_time, stream)
         self.perc = 0
+        self.max_iter = float(self.max_iter) # accommodation for Python 2.x users
         self.__print_update()
 
     def __calc_percent(self):
