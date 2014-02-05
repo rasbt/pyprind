@@ -20,7 +20,7 @@ class ProgBar(Prog):
     """
     def __init__(self, iterations, track_time=True, width=50, stream=2):
         Prog.__init__(self, iterations, track_time, stream)
-        self.bar_width = int(width)
+        self.bar_width = width
         self._adjust_width()
         self.bar_interv = self.max_iter // self.bar_width
         self._init_bar()
