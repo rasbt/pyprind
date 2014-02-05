@@ -65,6 +65,18 @@ my_prbar = pyprind.ProgBar(n, stream=1) # writes to stdout
 my_prbar = pyprind.ProgBar(n, stream=2) # writes to stderr, default
 </pre>
 
+If you want to use a given stream, just pass that. Example:
+<pre>
+my_prbar = pyprint.ProgBar(n, stream=self.stdout)  # writes to the given stream
+</pre>
+
+
+##### Small note on usage in a custom Django management command.
+Django gives you a stdout object on the BaseCommand class. You will need to pass this to
+`pyprind` as done above. Also note that by default, Django appends a newline to every write.
+This uglyfies `pyprind` output, so ensure the write function gets passed `ending=""`.
+`pyprind` will NOT do this for you.
+
 
 Examples
 =============
