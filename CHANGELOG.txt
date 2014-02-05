@@ -1,5 +1,14 @@
+VERSION 2.0.2
+================
+
+- Fixed bug that occurred for some Python 3.3.3 users
+specifically on Linux Red Hat 4.4.7-1, GCC v. 4.4.7
+that self.max_iter was cast to a float when `ProgBar()`
+object was seeded with n=48
+
+
 VERSION 2.0.1
-==============
+================
 - fixed packaging of example files
 
 
@@ -52,7 +61,6 @@ VERSION 1.0.2
 VERSION 1.0.1
 ===============
 
-2014-01-26 Sebastian Raschka:
 - added more README formats
 - added class descriptions
 - added example scripts to the distribution

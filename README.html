@@ -268,5 +268,92 @@ for i in range(n):
 <p>If you have any questions or comments about PyPrind, please feel free to contact me via<br/>
 eMail: <a href="mailto:se.raschka@gmail.com">se.raschka@gmail.com</a><br/>
 or Twitter: <a href="https://twitter.com/rasbt">@rasbt</a></p>
+
+<p><br>
+<br></p>
+
+<h1>Changelog</h1>
+
+<p><strong>VERSION 2.0.2</strong></p>
+
+<ul>
+<li>Fixed bug that occurred for some Python 3.3.3 users
+specifically on Linux Red Hat 4.4.7-1, GCC v. 4.4.7
+that self.max_iter was cast to a float when <code>ProgBar()</code>
+object was seeded with n=48</li>
+</ul>
+
+
+<p><strong>VERSION 2.0.1</strong></p>
+
+<ul>
+<li>fixed packaging of example files</li>
+</ul>
+
+
+<p><strong>VERSION 2.0.0</strong></p>
+
+<ul>
+<li>ProgBar and ProgPerc inherit data members from parent class Prog</li>
+<li><p>Added ProgBar and ProgPerc default argument <code>stream=2</code> to write to stderr by
+default. Set <code>stream=1</code> to write to stdout.</p>
+
+<p>  my_prbar = pyprind.ProgBar(n, stream=1) # writes to stdout
+  my_prbar = pyprind.ProgBar(n, stream=2) # writes to stderr, default</p></li>
+<li><p>Does not redirect data to the standard output or error stream if program is not
+outputting to a terminal</p></li>
+</ul>
+
+
+<p><strong>VERSION 1.1.1</strong></p>
+
+<ul>
+<li>fixed problem with packaging of example scripts</li>
+</ul>
+
+
+<p><strong>VERSION 1.1.0</strong></p>
+
+<ul>
+<li>Added live time tracking to percentage indicator</li>
+<li>progress bar and percentage indicator complete automatically,
+.finish() was removed</li>
+</ul>
+
+
+<p><strong>VERSION 1.0.4</strong></p>
+
+<ul>
+<li>Added boundary that .update() can't print over the
+right progress bar limit.</li>
+<li>Prints warning when ProgBar seed exits the number of iterations
+in the loop.</li>
+</ul>
+
+
+<p><strong>VERSION 1.0.3</strong></p>
+
+<ul>
+<li>Reformatting of README files</li>
+<li>minor updates in setup.py file</li>
+</ul>
+
+
+<p><strong>VERSION 1.0.2</strong></p>
+
+<ul>
+<li>corrected errors in the README files</li>
+<li>added docstring to the <strong>init</strong>.py</li>
+</ul>
+
+
+<p><strong>VERSION 1.0.1</strong></p>
+
+<ul>
+<li>added more README formats</li>
+<li>added class descriptions</li>
+<li>added example scripts to the distribution</li>
+</ul>
+
 </body>
 </html>

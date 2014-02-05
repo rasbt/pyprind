@@ -123,3 +123,78 @@ for i in range(n):
 If you have any questions or comments about PyPrind, please feel free to contact me via  
 eMail: [se.raschka@gmail.com](mailto:se.raschka@gmail.com)  
 or Twitter: [@rasbt](https://twitter.com/rasbt)
+
+
+<br>
+<br>
+
+Changelog
+==========
+
+**VERSION 2.0.2**  
+
+
+- Fixed bug that occurred for some Python 3.3.3 users
+specifically on Linux Red Hat 4.4.7-1, GCC v. 4.4.7
+that self.max_iter was cast to a float when `ProgBar()`
+object was seeded with n=48
+
+
+**VERSION 2.0.1**  
+
+- fixed packaging of example files
+
+
+**VERSION 2.0.0**  
+
+- ProgBar and ProgPerc inherit data members from parent class Prog
+- Added ProgBar and ProgPerc default argument `stream=2` to write to stderr by
+  default. Set `stream=1` to write to stdout.
+
+    my_prbar = pyprind.ProgBar(n, stream=1) # writes to stdout
+    my_prbar = pyprind.ProgBar(n, stream=2) # writes to stderr, default
+
+
+- Does not redirect data to the standard output or error stream if program is not
+  outputting to a terminal
+
+ 
+
+**VERSION 1.1.1**  
+
+- fixed problem with packaging of example scripts
+
+**VERSION 1.1.0**  
+
+- Added live time tracking to percentage indicator
+- progress bar and percentage indicator complete automatically,
+  .finish() was removed
+
+
+**VERSION 1.0.4**  
+
+- Added boundary that .update() can't print over the
+  right progress bar limit.
+- Prints warning when ProgBar seed exits the number of iterations
+  in the loop.
+
+
+**VERSION 1.0.3**  
+
+- Reformatting of README files
+- minor updates in setup.py file
+
+
+**VERSION 1.0.2**  
+
+- corrected errors in the README files
+- added docstring to the __init__.py
+
+
+**VERSION 1.0.1**  
+
+
+- added more README formats
+- added class descriptions
+- added example scripts to the distribution
+
