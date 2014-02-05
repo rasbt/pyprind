@@ -3,7 +3,7 @@ import sys
 import os
 
 class Prog():
-    def __init__(self, iterations, track_time, stream):
+    def __init__(self, iterations, track_time, stream):        
         self.cnt = 0
         self.max_iter = iterations
         self.track = track_time
@@ -18,7 +18,7 @@ class Prog():
         elif self.stream == 2 and os.isatty(sys.stderr.fileno()):
             self._stream_out = sys.stderr.write
             self._stream_flush = sys.stderr.flush
-        elif self.stream is not None:
+        elif self.stream is not None and hasattr(self.stream, 'write'):
             self._stream_out = self.stream.write
             self._stream_flush = self.stream.flush
         else:

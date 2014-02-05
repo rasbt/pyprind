@@ -44,6 +44,25 @@ for i in range(n):
 Optional parameters :
 --------------------------
 
+#### Default Parameters
+
+	ProgBar(iterations, track_time=True, width=50, stream=2):
+	
+		iterations (int): number of iterations of the computation
+        track_time (bool): prints elapsed time
+        stream: takes 1 for stdout, 2 for stderr, or given stream object
+
+
+	ProgPercent(iterations, track_time=True, stream=2):
+		
+		iterations (int): number of iterations of the computation
+        width (int): width of the progress bar in characters
+        track_time (bool): prints elapsed time when loop is finished
+        stream: takes 1 for stdout, 2 for stderr, or given stream object
+
+
+
+
 ##### Setting the width of the progress bar
 
 `my_prog = pyprind.ProgBar(n, width=70)	# default = 50`
@@ -65,9 +84,9 @@ my_prbar = pyprind.ProgBar(n, stream=1) # writes to stdout
 my_prbar = pyprind.ProgBar(n, stream=2) # writes to stderr, default
 </pre>
 
-If you want to use a given stream, just pass that. Example:
+***If you want to use a given stream, just pass that. Example:***
 <pre>
-my_prbar = pyprint.ProgBar(n, stream=self.stdout)  # writes to the given stream
+my_prbar = pyprint.ProgBar(n, stream=self.stdout)  # writes to given stream
 </pre>
 
 
@@ -143,8 +162,12 @@ or Twitter: [@rasbt](https://twitter.com/rasbt)
 Changelog
 ==========
 
-**VERSION 2.0.2**  
+**VERSION 2.0.3**
 
+- Accepts a given outputstream for the `stream` parameter.  
+
+
+**VERSION 2.0.2**  
 
 - Fixed bug that occurred for some Python 3.3.3 users
 specifically on Linux Red Hat 4.4.7-1, GCC v. 4.4.7

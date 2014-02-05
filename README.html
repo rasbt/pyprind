@@ -152,7 +152,7 @@ sup {
 	}
 }
 </style>
-<title>Setting the width of the progress bar</title>
+<title>Default Parameters</title>
 
 </head>
 <body>
@@ -196,6 +196,23 @@ for i in range(n):
 
 <h2>Optional parameters :</h2>
 
+<h4>Default Parameters</h4>
+
+<pre><code>ProgBar(iterations, track_time=True, width=50, stream=2):
+
+    iterations (int): number of iterations of the computation
+    track_time (bool): prints elapsed time
+    stream: takes 1 for stdout, 2 for stderr, or given stream object
+
+
+ProgPercent(iterations, track_time=True, stream=2):
+
+    iterations (int): number of iterations of the computation
+    width (int): width of the progress bar in characters
+    track_time (bool): prints elapsed time when loop is finished
+    stream: takes 1 for stdout, 2 for stderr, or given stream object
+</code></pre>
+
 <h5>Setting the width of the progress bar</h5>
 
 <p><code>my_prog = pyprind.ProgBar(n, width=70) # default = 50</code></p>
@@ -217,6 +234,20 @@ my_prbar = pyprind.ProgBar(n, stream=1) # writes to stdout
 my_prbar = pyprind.ProgBar(n, stream=2) # writes to stderr, default
 </pre>
 
+
+<p><strong><em>If you want to use a given stream, just pass that. Example:</em></strong></p>
+
+<pre>
+my_prbar = pyprint.ProgBar(n, stream=self.stdout)  # writes to given stream
+</pre>
+
+
+<h5>Small note on usage in a custom Django management command.</h5>
+
+<p>Django gives you a stdout object on the BaseCommand class. You will need to pass this to
+<code>pyprind</code> as done above. Also note that by default, Django appends a newline to every write.
+This uglyfies <code>pyprind</code> output, so ensure the write function gets passed <code>ending=""</code>.
+<code>pyprind</code> will NOT do this for you.</p>
 
 <h1>Examples</h1>
 
@@ -273,6 +304,13 @@ or Twitter: <a href="https://twitter.com/rasbt">@rasbt</a></p>
 <br></p>
 
 <h1>Changelog</h1>
+
+<p><strong>VERSION 2.0.3</strong></p>
+
+<ul>
+<li>Accepts a given outputstream for the <code>stream</code> parameter.</li>
+</ul>
+
 
 <p><strong>VERSION 2.0.2</strong></p>
 

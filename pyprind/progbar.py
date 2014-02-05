@@ -16,6 +16,7 @@ class ProgBar(Prog):
         iterations (int): number of iterations of the computation
         width (int): width of the progress bar in characters
         track_time (bool): prints elapsed time when loop is finished
+        stream: takes 1 for stdout, 2 for stderr, or given stream object
 
     """
     def __init__(self, iterations, track_time=True, width=50, stream=2):

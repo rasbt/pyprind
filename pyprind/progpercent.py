@@ -15,6 +15,7 @@ class ProgPercent(Prog):
     Keyword Arguments:
         iterations (int): number of iterations of the computation
         track_time (bool): prints elapsed time
+        stream: takes 1 for stdout, 2 for stderr, or given stream object
 
     """
     def __init__(self, iterations, track_time=True, stream=2):

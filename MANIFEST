@@ -12,3 +12,4 @@ pyprind/__init__.py
 pyprind/prog_class.py
 pyprind/progbar.py
 pyprind/progpercent.py
+test/test_small_progbar.py

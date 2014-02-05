@@ -1,7 +1,7 @@
 from distutils.core import setup
 
 setup(name='PyPrind',
-      version='2.0.2',
+      version='2.0.3',
       description='Python Progress Indicator Utility',
       author='Sebastian Raschka',
       author_email='se.raschka@gmail.com',
@@ -32,6 +32,10 @@ The PyPrind (Python Progress Indicator) module provides a progress bar and a per
 object that let you track the progress of a loop structure or other iterative computation.  
 Typical applications include the processing of large data sets to provide an intuitive estimate 
 at runtime about the progress of the computation.
+
+
+
+
 
 Examples
 =============
@@ -80,10 +84,30 @@ for i in range(n):
 </pre>
 
 
- 
+#### Default Parameters
 
-Changes in Version 2.0.0
-==========================
+	ProgBar(iterations, track_time=True, width=50, stream=2):
+	
+		iterations (int): number of iterations of the computation
+        track_time (bool): prints elapsed time
+        stream: takes 1 for stdout, 2 for stderr, or given stream object
+
+
+	ProgPercent(iterations, track_time=True, stream=2):
+		
+		iterations (int): number of iterations of the computation
+        width (int): width of the progress bar in characters
+        track_time (bool): prints elapsed time when loop is finished
+        stream: takes 1 for stdout, 2 for stderr, or given stream object
+
+
+
+**VERSION 2.0.3**
+
+- Accepts a given outputstream for the `stream` parameter.   
+
+**VERSION 2.0.0**
+
 - ProgBar and ProgPerc inherit data members from parent class Prog
 - Added ProgBar and ProgPerc default argument `stream=2` to write to stderr by
   default. Set `stream=1` to write to stdout.

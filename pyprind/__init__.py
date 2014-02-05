@@ -8,12 +8,8 @@ Progress bars are visualized via a `ProgBar()` object, and
 alternatively, the progress can be shown as an percentage via the
 `ProgPercent()` object.
 
-
-
 Example - Progress Bar
 -------------------------------
-
-
    ```import pyprind
 
    n = 10000000
@@ -23,12 +19,8 @@ Example - Progress Bar
        my_prbar.update()
    ```
 
-
-
 Example - Percentage Indicator
 -------------------------------
-
-
    ```import pyprind
 
    n = 1000000
@@ -43,4 +35,4 @@ Example - Percentage Indicator
 from .progbar import ProgBar
 from .progpercent import ProgPercent
 
-__version__ = '2.0.2'
+__version__ = '2.0.3'
