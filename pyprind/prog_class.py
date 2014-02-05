@@ -10,7 +10,7 @@ class Prog():
         self.time = [time.clock(), 0]
         self.stream = stream
         self._check_stream()
-        
+
     def _check_stream(self):
         if self.stream == 1 and os.isatty(sys.stdout.fileno()):
             self._stream_out = sys.stdout.write
@@ -18,10 +18,13 @@ class Prog():
         elif self.stream == 2 and os.isatty(sys.stderr.fileno()):
             self._stream_out = sys.stderr.write
             self._stream_flush = sys.stderr.flush
+        elif self.stream is not None:
+            self._stream_out = self.stream.write
+            self._stream_flush = self.stream.flush
         else:
             print('Warning: No valid output stream.')
             self._stream_out = self._no_stream
-            self._stream_flush = self._no_stream       
- 
+            self._stream_flush = self._no_stream
+
     def _no_stream(self, text=None):
         pass
