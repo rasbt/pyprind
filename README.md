@@ -143,7 +143,6 @@ for i in range(n):
     my_perc.update()
  </pre>
 
-
 **Screen Output**  
 
 <pre>sebastian > python3 ./examples/ex1_percentage_indicator.py 
