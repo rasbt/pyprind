@@ -1,6 +1,12 @@
 VERSION 2.1.0
 ================
 
+- changed visuals of the printed progress for percentage indicators  
+
+
+VERSION 2.1.0
+================
+
 - added ETA (estimated time until arrival) tracking by Taylan Aydinli
 
 

@@ -146,7 +146,7 @@ for i in range(n):
 **Screen Output**  
 
 <pre>sebastian > python3 ./examples/ex1_percentage_indicator.py 
-[ 12 %]   elapsed: 2.095 sec | eta: 16.000 sec
+[ 17 %]   elapsed [sec]: 3.066  | ETA [sec]: 15.000
 </pre>
 
 
@@ -167,6 +167,10 @@ or Twitter: [@rasbt](https://twitter.com/rasbt)
 Changelog
 ==========
 
+
+**VERSION 2.1.0**
+
+- changed visuals of the printed progress for percentage indicators  
 
 **VERSION 2.1.0**
 

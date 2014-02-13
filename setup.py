@@ -1,7 +1,7 @@
 from distutils.core import setup
 
 setup(name='PyPrind',
-      version='2.1.0',
+      version='2.1.1',
       description='Python Progress Indicator Utility',
       author='Sebastian Raschka',
       author_email='se.raschka@gmail.com',
@@ -47,7 +47,10 @@ A visualization can be viewed on YouTube: [http://youtu.be/gjj5K8OWo7U](http://y
 Example - Progress Bar
 --------------------------
 
-<pre>import pyprind
+<pre>import pypr<pre>sebastian > python3 ./examples/ex1_percentage_indicator.py 
+[ 12 %]   elapsed: 2.095 sec | eta: 16.000 sec
+</pre>
+ind
 
 n = 10000000
 my_prbar = pyprind.ProgBar(n)
@@ -75,12 +78,13 @@ my_perc = pyprind.ProgPercent(n)
 for i in range(n):
     # do some computation
     my_perc.update()
- </pre>
+</pre>
+
 
 **Screen Output**  
 
 <pre>sebastian > python3 ./examples/ex1_percentage_indicator.py 
-[100 %]   elapsed: 2.674 sec
+[ 17 %]   elapsed [sec]: 3.066  | ETA [sec]: 15.000
 </pre>
 
 
@@ -101,6 +105,13 @@ for i in range(n):
         stream: takes 1 for stdout, 2 for stderr, or given stream object
 
 
+**VERSION 2.1.0**
+
+- changed visuals of the printed progress for percentage indicators  
+
+**VERSION 2.1.0**
+
+- added ETA (estimated time until arrival) tracking by Taylan Aydinli  
 
 **VERSION 2.0.3**
 
