@@ -8,6 +8,7 @@ import sys
 import time
 from pyprind.prog_class import Prog
 
+
 class ProgBar(Prog):
     """Initializes a progress bar object that allows visuzalization
         of an iterational computation in the standard output screen. 
@@ -51,6 +52,5 @@ class ProgBar(Prog):
         if self.cnt == self.max_iter:
             self._stream_out('\n')
             if self.track:
-                self.time[1] = time.clock()
-                self._stream_out('Total time elapsed: %.3f sec' % self.time[1])
+                self._stream_out('Total time elapsed: %.3f sec' % self._elapsed())
                 self._stream_out('\n')
