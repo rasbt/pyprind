@@ -15,7 +15,8 @@ class ProgPercent(Prog):
 
     Keyword Arguments:
         iterations (int): number of iterations of the computation
-        track_time (bool): prints elapsed time
+        width (int): width of the progress bar in characters
+        track_time (bool): prints elapsed time and estimated time left
         stream: takes 1 for stdout, 2 for stderr, or given stream object
 
     """
@@ -35,7 +36,7 @@ class ProgPercent(Prog):
         if self.track:
             self._stream_out('   elapsed: %.3f sec' % self._elapsed())
             if self._calc_eta():
-                self._stream_out(' - eta: %.3f sec' % self._calc_eta())
+                self._stream_out(' | eta: %.3f sec' % self._calc_eta())
             self._stream_flush()
 
     def update(self):
@@ -47,4 +48,6 @@ class ProgPercent(Prog):
             self._print_update()
             self._stream_flush()
         if self.cnt == self.max_iter:
+            if self.track:
+                self._stream_out(' | eta: 0.000 sec')
             self._stream_out('\n') 

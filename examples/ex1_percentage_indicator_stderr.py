@@ -4,7 +4,7 @@
 import pyprind
 
 def example_1():
-    n = 1000000
+    n = 10000000
     my_perc = pyprind.ProgPercent(n, stream=2)
     for i in range(n):
         # do some computation

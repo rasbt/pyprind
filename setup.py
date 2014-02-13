@@ -1,7 +1,7 @@
 from distutils.core import setup
 
 setup(name='PyPrind',
-      version='2.0.3',
+      version='2.1.0',
       description='Python Progress Indicator Utility',
       author='Sebastian Raschka',
       author_email='se.raschka@gmail.com',
@@ -89,7 +89,7 @@ for i in range(n):
 	ProgBar(iterations, track_time=True, width=50, stream=2):
 	
 		iterations (int): number of iterations of the computation
-        track_time (bool): prints elapsed time
+        track_time (bool): prints elapsed time when loop has finished
         stream: takes 1 for stdout, 2 for stderr, or given stream object
 
 
@@ -97,7 +97,7 @@ for i in range(n):
 		
 		iterations (int): number of iterations of the computation
         width (int): width of the progress bar in characters
-        track_time (bool): prints elapsed time when loop is finished
+        track_time (bool): prints elapsed time and estimated time left
         stream: takes 1 for stdout, 2 for stderr, or given stream object
 
 

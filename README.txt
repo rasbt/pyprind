@@ -49,7 +49,7 @@ Optional parameters :
 	ProgBar(iterations, track_time=True, width=50, stream=2):
 	
 		iterations (int): number of iterations of the computation
-        track_time (bool): prints elapsed time
+        track_time (bool): prints elapsed time when loop has finished
         stream: takes 1 for stdout, 2 for stderr, or given stream object
 
 
@@ -57,7 +57,7 @@ Optional parameters :
 		
 		iterations (int): number of iterations of the computation
         width (int): width of the progress bar in characters
-        track_time (bool): prints elapsed time when loop is finished
+        track_time (bool): prints elapsed time and estimated time left
         stream: takes 1 for stdout, 2 for stderr, or given stream object
 
 
@@ -72,6 +72,12 @@ Optional parameters :
 The optional `track_time` parameter can be set for both `ProgBar()` and `ProgPercent()` objects.   
 
 `my_prbar = pyprind.ProgBar(n, track_time=False)  # default = True`  
+`my_perc = pyprind.ProgPercent(n, track_time=False)  # default = True`  
+
+`ProgBar` objects will print the elapsed time when the computation has finished.  
+`ProgPercent` objects reports the elapsed time during the computation and prints  
+the estimated finish time of the loop (see section "Examples - ProgPercent").   
+
 
 
 ##### Selecting an output stream  
@@ -141,7 +147,7 @@ for i in range(n):
 **Screen Output**  
 
 <pre>sebastian > python3 ./examples/ex1_percentage_indicator.py 
-[100 %]   elapsed: 2.674 sec
+[ 12 %]   elapsed: 2.095 sec | eta: 16.000 sec
 </pre>
 
 
@@ -161,6 +167,12 @@ or Twitter: [@rasbt](https://twitter.com/rasbt)
 
 Changelog
 ==========
+
+
+**VERSION 2.1.0**
+
+- added ETA (estimated time until arrival) tracking by Taylan Aydinli  
+
 
 **VERSION 2.0.3**
 
