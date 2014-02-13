@@ -8,6 +8,7 @@ import sys
 import time
 from pyprind.prog_class import Prog
 
+
 class ProgPercent(Prog):
     """Initializes a percentage indicator object that allows visuzalization
        of an iterational computation in the standard output screen. 
@@ -32,8 +33,9 @@ class ProgPercent(Prog):
         """Prints formatted integer percentage and tracked time to the screen."""
         self._stream_out('\r[%3d %%]' % (self.perc))
         if self.track:
-            self.time[1] = time.clock()
-            self._stream_out('   elapsed: %.3f sec' % self.time[1])
+            self._stream_out('   elapsed: %.3f sec' % self._elapsed())
+            if self._calc_eta():
+                self._stream_out(' - eta: %.3f sec' % self._calc_eta())
             self._stream_flush()
 
     def update(self):
@@ -46,4 +48,3 @@ class ProgPercent(Prog):
             self._stream_flush()
         if self.cnt == self.max_iter:
             self._stream_out('\n') 
- 

@@ -2,12 +2,13 @@ import time
 import sys
 import os
 
+
 class Prog():
-    def __init__(self, iterations, track_time, stream):        
+    def __init__(self, iterations, track_time, stream):
         self.cnt = 0
         self.max_iter = iterations
         self.track = track_time
-        self.time = [time.clock(), 0]
+        self.start = time.clock()
         self.stream = stream
         self._check_stream()
 
@@ -25,6 +26,16 @@ class Prog():
             print('Warning: No valid output stream.')
             self._stream_out = self._no_stream
             self._stream_flush = self._no_stream
+
+    def _elapsed(self):
+        return time.clock() - self.start
+
+    def _calc_eta(self):
+        elapsed = self._elapsed()
+        if self.cnt == 0 or elapsed < 0.001:
+            return None
+        rate = float(self.cnt) / elapsed
+        return int((float(self.max_iter) - float(self.cnt)) / rate)
 
     def _no_stream(self, text=None):
         pass
