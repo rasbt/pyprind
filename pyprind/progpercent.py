@@ -34,6 +34,8 @@ class ProgPercent(Prog):
         self._stream_out('\r[%3d %%]' % (self.perc))
         if self.track:
             self._stream_out('   elapsed: %.3f sec' % self._elapsed())
+            if self._calc_eta():
+                self._stream_out(' - eta: %.3f sec' % self._calc_eta())
             self._stream_flush()
 
     def update(self):

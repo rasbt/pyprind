@@ -30,5 +30,12 @@ class Prog():
     def _elapsed(self):
         return time.clock() - self.start
 
+    def _calc_eta(self):
+        elapsed = self._elapsed()
+        if self.cnt == 0 or elapsed < 0.001:
+            return None
+        rate = float(self.cnt) / elapsed
+        return int((float(self.max_iter) - float(self.cnt)) / rate)
+
     def _no_stream(self, text=None):
         pass
