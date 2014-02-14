@@ -37,5 +37,10 @@ class Prog():
         rate = float(self.cnt) / elapsed
         return int((float(self.max_iter) - float(self.cnt)) / rate)
 
+    def _calc_percent(self):
+        """Calculates the rel. progress in percent and rounds it to an integer."""
+        return round(self.cnt/self.max_iter * 100)
+
     def _no_stream(self, text=None):
         pass
+

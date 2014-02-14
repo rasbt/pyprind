@@ -4,8 +4,6 @@
 # that is printed to the standard output screen to visualize the
 # progress in a iterative Python procedure
 
-import sys
-import time
 from pyprind.prog_class import Prog
 
 
@@ -18,17 +16,12 @@ class ProgPercent(Prog):
         width (int): width of the progress bar in characters
         track_time (bool): prints elapsed time and estimated time left
         stream: takes 1 for stdout, 2 for stderr, or given stream object
-
     """
     def __init__(self, iterations, track_time=True, stream=2):
         Prog.__init__(self, iterations, track_time, stream)
         self.perc = 0
         self.max_iter = float(self.max_iter) # accommodation for Python 2.x users
         self._print_update()
-
-    def _calc_percent(self):
-        """Calculates the rel. progress in percent and rounds it to an integer."""
-        return round(self.cnt/self.max_iter * 100)
 
     def _print_update(self):
         """Prints formatted integer percentage and tracked time to the screen."""
