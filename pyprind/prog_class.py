@@ -6,7 +6,7 @@ import os
 class Prog():
     def __init__(self, iterations, track_time, stream):
         self.cnt = 0
-        self.max_iter = iterations
+        self.max_iter = float(iterations) # to support Python 2.x
         self.track = track_time
         self.start = time.time()
         self.stream = stream
@@ -43,3 +43,9 @@ class Prog():
 
     def _no_stream(self, text=None):
         pass
+
+    def _finish(self):
+        if self.cnt == self.max_iter:
+            if self.track:
+                self._stream_out('\nTotal time elapsed: {:.3f} sec'.format(self._elapsed()))
+            self._stream_out('\n')

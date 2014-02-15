@@ -19,7 +19,7 @@ class ProgBar(Prog):
     """
     def __init__(self, iterations, track_time=True, width=50, stream=2):
         Prog.__init__(self, iterations, track_time, stream)
-        self.bar_width = width
+        self.bar_width = int(width)
         self._adjust_width()
         self.last_progress = 0
         self._print_labels()
@@ -35,16 +35,17 @@ class ProgBar(Prog):
             # float. Thus this fix to prevent float multiplication of chars.
 
     def _print_labels(self):
-        self._stream_out('0%% %s 100%%\n' % (' ' * (self.bar_width - 6)))
+        self._stream_out('0% {} 100%\n'.format(' ' * (self.bar_width - 6)))
         self._stream_flush()
 
     def _print_progress_bar(self, progress):
         remaining = self.bar_width - progress
-        self._stream_out('[%s%s]' % ('#' * progress, ' ' * remaining))
+        self._stream_out('[{}{}]'.format('#' * int(progress), ' ' * int(remaining)))
+        # int() fix for Python 2 users
         self._stream_flush()
 
     def _print_eta(self):
-        self._stream_out(' - ETA [sec]: %.3f' % self._calc_eta())
+        self._stream_out(' - ETA [sec]: {:.3f} sec  '.format(self._calc_eta()))
         self._stream_flush()
 
     def _print_bar(self):
@@ -52,7 +53,7 @@ class ProgBar(Prog):
         if progress > self.last_progress:
             self._stream_out('\r')
             self._print_progress_bar(progress)
-            if self._calc_eta():
+            if self._calc_eta() and self.track:
                 self._print_eta()
         self.last_progress = progress
 
@@ -60,8 +61,4 @@ class ProgBar(Prog):
         """Updates the progress bar in every iteration of the task."""
         self.cnt += 1
         self._print_bar()
-        if self.cnt == self.max_iter:
-            self._stream_out('\n')
-            if self.track:
-                self._stream_out('Total time elapsed: %.3f sec\n' % self._elapsed())
-                self._stream_flush()
+        self._finish() 
