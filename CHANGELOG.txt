@@ -1,4 +1,12 @@
-VERSION 2.1.0
+VERSION 2.2.0
+================
+
+- added ETA (estimated time until arrival) tracking to progress bar  
+  by Taylan Aydinli
+- better support for Python 2.x
+
+
+VERSION 2.1.1
 ================
 
 - changed visuals of the printed progress for percentage indicators  
@@ -7,7 +15,8 @@ VERSION 2.1.0
 VERSION 2.1.0
 ================
 
-- added ETA (estimated time until arrival) tracking by Taylan Aydinli
+- added ETA (estimated time until arrival) tracking to percentage indicator  
+  by Taylan Aydinli
 
 
 VERSION 2.0.3

@@ -17,7 +17,7 @@ class ProgBar(Prog):
         track_time (bool): prints elapsed time when loop has finished
         stream: takes 1 for stdout, 2 for stderr, or given stream object
     """
-    def __init__(self, iterations, track_time=True, width=50, stream=2):
+    def __init__(self, iterations, track_time=True, width=30, stream=2):
         Prog.__init__(self, iterations, track_time, stream)
         self.bar_width = int(width)
         self._adjust_width()
@@ -45,7 +45,7 @@ class ProgBar(Prog):
         self._stream_flush()
 
     def _print_eta(self):
-        self._stream_out(' - ETA [sec]: {:.3f} sec  '.format(self._calc_eta()))
+        self._stream_out(' | ETA [sec]: {:.3f} sec '.format(self._calc_eta()))
         self._stream_flush()
 
     def _print_bar(self):
