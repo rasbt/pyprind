@@ -3,6 +3,7 @@
 
 import pyprind
 
+
 def example_1():
     n = 10000000
     my_perc = pyprind.ProgPercent(n, stream=2)
