@@ -74,9 +74,10 @@ The optional `track_time` parameter can be set for both `ProgBar()` and `ProgPer
 `my_prbar = pyprind.ProgBar(n, track_time=False)  # default = True`  
 `my_perc = pyprind.ProgPercent(n, track_time=False)  # default = True`  
 
-`ProgBar` objects will print the elapsed time when the computation has finished.  
+`ProgBar` objects will print the estimated time left and the total time  
+when the computation has finished.  
 `ProgPercent` objects reports the elapsed time during the computation and prints  
-the estimated finish time of the loop (see section "Examples - ProgPercent").   
+the estimated finish time of the loop.   
 
 
 
@@ -107,7 +108,7 @@ Examples
 =============
 
 The following examples shall illustrate the typical usage of the PyPrind package.  
-A visualization can be viewed on YouTube: [http://youtu.be/N3CRoB9Uo7Y](http://youtu.be/N3CRoB9Uo7Y)
+A visualization can be viewed on YouTube: [http://youtu.be/Ex05RM9vLKE](http://youtu.be/Ex05RM9vLKE)
 
 
 Example - Progress Bar

@@ -224,9 +224,10 @@ ProgPercent(iterations, track_time=True, stream=2):
 <p><code>my_prbar = pyprind.ProgBar(n, track_time=False)  # default = True</code><br/>
 <code>my_perc = pyprind.ProgPercent(n, track_time=False)  # default = True</code></p>
 
-<p><code>ProgBar</code> objects will print the elapsed time when the computation has finished.<br/>
+<p><code>ProgBar</code> objects will print the estimated time left and the total time<br/>
+when the computation has finished.<br/>
 <code>ProgPercent</code> objects reports the elapsed time during the computation and prints<br/>
-the estimated finish time of the loop (see section "Examples - ProgPercent").</p>
+the estimated finish time of the loop.</p>
 
 <h5>Selecting an output stream</h5>
 
@@ -257,7 +258,7 @@ This uglyfies <code>pyprind</code> output, so ensure the write function gets pas
 <h1>Examples</h1>
 
 <p>The following examples shall illustrate the typical usage of the PyPrind package.<br/>
-A visualization can be viewed on YouTube: <a href="http://youtu.be/N3CRoB9Uo7Y">http://youtu.be/N3CRoB9Uo7Y</a></p>
+A visualization can be viewed on YouTube: <a href="http://youtu.be/Ex05RM9vLKE">http://youtu.be/Ex05RM9vLKE</a></p>
 
 <h2>Example - Progress Bar</h2>
 
@@ -275,8 +276,8 @@ for i in range(n):
 
 <pre>sebastian > python3 ./examples/ex1_progress_bar.py 
 0%                                    100%
-[########################################]
-Total time elapsed: 1.033 sec
+[########################################] - ETA [sec]: 0.000 sec  
+Total time elapsed: 4.481 sec
 </pre>
 
 
@@ -295,7 +296,7 @@ for i in range(n):
 <p><strong>Screen Output</strong></p>
 
 <pre>sebastian > python3 ./examples/ex1_percentage_indicator.py 
-[ 17 %]   elapsed [sec]: 3.066  | ETA [sec]: 15.000
+[ 34 %]   elapsed [sec]: 1.377  | ETA [sec]: 2.570
 </pre>
 
 
@@ -310,7 +311,16 @@ or Twitter: <a href="https://twitter.com/rasbt">@rasbt</a></p>
 
 <h1>Changelog</h1>
 
-<p><strong>VERSION 2.1.0</strong></p>
+<p><strong>VERSION 2.2.0</strong></p>
+
+<ul>
+<li>added ETA (estimated time until arrival) tracking to progress bar<br/>
+by Taylan Aydinli</li>
+<li>better support for Python 2.x</li>
+</ul>
+
+
+<p><strong>VERSION 2.1.1</strong></p>
 
 <ul>
 <li>changed visuals of the printed progress for percentage indicators</li>

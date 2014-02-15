@@ -1,7 +1,7 @@
 from distutils.core import setup
 
 setup(name='PyPrind',
-      version='2.1.1',
+      version='2.2.0',
       description='Python Progress Indicator Utility',
       author='Sebastian Raschka',
       author_email='se.raschka@gmail.com',
@@ -36,8 +36,7 @@ at runtime about the progress of the computation.
 For more details and examples please see the package documentation.
 
 A short video demonstration of the progress tracking can be found on YouTube:
-http://youtu.be/N3CRoB9Uo7Y
-
+http://youtu.be/Ex05RM9vLKE
 
 
  Contact

@@ -74,9 +74,10 @@ The optional `track_time` parameter can be set for both `ProgBar()` and `ProgPer
 `my_prbar = pyprind.ProgBar(n, track_time=False)  # default = True`  
 `my_perc = pyprind.ProgPercent(n, track_time=False)  # default = True`  
 
-`ProgBar` objects will print the elapsed time when the computation has finished.  
+`ProgBar` objects will print the estimated time left and the total time  
+when the computation has finished.  
 `ProgPercent` objects reports the elapsed time during the computation and prints  
-the estimated finish time of the loop (see section "Examples - ProgPercent").   
+the estimated finish time of the loop.   
 
 
 
@@ -107,7 +108,7 @@ Examples
 =============
 
 The following examples shall illustrate the typical usage of the PyPrind package.  
-A visualization can be viewed on YouTube: [http://youtu.be/GC2J0SMmiWQ](http://youtu.be/GC2J0SMmiWQ)
+A visualization can be viewed on YouTube: [http://youtu.be/Ex05RM9vLKE](http://youtu.be/Ex05RM9vLKE)
 
 
 Example - Progress Bar
@@ -126,8 +127,8 @@ for i in range(n):
 
 <pre>sebastian > python3 ./examples/ex1_progress_bar.py 
 0%                                    100%
-[########################################]
-Total time elapsed: 1.033 sec
+[########################################] - ETA [sec]: 0.000 sec  
+Total time elapsed: 4.481 sec
 </pre>
 
 
@@ -146,7 +147,7 @@ for i in range(n):
 **Screen Output**  
 
 <pre>sebastian > python3 ./examples/ex1_percentage_indicator.py 
-[ 17 %]   elapsed [sec]: 3.066  | ETA [sec]: 15.000
+[ 34 %]   elapsed [sec]: 1.377  | ETA [sec]: 2.570
 </pre>
 
 
@@ -168,9 +169,17 @@ Changelog
 ==========
 
 
-**VERSION 2.1.0**
+**VERSION 2.2.0**
+
+- added ETA (estimated time until arrival) tracking to progress bar  
+  by Taylan Aydinli
+- better support for Python 2.x
+
+
+**VERSION 2.1.1**
 
 - changed visuals of the printed progress for percentage indicators  
+
 
 **VERSION 2.1.0**
 
