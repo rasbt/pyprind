@@ -8,8 +8,10 @@ class Prog():
         self.cnt = 0
         self.max_iter = iterations
         self.track = track_time
-        self.start = time.clock()
+        self.start = time.time()
         self.stream = stream
+        self._stream_out = self._no_stream
+        self._stream_flush = self._no_stream
         self._check_stream()
 
     def _check_stream(self):
@@ -24,18 +26,20 @@ class Prog():
             self._stream_flush = self.stream.flush
         else:
             print('Warning: No valid output stream.')
-            self._stream_out = self._no_stream
-            self._stream_flush = self._no_stream
 
     def _elapsed(self):
-        return time.clock() - self.start
+        return time.time() - self.start
 
     def _calc_eta(self):
         elapsed = self._elapsed()
         if self.cnt == 0 or elapsed < 0.001:
             return None
         rate = float(self.cnt) / elapsed
-        return int((float(self.max_iter) - float(self.cnt)) / rate)
+        return (float(self.max_iter) - float(self.cnt)) / rate
+
+    def _calc_percent(self):
+        """Calculates the rel. progress in percent with 2 decimal points."""
+        return round(self.cnt / self.max_iter * 100, 2)
 
     def _no_stream(self, text=None):
         pass
