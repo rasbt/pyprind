@@ -42,5 +42,5 @@ class ProgPercent(Prog):
             self._stream_flush()
         if self.cnt == self.max_iter:
             if self.track:
-                self._stream_out('%2s| ETA [sec]: %.3f' % ('',0))
+                self._stream_out('\nTotal time elapsed: %.3f sec' % self._elapsed())
                 self._stream_out('\n') 

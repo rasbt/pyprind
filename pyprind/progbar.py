@@ -21,8 +21,9 @@ class ProgBar(Prog):
         Prog.__init__(self, iterations, track_time, stream)
         self.bar_width = width
         self._adjust_width()
-        self.bar_interv = self.max_iter // self.bar_width
-        self._print_bar()
+        self.last_progress = 0
+        self._print_labels()
+        self._print_progress_bar(0)
 
     def _adjust_width(self):
         """Shrinks bar if number of iterations is less than the bar width"""
@@ -33,16 +34,27 @@ class ProgBar(Prog):
             # reported that self.max_iter was converted to
             # float. Thus this fix to prevent float multiplication of chars.
 
-    def _print_bar(self):
-        progress = floor(self._calc_percent() // self.bar_width)
-        remaining = self.bar_width - progress
-        if self.cnt == 0:
-            self._stream_out('0%% %s 100%%\n' % (' ' * (self.bar_width - 6)))
-        self._stream_out('[%s%s]' % ('#' * progress, ' ' * remaining))
-        if self._calc_eta():
-            self._stream_out(' - ETA [sec]: %.3f' % self._calc_eta())
+    def _print_labels(self):
+        self._stream_out('0%% %s 100%%\n' % (' ' * (self.bar_width - 6)))
         self._stream_flush()
-        self._stream_out('\r')
+
+    def _print_progress_bar(self, progress):
+        remaining = self.bar_width - progress
+        self._stream_out('[%s%s]' % ('#' * progress, ' ' * remaining))
+        self._stream_flush()
+
+    def _print_eta(self):
+        self._stream_out(' - ETA [sec]: %.3f' % self._calc_eta())
+        self._stream_flush()
+
+    def _print_bar(self):
+        progress = floor(self._calc_percent() / 100 * self.bar_width)
+        if progress > self.last_progress:
+            self._stream_out('\r')
+            self._print_progress_bar(progress)
+            if self._calc_eta():
+                self._print_eta()
+        self.last_progress = progress
 
     def update(self):
         """Updates the progress bar in every iteration of the task."""
@@ -51,5 +63,5 @@ class ProgBar(Prog):
         if self.cnt == self.max_iter:
             self._stream_out('\n')
             if self.track:
-                self._stream_out('Total time elapsed: %.3f sec' % self._elapsed())
-                self._stream_out('\n')
+                self._stream_out('Total time elapsed: %.3f sec\n' % self._elapsed())
+                self._stream_flush()
