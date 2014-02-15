@@ -19,7 +19,8 @@ class ProgBar(Prog):
     """
     def __init__(self, iterations, track_time=True, width=30, stream=2):
         Prog.__init__(self, iterations, track_time, stream)
-        self.bar_width = int(width)
+        self.bar_width = width
+        print(self.bar_width)
         self._adjust_width()
         self.last_progress = 0
         self._print_labels()
