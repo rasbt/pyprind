@@ -35,4 +35,4 @@ Example - Percentage Indicator
 from .progbar import ProgBar
 from .progpercent import ProgPercent
 
-__version__ = '2.2.0'
+__version__ = '2.3.0'
