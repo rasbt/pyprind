@@ -16,9 +16,11 @@ class ProgPercent(Prog):
         width (int): width of the progress bar in characters
         track_time (bool): prints elapsed time and estimated time left
         stream: takes 1 for stdout, 2 for stderr, or given stream object
+        title (str): A title for the percent indicator
+
     """
-    def __init__(self, iterations, track_time=True, stream=2):
-        Prog.__init__(self, iterations, track_time, stream)
+    def __init__(self, iterations, track_time=True, stream=2, title=''):
+        Prog.__init__(self, iterations, track_time, stream, title)
         self.perc = 0
         self._print_update()
 

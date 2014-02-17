@@ -3,8 +3,9 @@ import sys
 import os
 
 class Prog():
-    def __init__(self, iterations, track_time, stream):
+    def __init__(self, iterations, track_time, stream, title):
         self.cnt = 0
+        self.title = title
         self.max_iter = float(iterations) # to support Python 2.x
         self.track = track_time
         self.start = time.time()
@@ -13,6 +14,8 @@ class Prog():
         self._stream_out = self._no_stream
         self._stream_flush = self._no_stream
         self._check_stream()
+        self._print_title()
+
 
     def _check_stream(self):
         if self.stream == 1 and os.isatty(sys.stdout.fileno()):
@@ -51,8 +54,13 @@ class Prog():
                 self._stream_out('\n{}'.format(self.__repr__()))
             self._stream_out('\n')
 
+    def _print_title(self):
+        if self.title:
+            self._stream_out('{}\n'.format(self.title))
+            self._stream_flush()
+
     def __repr__(self):
-        return 'Total time elapsed: {:.3f} sec'.format(self.end)
+        return 'Title: {}\nTotal time elapsed: {:.3f} sec'.format(self.title, self.end)
 
     def __str__(self):
         return self.__repr__()

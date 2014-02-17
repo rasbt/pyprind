@@ -170,7 +170,11 @@ Changelog
 
 **VERSION 2.3.0**
 
-- 
+- added native print() support
+  prints title and elapsed time of an tracked object after loop completed
+- data member self.end stores elapsed time when loop completed
+- data member self.title saves title of the tracking objects
+
 
 **VERSION 2.2.0**
 
