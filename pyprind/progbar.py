@@ -15,6 +15,7 @@ class ProgBar(Prog):
     Keyword Arguments:
         iterations (int): number of iterations of the computation
         track_time (bool): prints elapsed time when loop has finished
+        width (int): sets the progress bar width in characters.
         stream: takes 1 for stdout, 2 for stderr, or given stream object
         title (str): A title for the progress bar
 

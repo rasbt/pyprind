@@ -6,6 +6,16 @@ Typical applications include the processing of large data sets to provide an int
 at runtime about the progress of the computation.
 
 
+####Sections
+<p><a href="#installation">Installation</a><br>
+<p><a href="#documentation">Documentation</a><br>
+<p><a href="#options">Optional Parameters</a><br>
+<p><a href="#examples">Examples</a><br>
+<p><a href="#contact">Contact</a><br>
+<p><a href="#changelog">Changelog</a><br>
+
+
+<p><a name="installation"></a></p>
 
 Installation
 =============
@@ -21,6 +31,8 @@ or
 `python3 setup.py install`  
 
 
+
+<p><a name="documentation"></a></p>
 
 Documentation
 =============
@@ -41,25 +53,29 @@ for i in range(n):
 </pre>
 
 
+<p><a name="optional"></a></p>
+
 Optional parameters :
 --------------------------
 
 #### Default Parameters
 
-	ProgBar(iterations, track_time=True, width=50, stream=2):
-	
-		iterations (int): number of iterations of the computation
+	ProgBar(iterations, track_time=True, width=30, stream=2, title='')	
+		
+        iterations (int): number of iterations of the computation
         track_time (bool): prints elapsed time when loop has finished
+        width (int): sets the progress bar width in characters.
         stream: takes 1 for stdout, 2 for stderr, or given stream object
+        title (str): A title for the progress bar
 
 
-	ProgPercent(iterations, track_time=True, stream=2):
+	ProgPercent(iterations, track_time=True, stream=2, title=''):
 		
 		iterations (int): number of iterations of the computation
         width (int): width of the progress bar in characters
         track_time (bool): prints elapsed time and estimated time left
         stream: takes 1 for stdout, 2 for stderr, or given stream object
-
+        title (str): A title for the percent indicator
 
 
 
@@ -80,7 +96,6 @@ when the computation has finished.
 the estimated finish time of the loop.   
 
 
-
 ##### Selecting an output stream  
 By default, `pyprind` objects writes output to the Standard error stream (`stderr`). If you  
 want to direct the output to the Standard output (`stdout`), you can initialize `pyprind` 
@@ -97,12 +112,58 @@ my_prbar = pyprint.ProgBar(n, stream=self.stdout)  # writes to given stream
 </pre>
 
 
+##### Givin a tracking object a title
+If a tracking object is initialized with a title, it is printed when a new tracking  
+object is initialized.
+The title and elapsed time can be printed via the `print()` function after the tracking has finished.
+
+<pre>
+my_prbar = pyprint.ProgBar(n, title='My Progress Bar')
+
+Screen output:
+My Progress Bar
+0%                          100%
+[##############################] | ETA [sec]: 0.000 sec
+
+</pre>
+
+##### Printing a tracking object
+The `print()` method can be invoked after the tracking is completed to  
+print the title and elapsed time to the screen.  
+
+<pre>
+n = 1000000
+    my_bar = pyprind.ProgBar(n, title='My Progress Bar')
+    for i in range(n):
+        # do some computation
+        my_bar.update()
+    print('\n\nPrint tracking object ...\n')
+    print(my_bar)
+
+Screen output:
+
+My Progress Bar
+0%                          100%
+[##############################] | ETA [sec]: 0.000 sec 
+Title: My Progress Bar
+Total time elapsed: 4.049 sec
+
+
+Print tracking object ...
+
+Title: My Progress Bar
+Total time elapsed: 4.049 sec
+
+</pre>
+
 ##### Small note on usage in a custom Django management command.
 Django gives you a stdout object on the BaseCommand class. You will need to pass this to
 `pyprind` as done above. Also note that by default, Django appends a newline to every write.
 This uglyfies `pyprind` output, so ensure the write function gets passed `ending=""`.
 `pyprind` will NOT do this for you.
 
+
+<p><a name="examples"></a></p>
 
 Examples
 =============
@@ -111,7 +172,7 @@ The following examples shall illustrate the typical usage of the PyPrind package
 A visualization can be viewed on YouTube: [http://youtu.be/Ex05RM9vLKE](http://youtu.be/Ex05RM9vLKE)
 
 
-Example - Progress Bar
+Example - Progress Bar (simple)
 --------------------------
 
 <pre>import pyprind
@@ -132,7 +193,7 @@ Total time elapsed: 4.481 sec
 </pre>
 
 
-Example - Percentage Indicator
+Example - Percentage Indicator (simple)
 --------------------------
 
 <pre>import pyprind
@@ -142,7 +203,7 @@ my_perc = pyprind.ProgPercent(n)
 for i in range(n):
     # do some computation
     my_perc.update()
- </pre>
+</pre>
 
 **Screen Output**  
 
@@ -151,8 +212,62 @@ for i in range(n):
 </pre>
 
 
- 
+Example - Progress Bar (all arguments)
+--------------------------
 
+<pre>import pyprind
+n = 1000000
+    my_bar = pyprind.ProgBar(n, stream=1, width=30, track_time=True, title='My Progress Bar')
+    for i in range(n):
+        # do some computation
+        my_bar.update()
+    print('\n\nPrint tracking object ...\n')
+    print(my_bar)
+</pre>
+ 
+**Screen Output**  
+<pre>My Progress Bar
+0%                          100%
+[##############################] | ETA [sec]: 0.000 sec 
+Title: My Progress Bar
+Total time elapsed: 4.049 sec
+
+
+Print trackin object ...
+
+Title: My Progress Bar
+Total time elapsed: 4.049 sec
+</pre>
+
+
+Example - Percent Indicator (all arguments)
+--------------------------
+
+<pre>import pyprind
+n = 1000000
+    my_per = pyprind.ProgPercent(n, stream=1, track_time=True, title='My Percent Indicator')
+    for i in range(n):
+        # do some computation
+        my_per.update()
+    print('\n\nPrint tracking object ...\n')
+    print(my_per)
+</pre>
+ 
+**Screen Output**  
+<pre>My Percent Indicator
+[100 %] elapsed [sec]: 4.205 | ETA[sec]: 0.000 
+Title: My Percent Indicator
+Total time elapsed: 4.206 sec
+
+
+Print tracking object ...
+
+Title: My Percent Indicator
+Total time elapsed: 4.206 sec
+</pre>
+
+
+<p><a name="contact"></a></p>
 
  Contact
 =============
@@ -164,6 +279,8 @@ or Twitter: [@rasbt](https://twitter.com/rasbt)
 
 <br>
 <br>
+
+<p><a name="changelog"></a></p>
 
 Changelog
 ==========

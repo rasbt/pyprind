@@ -152,7 +152,7 @@ sup {
 	}
 }
 </style>
-<title>Default Parameters</title>
+<title>Sections</title>
 
 </head>
 <body>
@@ -162,6 +162,17 @@ sup {
 object that let you track the progress of a loop structure or other iterative computation.<br/>
 Typical applications include the processing of large data sets to provide an intuitive estimate
 at runtime about the progress of the computation.</p>
+
+<h4>Sections</h4>
+
+<p><p><a href="#installation">Installation</a><br>
+<p><a href="#documentation">Documentation</a><br>
+<p><a href="#options">Optional Parameters</a><br>
+<p><a href="#examples">Examples</a><br>
+<p><a href="#contact">Contact</a><br>
+<p><a href="#changelog">Changelog</a><br></p>
+
+<p><p><a name="installation"></a></p></p>
 
 <h1>Installation</h1>
 
@@ -176,6 +187,8 @@ at runtime about the progress of the computation.</p>
 or<br/>
 <code>python3 setup.py install</code></p>
 
+<p><p><a name="documentation"></a></p></p>
+
 <h1>Documentation</h1>
 
 <p>PyPrind consists of two class objects that can visualize the progress of a computation on the output screen.<br/>
@@ -186,31 +199,35 @@ Progress bars are visualized via  a <code>ProgBar()</code> object, and alternati
 <p>1) initialize a new <code>ProgBar()</code> or <code>ProgPercent()</code> object with the number of iterations of the computation that is to be performed<br/>
 2) update the <code>ProgBar()</code> or <code>ProgPercent()</code>  object for each iteration via the <code>.update()</code>method</p>
 
-<pre>n = 10000000
+<p><pre>n = 10000000
 my_prbar = pyprind.ProgBar(n)   # 1) initialization with number of iterations
-for i in range(n):  
+for i in range(n):<br/>
     # do some computation
     my_prbar.update()           # 2) update the progress visualization
-</pre>
+</pre></p>
 
+<p><p><a name="optional"></a></p></p>
 
 <h2>Optional parameters :</h2>
 
 <h4>Default Parameters</h4>
 
-<pre><code>ProgBar(iterations, track_time=True, width=50, stream=2):
+<pre><code>ProgBar(iterations, track_time=True, width=30, stream=2, title='')  
 
     iterations (int): number of iterations of the computation
     track_time (bool): prints elapsed time when loop has finished
+    width (int): sets the progress bar width in characters.
     stream: takes 1 for stdout, 2 for stderr, or given stream object
+    title (str): A title for the progress bar
 
 
-ProgPercent(iterations, track_time=True, stream=2):
+ProgPercent(iterations, track_time=True, stream=2, title=''):
 
     iterations (int): number of iterations of the computation
     width (int): width of the progress bar in characters
     track_time (bool): prints elapsed time and estimated time left
     stream: takes 1 for stdout, 2 for stderr, or given stream object
+    title (str): A title for the percent indicator
 </code></pre>
 
 <h5>Setting the width of the progress bar</h5>
@@ -235,18 +252,60 @@ the estimated finish time of the loop.</p>
 want to direct the output to the Standard output (<code>stdout</code>), you can initialize <code>pyprind</code>
 with the argument <code>stream=2</code>.</p>
 
-<pre>
+<p><pre>
 my_prbar = pyprind.ProgBar(n, stream=1) # writes to stdout
 my_prbar = pyprind.ProgBar(n, stream=2) # writes to stderr, default
-</pre>
+</pre></p>
 
-
-<p><strong><em>If you want to use a given stream, just pass that. Example:</em></strong></p>
-
+<p><strong><em>If you want to use a given stream, just pass that. Example:</em></strong>
 <pre>
 my_prbar = pyprint.ProgBar(n, stream=self.stdout)  # writes to given stream
-</pre>
+</pre></p>
 
+<h5>Givin a tracking object a title</h5>
+
+<p>If a tracking object is initialized with a title, it is printed when a new tracking<br/>
+object is initialized.
+The title and elapsed time can be printed via the <code>print()</code> function after the tracking has finished.</p>
+
+<p><pre>
+my_prbar = pyprint.ProgBar(n, title='My Progress Bar')</p>
+
+<p>Screen output:
+My Progress Bar
+0%                          100%
+[##############################] | ETA [sec]: 0.000 sec</p>
+
+<p></pre></p>
+
+<h5>Printing a tracking object</h5>
+
+<p>The <code>print()</code> method can be invoked after the tracking is completed to<br/>
+print the title and elapsed time to the screen.</p>
+
+<p><pre>
+n = 1000000
+    my_bar = pyprind.ProgBar(n, title='My Progress Bar')
+    for i in range(n):
+        # do some computation
+        my_bar.update()
+    print('\n\nPrint tracking object ...\n')
+    print(my_bar)</p>
+
+<p>Screen output:</p>
+
+<p>My Progress Bar
+0%                          100%
+[##############################] | ETA [sec]: 0.000 sec
+Title: My Progress Bar
+Total time elapsed: 4.049 sec</p>
+
+<p>Print tracking object ...</p>
+
+<p>Title: My Progress Bar
+Total time elapsed: 4.049 sec</p>
+
+<p></pre></p>
 
 <h5>Small note on usage in a custom Django management command.</h5>
 
@@ -255,50 +314,99 @@ my_prbar = pyprint.ProgBar(n, stream=self.stdout)  # writes to given stream
 This uglyfies <code>pyprind</code> output, so ensure the write function gets passed <code>ending=""</code>.
 <code>pyprind</code> will NOT do this for you.</p>
 
+<p><p><a name="examples"></a></p></p>
+
 <h1>Examples</h1>
 
 <p>The following examples shall illustrate the typical usage of the PyPrind package.<br/>
 A visualization can be viewed on YouTube: <a href="http://youtu.be/Ex05RM9vLKE">http://youtu.be/Ex05RM9vLKE</a></p>
 
-<h2>Example - Progress Bar</h2>
+<h2>Example - Progress Bar (simple)</h2>
 
-<pre>import pyprind
+<p><pre>import pyprind</p>
 
-n = 10000000
+<p>n = 10000000
 my_prbar = pyprind.ProgBar(n)
 for i in range(n):
     # do some computation
     my_prbar.update()
-</pre>
-
+</pre></p>
 
 <p><strong>Screen Output</strong></p>
 
-<pre>sebastian > python3 ./examples/ex1_progress_bar.py 
+<p><pre>sebastian > python3 ./examples/ex1_progress_bar.py
 0%                                    100%
-[########################################] - ETA [sec]: 0.000 sec  
+[########################################] - ETA [sec]: 0.000 sec<br/>
 Total time elapsed: 4.481 sec
-</pre>
+</pre></p>
 
+<h2>Example - Percentage Indicator (simple)</h2>
 
-<h2>Example - Percentage Indicator</h2>
+<p><pre>import pyprind</p>
 
-<pre>import pyprind
-
-n = 1000000
+<p>n = 1000000
 my_perc = pyprind.ProgPercent(n)
 for i in range(n):
     # do some computation
     my_perc.update()
- </pre>
-
+</pre></p>
 
 <p><strong>Screen Output</strong></p>
 
-<pre>sebastian > python3 ./examples/ex1_percentage_indicator.py 
+<p><pre>sebastian > python3 ./examples/ex1_percentage_indicator.py
 [ 34 %]   elapsed [sec]: 1.377  | ETA [sec]: 2.570
-</pre>
+</pre></p>
 
+<h2>Example - Progress Bar (all arguments)</h2>
+
+<p><pre>import pyprind
+n = 1000000
+    my_bar = pyprind.ProgBar(n, stream=1, width=30, track_time=True, title='My Progress Bar')
+    for i in range(n):
+        # do some computation
+        my_bar.update()
+    print('\n\nPrint tracking object ...\n')
+    print(my_bar)
+</pre></p>
+
+<p><strong>Screen Output</strong><br/>
+<pre>My Progress Bar
+0%                          100%
+[##############################] | ETA [sec]: 0.000 sec
+Title: My Progress Bar
+Total time elapsed: 4.049 sec</p>
+
+<p>Print trackin object ...</p>
+
+<p>Title: My Progress Bar
+Total time elapsed: 4.049 sec
+</pre></p>
+
+<h2>Example - Percent Indicator (all arguments)</h2>
+
+<p><pre>import pyprind
+n = 1000000
+    my_per = pyprind.ProgPercent(n, stream=1, track_time=True, title='My Percent Indicator')
+    for i in range(n):
+        # do some computation
+        my_per.update()
+    print('\n\nPrint tracking object ...\n')
+    print(my_per)
+</pre></p>
+
+<p><strong>Screen Output</strong><br/>
+<pre>My Percent Indicator
+[100 %] elapsed [sec]: 4.205 | ETA[sec]: 0.000
+Title: My Percent Indicator
+Total time elapsed: 4.206 sec</p>
+
+<p>Print tracking object ...</p>
+
+<p>Title: My Percent Indicator
+Total time elapsed: 4.206 sec
+</pre></p>
+
+<p><p><a name="contact"></a></p></p>
 
 <h1> Contact</h1>
 
@@ -309,7 +417,19 @@ or Twitter: <a href="https://twitter.com/rasbt">@rasbt</a></p>
 <p><br>
 <br></p>
 
+<p><p><a name="changelog"></a></p></p>
+
 <h1>Changelog</h1>
+
+<p><strong>VERSION 2.3.0</strong></p>
+
+<ul>
+<li>added native print() support
+prints title and elapsed time of an tracked object after loop completed</li>
+<li>data member self.end stores elapsed time when loop completed</li>
+<li>data member self.title saves title of the tracking objects</li>
+</ul>
+
 
 <p><strong>VERSION 2.2.0</strong></p>
 
