@@ -5,7 +5,7 @@ import pyprind
 
 
 def example_1():
-    n = 10000000
+    n = 1000000
     my_bar = pyprind.ProgBar(n, width=40, stream=2)
     for i in range(n):
         my_bar.update()

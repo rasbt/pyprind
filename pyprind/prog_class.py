@@ -57,7 +57,7 @@ class Prog():
         if self.cnt == self.max_iter:
             self.end = self._elapsed()
             if self.track:
-                self._stream_out('\n{}'.format(self.__repr__()))
+                self._stream_out('\nTotal time elapsed: {:.3f} sec'.format(self.end))
             self._stream_out('\n')
 
     def _print_title(self):
