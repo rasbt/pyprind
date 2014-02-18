@@ -28,7 +28,7 @@ class ProgPercent(Prog):
         """Prints formatted integer percentage and tracked time to the screen."""
         self._stream_out('\r[%3d %%]' % (self.perc))
         if self.track:
-            self._stream_out(' elapsed [sec]: {:.3f}'.format(self._elapsed()))
+            self._stream_out(' elapsed[sec]: {:.3f}'.format(self._elapsed()))
             if self._calc_eta():
                 self._stream_out(' | ETA[sec]: {:.3f} '.format(self._calc_eta()))  
             self._stream_flush()
