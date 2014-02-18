@@ -48,7 +48,7 @@ class ProgBar(Prog):
         self._stream_flush()
 
     def _print_eta(self):
-        self._stream_out(' | ETA [sec]: {:.3f} sec '.format(self._calc_eta()))
+        self._stream_out(' | ETA[sec]: {:.3f} sec '.format(self._calc_eta()))
         self._stream_flush()
 
     def _print_bar(self):
