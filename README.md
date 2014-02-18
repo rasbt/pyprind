@@ -285,6 +285,12 @@ or Twitter: [@rasbt](https://twitter.com/rasbt)
 Changelog
 ==========
 
+**VERSION 2.3.1**
+
+- minor fix of the output formatting
+
+
+
 **VERSION 2.3.0**
 
 - added native print() support

@@ -2,7 +2,6 @@
 CHANGELOG.txt
 LICENSE.txt
 README.html
-README.txt
 setup.py
 examples/ex1_percentage_indicator_stderr.py
 examples/ex1_percentage_indicator_stdout.py
