@@ -123,7 +123,7 @@ my_prbar = pyprint.ProgBar(n, title='My Progress Bar')
 Screen output:
 My Progress Bar
 0%                          100%
-[##############################] | ETA [sec]: 0.000 sec
+[##############################] | ETA[sec]: 0.000
 
 </pre>
 
@@ -144,7 +144,7 @@ Screen output:
 
 My Progress Bar
 0%                          100%
-[##############################] | ETA [sec]: 0.000 sec 
+[##############################] | ETA[sec]: 0.000 
 Title: My Progress Bar
 Total time elapsed: 4.049 sec
 
@@ -188,7 +188,7 @@ for i in range(n):
 
 <pre>sebastian > python3 ./examples/ex1_progress_bar.py 
 0%                                    100%
-[########################################] - ETA [sec]: 0.000 sec  
+[########################################] - ETA[sec]: 0.000  
 Total time elapsed: 4.481 sec
 </pre>
 
@@ -228,7 +228,7 @@ n = 1000000
 **Screen Output**  
 <pre>My Progress Bar
 0%                          100%
-[##############################] | ETA [sec]: 0.000 sec 
+[##############################] | ETA[sec]: 0.000 
 Title: My Progress Bar
 Total time elapsed: 4.049 sec
 
