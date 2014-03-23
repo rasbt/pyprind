@@ -1,7 +1,15 @@
+VERSION 2.4.0
+================
+
+- default argument for `.update(iterations=1)` methods to increment the count by more than 1 per
+  iteration.
+
+
 VERSION 2.3.1
 ================
 
 - minor fix of the output formatting
+
 
 VERSION 2.3.0
 ================

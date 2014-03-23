@@ -8,8 +8,9 @@ from pyprind.prog_class import Prog
 
 
 class ProgPercent(Prog):
-    """Initializes a percentage indicator object that allows visuzalization
-       of an iterational computation in the standard output screen. 
+    """
+    Initializes a percentage indicator object that allows visuzalization
+    of an iterational computation in the standard output screen. 
 
     Keyword Arguments:
         iterations (int): number of iterations of the computation
@@ -34,7 +35,15 @@ class ProgPercent(Prog):
             self._stream_flush()
 
     def update(self, iterations=1):
-        """Updates the percentage indicator in every iteration of the task."""
+        """
+        Updates the progress bar in every iteration of the task.
+
+        Keyword arguments:
+            iterations (int): default argument can be changed to integer values
+                >=1 in order to update the progress indicators more than once 
+                per iteration.
+
+        """
         self.cnt += iterations
         next_perc = self._calc_percent()
         if next_perc > self.perc:

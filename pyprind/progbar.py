@@ -9,8 +9,9 @@ from pyprind.prog_class import Prog
 
 
 class ProgBar(Prog):
-    """Initializes a progress bar object that allows visuzalization
-        of an iterational computation in the standard output screen. 
+    """
+    Initializes a progress bar object that allows visuzalization
+    of an iterational computation in the standard output screen. 
 
     Keyword Arguments:
         iterations (int): number of iterations of the computation
@@ -61,7 +62,15 @@ class ProgBar(Prog):
         self.last_progress = progress
 
     def update(self, iterations=1):
-        """Updates the progress bar in every iteration of the task."""
+        """
+        Updates the progress bar in every iteration of the task.
+
+        Keyword arguments:
+            iterations (int): default argument can be changed to integer values
+                >=1 in order to update the progress indicators more than once 
+                per iteration.
+
+        """
         self.cnt += iterations
         self._print_bar()
         self._finish() 

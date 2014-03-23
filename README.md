@@ -60,22 +60,52 @@ Optional parameters :
 
 #### Default Parameters
 
-	ProgBar(iterations, track_time=True, width=30, stream=2, title='')	
-		
-        iterations (int): number of iterations of the computation
-        track_time (bool): prints elapsed time when loop has finished
-        width (int): sets the progress bar width in characters.
-        stream: takes 1 for stdout, 2 for stderr, or given stream object
-        title (str): A title for the progress bar
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">ProgBar</span>(Prog):
+    <span style="color: #DD4422">&quot;&quot;&quot;</span>
+<span style="color: #DD4422">    Initializes a progress bar object that allows visuzalization</span>
+<span style="color: #DD4422">    of an iterational computation in the standard output screen. </span>
+
+<span style="color: #DD4422">    Keyword Arguments:</span>
+<span style="color: #DD4422">        iterations (int): number of iterations of the computation</span>
+<span style="color: #DD4422">        track_time (bool): prints elapsed time when loop has finished</span>
+<span style="color: #DD4422">        width (int): sets the progress bar width in characters.</span>
+<span style="color: #DD4422">        stream: takes 1 for stdout, 2 for stderr, or given stream object</span>
+<span style="color: #DD4422">        title (str): A title for the progress bar</span>
+
+<span style="color: #DD4422">    &quot;&quot;&quot;</span>
+</pre></div>
 
 
-	ProgPercent(iterations, track_time=True, stream=2, title=''):
-		
-		iterations (int): number of iterations of the computation
-        width (int): width of the progress bar in characters
-        track_time (bool): prints elapsed time and estimated time left
-        stream: takes 1 for stdout, 2 for stderr, or given stream object
-        title (str): A title for the percent indicator
+
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">ProgPercent</span>(Prog):
+    <span style="color: #DD4422">&quot;&quot;&quot;</span>
+<span style="color: #DD4422">    Initializes a percentage indicator object that allows visuzalization</span>
+<span style="color: #DD4422">    of an iterational computation in the standard output screen. </span>
+
+<span style="color: #DD4422">    Keyword Arguments:</span>
+<span style="color: #DD4422">        iterations (int): number of iterations of the computation</span>
+<span style="color: #DD4422">        width (int): width of the progress bar in characters</span>
+<span style="color: #DD4422">        track_time (bool): prints elapsed time and estimated time left</span>
+<span style="color: #DD4422">        stream: takes 1 for stdout, 2 for stderr, or given stream object</span>
+<span style="color: #DD4422">        title (str): A title for the percent indicator</span>
+
+<span style="color: #DD4422">    &quot;&quot;&quot;</span>
+</pre></div>
+
+
+
+
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">update</span>(<span style="color: #007020">self</span>, iterations<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">1</span>):
+        <span style="color: #DD4422">&quot;&quot;&quot;</span>
+<span style="color: #DD4422">        Updates the progress bar in every iteration of the task.</span>
+
+<span style="color: #DD4422">        Keyword arguments:</span>
+<span style="color: #DD4422">            iterations (int): default argument can be changed to integer values</span>
+<span style="color: #DD4422">                &gt;=1 in order to update the progress indicators more than once </span>
+<span style="color: #DD4422">                per iteration.</span>
+
+<span style="color: #DD4422">        &quot;&quot;&quot;</span>
+</pre></div>
 
 
 
@@ -108,7 +138,7 @@ my_prbar = pyprind.ProgBar(n, stream=2) # writes to stderr, default
 
 ***If you want to use a given stream, just pass that. Example:***
 <pre>
-my_prbar = pyprint.ProgBar(n, stream=self.stdout)  # writes to given stream
+my_prbar = pyprind.ProgBar(n, stream=self.stdout)  # writes to given stream
 </pre>
 
 
@@ -118,7 +148,7 @@ object is initialized.
 The title and elapsed time can be printed via the `print()` function after the tracking has finished.
 
 <pre>
-my_prbar = pyprint.ProgBar(n, title='My Progress Bar')
+my_prbar = pyprind.ProgBar(n, title='My Progress Bar')
 
 Screen output:
 My Progress Bar
@@ -284,6 +314,12 @@ or Twitter: [@rasbt](https://twitter.com/rasbt)
 
 Changelog
 ==========
+
+**VERSION 2.4.0**
+
+- default argument for `.update(iterations=1)` methods to increment the count by more than 1 per
+  iteration.
+
 
 **VERSION 2.3.1**
 
