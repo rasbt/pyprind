@@ -60,8 +60,8 @@ class ProgBar(Prog):
                 self._print_eta()
         self.last_progress = progress
 
-    def update(self):
+    def update(self, iterations=1):
         """Updates the progress bar in every iteration of the task."""
-        self.cnt += 1
+        self.cnt += iterations
         self._print_bar()
         self._finish() 

@@ -33,9 +33,9 @@ class ProgPercent(Prog):
                 self._stream_out(' | ETA[sec]: {:.3f} '.format(self._calc_eta()))  
             self._stream_flush()
 
-    def update(self):
+    def update(self, iterations=1):
         """Updates the percentage indicator in every iteration of the task."""
-        self.cnt += 1
+        self.cnt += iterations
         next_perc = self._calc_percent()
         if next_perc > self.perc:
             self.perc = next_perc
