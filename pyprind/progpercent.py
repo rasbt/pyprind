@@ -24,6 +24,8 @@ class ProgPercent(Prog):
         Prog.__init__(self, iterations, track_time, stream, title)
         self.perc = 0
         self._print_update()
+        self.process.cpu_percent()
+        self.process.memory_percent()
 
     def _print_update(self):
         """Prints formatted integer percentage and tracked time to the screen."""
