@@ -28,6 +28,8 @@ class ProgBar(Prog):
         self.last_progress = 0
         self._print_labels()
         self._print_progress_bar(0)
+        self.process.cpu_percent()
+        self.process.memory_percent()
 
     def _adjust_width(self):
         """Shrinks bar if number of iterations is less than the bar width"""

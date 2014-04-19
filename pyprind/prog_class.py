@@ -1,3 +1,4 @@
+import psutil
 import time
 import sys
 import os
@@ -10,7 +11,9 @@ class Prog():
         self.max_iter = float(iterations) # to support Python 2.x
         self.track = track_time
         self.start = time.time()
-        self.end = 0.0
+        self.end = None
+        self.total_time = 0.0
+        self.process = psutil.Process()
         self.stream = stream
         self._stream_out = self._no_stream
         self._stream_flush = self._no_stream
@@ -55,9 +58,10 @@ class Prog():
     def _finish(self):
         """ Determines if maximum number of iterations (seed) is reached. """
         if self.cnt == self.max_iter:
-            self.end = self._elapsed()
+            self.total_time = self._elapsed()
+            self.end = time.time()
             if self.track:
-                self._stream_out('\nTotal time elapsed: {:.3f} sec'.format(self.end))
+                self._stream_out('\nTotal time elapsed: {:.3f} sec'.format(self.total_time))
             self._stream_out('\n')
 
     def _print_title(self):
@@ -67,7 +71,16 @@ class Prog():
             self._stream_flush()
 
     def __repr__(self):
-        return 'Title: {}\nTotal time elapsed: {:.3f} sec'.format(self.title, self.end)
+        str_start = time.strftime('%m/%d/%Y %H:%M:%S', time.localtime(self.start))
+        str_end = time.strftime('%m/%d/%Y %H:%M:%S', time.localtime(self.end))
+        cpu_total = self.process.cpu_percent()
+        mem_total = self.process.memory_percent()
+        return """Title: {}
+                  Started: {}
+                  Finished: {}
+                  Total time elapsed: {:.3f} sec
+                  CPU %: {:2f}
+                  Memory %: {:2f}""".format(self.title, str_start, str_end, self.total_time, cpu_total, mem_total)
 
     def __str__(self):
         return self.__repr__()
