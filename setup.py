@@ -19,7 +19,7 @@ setup(name='PyPrind',
                     ('examples', ['examples/ex3_percentage_indicator_monitor.py']),
                     ('examples', ['examples/ex3_progress_bar_monitor.py']),
                    ],
-      requies = ['psutil'],
+      requires = ['psutil'],
       license='GPLv3',
       platforms='any',
       classifiers=[

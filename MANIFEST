@@ -7,6 +7,10 @@ examples/ex1_percentage_indicator_stderr.py
 examples/ex1_percentage_indicator_stdout.py
 examples/ex1_progress_bar_stderr.py
 examples/ex1_progress_bar_stdout.py
+examples/ex2_percent_indicator_allargs.py
+examples/ex2_progressbar_allargs.py
+examples/ex3_percentage_indicator_monitor.py
+examples/ex3_progress_bar_monitor.py
 pyprind/__init__.py
 pyprind/prog_class.py
 pyprind/progbar.py
