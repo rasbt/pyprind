@@ -1,10 +1,9 @@
-import psutil
 import time
 import sys
 import os
 
 class Prog():
-    def __init__(self, iterations, track_time, stream, title):
+    def __init__(self, iterations, track_time, stream, title, monitor):
         """ Initializes tracking object. """
         self.cnt = 0
         self.title = title
@@ -13,13 +12,16 @@ class Prog():
         self.start = time.time()
         self.end = None
         self.total_time = 0.0
-        self.process = psutil.Process()
+        self.monitor = monitor
         self.stream = stream
         self._stream_out = self._no_stream
         self._stream_flush = self._no_stream
         self._check_stream()
         self._print_title()
-
+        
+        if monitor:
+            import psutil
+            self.process = psutil.Process()
 
     def _check_stream(self):
         """ Determines which output stream (stdout, stderr, or custom) to use. """
@@ -73,14 +75,21 @@ class Prog():
     def __repr__(self):
         str_start = time.strftime('%m/%d/%Y %H:%M:%S', time.localtime(self.start))
         str_end = time.strftime('%m/%d/%Y %H:%M:%S', time.localtime(self.end))
-        cpu_total = self.process.cpu_percent()
-        mem_total = self.process.memory_percent()
-        return """Title: {}
-                  Started: {}
-                  Finished: {}
-                  Total time elapsed: {:.3f} sec
-                  CPU %: {:2f}
-                  Memory %: {:2f}""".format(self.title, str_start, str_end, self.total_time, cpu_total, mem_total)
+        if not self.monitor:
+            return """Title: {}
+                      Started: {}
+                      Finished: {}
+                      Total time elapsed: {:.3f} sec""".format(self.title, str_start, 
+                                                               str_end, self.total_time)
+        else:
+            cpu_total = self.process.cpu_percent()
+            mem_total = self.process.memory_percent()
+            return """Title: {}
+                      Started: {}
+                      Finished: {}
+                      Total time elapsed: {:.3f} sec
+                      CPU %: {:2f}
+                      Memory %: {:2f}""".format(self.title, str_start, str_end, self.total_time, cpu_total, mem_total)
 
     def __str__(self):
         return self.__repr__()

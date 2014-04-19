@@ -15,21 +15,24 @@ class ProgBar(Prog):
 
     Keyword Arguments:
         iterations (int): number of iterations of the computation
-        track_time (bool): prints elapsed time when loop has finished
-        width (int): sets the progress bar width in characters.
-        stream: takes 1 for stdout, 2 for stderr, or given stream object
-        title (str): A title for the progress bar
+        track_time (bool): default True. Prints elapsed time when loop has finished
+        width (int): default 30. Sets the progress bar width in characters.
+        stream (int): default 2. Takes 1 for stdout, 2 for stderr, or given stream object
+        title (str): default ''. A title for the progress bar
+        monitor (bool): default False. Monitors CPU and memory usage if True 
+            (requires 'psutil' package).
 
     """
-    def __init__(self, iterations, track_time=True, width=30, stream=2, title=''):
-        Prog.__init__(self, iterations, track_time, stream, title)
+    def __init__(self, iterations, track_time=True, width=30, stream=2, title='', monitor=False):
+        Prog.__init__(self, iterations, track_time, stream, title, monitor)
         self.bar_width = width
         self._adjust_width()
         self.last_progress = 0
         self._print_labels()
         self._print_progress_bar(0)
-        self.process.cpu_percent()
-        self.process.memory_percent()
+        if monitor:
+            self.process.cpu_percent()
+            self.process.memory_percent()
 
     def _adjust_width(self):
         """Shrinks bar if number of iterations is less than the bar width"""

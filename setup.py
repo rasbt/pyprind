@@ -1,7 +1,7 @@
 from distutils.core import setup
 
 setup(name='PyPrind',
-      version='2.4.0',
+      version='2.5.0',
       description='Python Progress Indicator Utility',
       author='Sebastian Raschka',
       author_email='se.raschka@gmail.com',
@@ -14,8 +14,12 @@ setup(name='PyPrind',
                     ('examples', ['examples/ex1_percentage_indicator_stdout.py']),
                     ('examples', ['examples/ex1_progress_bar_stderr.py']),
                     ('examples', ['examples/ex1_progress_bar_stdout.py']),
-
+                    ('examples', ['examples/ex2_percent_indicator_allargs.py']),
+                    ('examples', ['examples/ex2_progressbar_allargs.py']),
+                    ('examples', ['examples/ex3_percentage_indicator_monitor.py']),
+                    ('examples', ['examples/ex3_progress_bar_monitor.py']),
                    ],
+      requies = ['psutil'],
       license='GPLv3',
       platforms='any',
       classifiers=[
@@ -35,7 +39,7 @@ at runtime about the progress of the computation.
 For more details and examples please see the package documentation.
 
 A short video demonstration of the progress tracking can be found on YouTube:
-http://youtu.be/Ex05RM9vLKE
+http://youtu.be/iWjSGe89Pvs
 
 
  Contact

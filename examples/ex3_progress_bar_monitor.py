@@ -4,16 +4,16 @@
 import pyprind
 
 
-def example_2():
+def example_3():
     n = 1000000
-    my_bar = pyprind.ProgBar(n, stream=1, width=30, track_time=True, title='My Progress Bar', monitor=True)
+    my_bar = pyprind.ProgBar(n, stream=1, title='example3', monitor=True)
     for i in range(n):
         # do some computation
         my_bar.update()
-    print('\n\nPrint tracking object ...\n')
     print(my_bar)
 
+
+
 if __name__ == '__main__':
-    example_2()
-         
+    example_3() 
 

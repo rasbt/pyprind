@@ -5,7 +5,17 @@ object that let you track the progress of a loop structure or other iterative co
 Typical applications include the processing of large data sets to provide an intuitive estimate 
 at runtime about the progress of the computation.
 
+<hr>
+I am really looking forward to your comments and suggestions to improve and extend this module! Just send me a quick note   
+via Twitter: [@rasbt](https://twitter.com/rasbt)  
+or Email: [se.raschka@gmail.com](mailto:bluewoodtree@gmail.com)
 
+The `pyprind` module can be found on GitHub at [https://github.com/rasbt/pyprind](https://github.com/rasbt/pyprind)
+<hr>
+
+<br>
+<br>
+<br>
 ####Sections
 <p><a href="#installation">Installation</a><br>
 <p><a href="#documentation">Documentation</a><br>
@@ -16,7 +26,9 @@ at runtime about the progress of the computation.
 
 
 <p><a name="installation"></a></p>
-
+<br>
+<br>
+<br>
 Installation
 =============
 You can use the following command to install PyPrind:  
@@ -33,7 +45,9 @@ or
 
 
 <p><a name="documentation"></a></p>
-
+<br>
+<br>
+<br>
 Documentation
 =============
 PyPrind consists of two class objects that can visualize the progress of a computation on the output screen.  
@@ -54,43 +68,50 @@ for i in range(n):
 
 
 <p><a name="optional"></a></p>
-
+<br>
+<br>
+<br>
 Optional parameters :
 --------------------------
 
 #### Default Parameters
 
-<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">ProgBar</span>(Prog):
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">ProgBar</span>(Prog):
     <span style="color: #DD4422">&quot;&quot;&quot;</span>
 <span style="color: #DD4422">    Initializes a progress bar object that allows visuzalization</span>
 <span style="color: #DD4422">    of an iterational computation in the standard output screen. </span>
 
 <span style="color: #DD4422">    Keyword Arguments:</span>
 <span style="color: #DD4422">        iterations (int): number of iterations of the computation</span>
-<span style="color: #DD4422">        track_time (bool): prints elapsed time when loop has finished</span>
-<span style="color: #DD4422">        width (int): sets the progress bar width in characters.</span>
-<span style="color: #DD4422">        stream: takes 1 for stdout, 2 for stderr, or given stream object</span>
-<span style="color: #DD4422">        title (str): A title for the progress bar</span>
+<span style="color: #DD4422">        track_time (bool): default True. Prints elapsed time when loop has finished</span>
+<span style="color: #DD4422">        width (int): default 30. Sets the progress bar width in characters.</span>
+<span style="color: #DD4422">        stream (int): default 2. Takes 1 for stdout, 2 for stderr, or given stream object</span>
+<span style="color: #DD4422">        title (str): default &#39;&#39;. A title for the progress bar</span>
+<span style="color: #DD4422">        monitor (bool): default False. Monitors CPU and memory usage if True </span>
+<span style="color: #DD4422">            (requires &#39;psutil&#39; package).</span>
 
 <span style="color: #DD4422">    &quot;&quot;&quot;</span>
 </pre></div>
 
 
-
-<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">ProgPercent</span>(Prog):
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">ProgPercent</span>(Prog):
     <span style="color: #DD4422">&quot;&quot;&quot;</span>
 <span style="color: #DD4422">    Initializes a percentage indicator object that allows visuzalization</span>
 <span style="color: #DD4422">    of an iterational computation in the standard output screen. </span>
 
 <span style="color: #DD4422">    Keyword Arguments:</span>
 <span style="color: #DD4422">        iterations (int): number of iterations of the computation</span>
-<span style="color: #DD4422">        width (int): width of the progress bar in characters</span>
-<span style="color: #DD4422">        track_time (bool): prints elapsed time and estimated time left</span>
-<span style="color: #DD4422">        stream: takes 1 for stdout, 2 for stderr, or given stream object</span>
-<span style="color: #DD4422">        title (str): A title for the percent indicator</span>
+<span style="color: #DD4422">        track_time (bool): default True. Prints elapsed time when loop has finished</span>
+<span style="color: #DD4422">        stream (int): default 2. Takes 1 for stdout, 2 for stderr, or given stream object</span>
+<span style="color: #DD4422">        title (str): default &#39;&#39;. A title for the progress bar</span>
+<span style="color: #DD4422">        monitor (bool): default False. Monitors CPU and memory usage if True </span>
+<span style="color: #DD4422">            (requires &#39;psutil&#39; package).</span>
 
 <span style="color: #DD4422">    &quot;&quot;&quot;</span>
 </pre></div>
+
+
+
 
 
 
@@ -107,12 +128,16 @@ Optional parameters :
 <span style="color: #DD4422">        &quot;&quot;&quot;</span>
 </pre></div>
 
-
+<br>
+<br>
+<br>
 
 ##### Setting the width of the progress bar
 
 `my_prog = pyprind.ProgBar(n, width=70)	# default = 50`
-
+<br>
+<br>
+<br>
 
 ##### Set whether CPU time should be reported or not 
 The optional `track_time` parameter can be set for both `ProgBar()` and `ProgPercent()` objects.   
@@ -124,7 +149,9 @@ The optional `track_time` parameter can be set for both `ProgBar()` and `ProgPer
 when the computation has finished.  
 `ProgPercent` objects reports the elapsed time during the computation and prints  
 the estimated finish time of the loop.   
-
+<br>
+<br>
+<br>
 
 ##### Selecting an output stream  
 By default, `pyprind` objects writes output to the Standard error stream (`stderr`). If you  
@@ -136,13 +163,16 @@ my_prbar = pyprind.ProgBar(n, stream=1) # writes to stdout
 my_prbar = pyprind.ProgBar(n, stream=2) # writes to stderr, default
 </pre>
 
-***If you want to use a given stream, just pass that. Example:***
+***You can also just use a given stream by passing it directly:   
+Example:***
 <pre>
 my_prbar = pyprind.ProgBar(n, stream=self.stdout)  # writes to given stream
 </pre>
 
-
-##### Givin a tracking object a title
+<br>
+<br>
+<br>
+##### Giving a tracking object a title
 If a tracking object is initialized with a title, it is printed when a new tracking  
 object is initialized.
 The title and elapsed time can be printed via the `print()` function after the tracking has finished.
@@ -156,9 +186,11 @@ My Progress Bar
 [##############################] | ETA[sec]: 0.000
 
 </pre>
-
+<br>
+<br>
+<br>
 ##### Printing a tracking object
-The `print()` method can be invoked after the tracking is completed to  
+The `print()` function can be invoked after the tracking is completed to  
 print the title and elapsed time to the screen.  
 
 <pre>
@@ -175,16 +207,45 @@ Screen output:
 My Progress Bar
 0%                          100%
 [##############################] | ETA[sec]: 0.000 
+Total time elapsed: 6.399 sec
 Title: My Progress Bar
-Total time elapsed: 4.049 sec
-
-
-Print tracking object ...
-
-Title: My Progress Bar
-Total time elapsed: 4.049 sec
+                      Started: 04/18/2014 19:12:07
+                      Finished: 04/18/2014 19:12:14
+                      Total time elapsed: 6.399 sec
 
 </pre>
+
+<br>
+<br>
+<br>
+##### Printing a tracking object with CPU and memory usage
+If we additionally want to `print()` the CPU and memory usage after a run has completed, 
+we have to set the `monitor` argument to `True` when we initialize a new tracking object. (Note: the `monitor` mode requires the `psutil` package.)
+
+
+<pre>
+n = 1000000
+    my_bar = pyprind.ProgBar(n, title='My Progress Bar', monitor=True)
+    for i in range(n):
+        # do some computation
+        my_bar.update()
+    print('\n\nPrint tracking object ...\n')
+    print(my_bar)
+
+Screen output:
+
+My Progress Bar
+0%                          100%
+[##############################] | ETA[sec]: 0.000 
+Total time elapsed: 6.391 sec
+Title: My Progress Bar
+                      Started: 04/18/2014 19:16:55
+                      Finished: 04/18/2014 19:17:02
+                      Total time elapsed: 6.391 sec
+                      CPU %: 91.200000
+                      Memory %: 0.098133
+</pre>
+
 
 ##### Small note on usage in a custom Django management command.
 Django gives you a stdout object on the BaseCommand class. You will need to pass this to
@@ -195,13 +256,19 @@ This uglyfies `pyprind` output, so ensure the write function gets passed `ending
 
 <p><a name="examples"></a></p>
 
+<br>
+<br>
+<br>
+
 Examples
 =============
 
 The following examples shall illustrate the typical usage of the PyPrind package.  
-A visualization can be viewed on YouTube: [http://youtu.be/Ex05RM9vLKE](http://youtu.be/Ex05RM9vLKE)
+A visualization can be viewed on YouTube: [http://youtu.be/iWjSGe89Pvs](http://youtu.be/iWjSGe89Pvs)
 
-
+<br>
+<br>
+<br>
 Example - Progress Bar (simple)
 --------------------------
 
@@ -222,7 +289,9 @@ for i in range(n):
 Total time elapsed: 4.481 sec
 </pre>
 
-
+<br>
+<br>
+<br>
 Example - Percentage Indicator (simple)
 --------------------------
 
@@ -240,18 +309,19 @@ for i in range(n):
 <pre>sebastian > python3 ./examples/ex1_percentage_indicator.py 
 [ 34 %]   elapsed [sec]: 1.377  | ETA [sec]: 2.570
 </pre>
-
+<br>
+<br>
+<br>
 
 Example - Progress Bar (all arguments)
 --------------------------
 
 <pre>import pyprind
 n = 1000000
-    my_bar = pyprind.ProgBar(n, stream=1, width=30, track_time=True, title='My Progress Bar')
+    my_bar = pyprind.ProgBar(n, stream=1, width=30, track_time=True, title='My Progress Bar', monitor=True)
     for i in range(n):
         # do some computation
         my_bar.update()
-    print('\n\nPrint tracking object ...\n')
     print(my_bar)
 </pre>
  
@@ -259,27 +329,26 @@ n = 1000000
 <pre>My Progress Bar
 0%                          100%
 [##############################] | ETA[sec]: 0.000 
-Title: My Progress Bar
-Total time elapsed: 4.049 sec
-
-
-Print trackin object ...
-
-Title: My Progress Bar
-Total time elapsed: 4.049 sec
+Title: Progress Bar
+                      Started: 04/18/2014 19:23:10
+                      Finished: 04/18/2014 19:23:22
+                      Total time elapsed: 11.272 sec
+                      CPU %: 54.400000
+                      Memory %: 0.098085
 </pre>
 
-
+<br>
+<br>
+<br>
 Example - Percent Indicator (all arguments)
 --------------------------
 
 <pre>import pyprind
 n = 1000000
-    my_per = pyprind.ProgPercent(n, stream=1, track_time=True, title='My Percent Indicator')
+    my_per = pyprind.ProgPercent(n, stream=1, track_time=True, title='My Percent Indicator', monitor=True)
     for i in range(n):
         # do some computation
         my_per.update()
-    print('\n\nPrint tracking object ...\n')
     print(my_per)
 </pre>
  
@@ -287,18 +356,18 @@ n = 1000000
 <pre>My Percent Indicator
 [100 %] elapsed [sec]: 4.205 | ETA[sec]: 0.000 
 Title: My Percent Indicator
-Total time elapsed: 4.206 sec
-
-
-Print tracking object ...
-
-Title: My Percent Indicator
-Total time elapsed: 4.206 sec
+                      Started: 04/18/2014 19:23:26
+                      Finished: 04/18/2014 19:23:38
+                      Total time elapsed: 11.775 sec
+                      CPU %: 44.000000
+                      Memory %: 0.097990
 </pre>
 
 
 <p><a name="contact"></a></p>
-
+<br>
+<br>
+<br>
  Contact
 =============
 
@@ -307,13 +376,23 @@ eMail: [se.raschka@gmail.com](mailto:se.raschka@gmail.com)
 or Twitter: [@rasbt](https://twitter.com/rasbt)
 
 
+The `pyprind` module can be found on GitHub at [https://github.com/rasbt/pyprind](https://github.com/rasbt/pyprind)
+
 <br>
 <br>
 
 <p><a name="changelog"></a></p>
+<br>
+<br>
+<br>
 
 Changelog
 ==========
+
+**VERSION 2.5.0**
+
+- new default argument `monitor=False` was added to `ProgBar()` and `ProgPercent()` objects to monitor memory and CPU usage (via `psutil`) if `monitor` is set to True.
+  
 
 **VERSION 2.4.0**
 
