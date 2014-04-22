@@ -76,7 +76,7 @@ Optional parameters :
 
 #### Default Parameters
 
-<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">ProgBar</span>(Prog):
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">ProgBar</span>(Prog):
     <span style="color: #DD4422">&quot;&quot;&quot;</span>
 <span style="color: #DD4422">    Initializes a progress bar object that allows visuzalization</span>
 <span style="color: #DD4422">    of an iterational computation in the standard output screen. </span>
@@ -94,7 +94,7 @@ Optional parameters :
 </pre></div>
 
 
-<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">ProgPercent</span>(Prog):
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">ProgPercent</span>(Prog):
     <span style="color: #DD4422">&quot;&quot;&quot;</span>
 <span style="color: #DD4422">    Initializes a percentage indicator object that allows visuzalization</span>
 <span style="color: #DD4422">    of an iterational computation in the standard output screen. </span>
@@ -116,7 +116,7 @@ Optional parameters :
 
 
 
-<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">update</span>(<span style="color: #007020">self</span>, iterations<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">1</span>):
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">update</span>(<span style="color: #007020">self</span>, iterations<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">1</span>):
         <span style="color: #DD4422">&quot;&quot;&quot;</span>
 <span style="color: #DD4422">        Updates the progress bar in every iteration of the task.</span>
 
