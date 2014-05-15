@@ -5,7 +5,8 @@ object that let you track the progress of a loop structure or other iterative co
 Typical applications include the processing of large data sets to provide an intuitive estimate 
 at runtime about the progress of the computation.
 
-Example demonstration videos:  
+**Example demonstration videos:**  
+  
 - [in a terminal shell](http://youtu.be/iWjSGe89Pvs)  
 - [in an IPython Notebook](http://youtu.be/XXy-fslQ09g)
 
@@ -14,6 +15,7 @@ Example demonstration videos:
 
 <a href="http://youtu.be/XXy-fslQ09g">![Screenshot from iPython notebook](https://raw.githubusercontent.com/rasbt/pyprind/master/images/screenshot_ipython_nb_260.png)</a>
 
+####<center>[Open the IPython Demo Notebook](http://nbviewer.ipython.org/github/rasbt/pyprind/blob/master/examples/pyprind_2.6.0_demo.ipynb)</center>
 
 <br>
 <hr>
