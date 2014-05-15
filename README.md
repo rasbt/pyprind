@@ -18,7 +18,7 @@ at runtime about the progress of the computation.
 
 
 
-####<center>[Open the IPython Demo Notebook](http://nbviewer.ipython.org/github/rasbt/pyprind/blob/master/examples/pyprind_2.6.0_demo.ipynb</center>)
+##<center>[Open the IPython Demo Notebook in nbviewer](http://nbviewer.ipython.org/github/rasbt/pyprind/blob/master/examples/pyprind_2.6.0_demo.ipynb)</center>
 
 <center>
 <br>
