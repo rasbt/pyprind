@@ -1,6 +1,7 @@
 import time
 import sys
 import os
+from io import UnsupportedOperation
 
 class Prog():
     def __init__(self, iterations, track_time, stream, title, monitor):
@@ -19,23 +20,35 @@ class Prog():
         self._check_stream()
         self._print_title()
         
-        if monitor:
+        if self.monitor:
             import psutil
             self.process = psutil.Process()
 
     def _check_stream(self):
         """ Determines which output stream (stdout, stderr, or custom) to use. """
-        if self.stream == 1 and os.isatty(sys.stdout.fileno()):
-            self._stream_out = sys.stdout.write
-            self._stream_flush = sys.stdout.flush
-        elif self.stream == 2 and os.isatty(sys.stderr.fileno()):
-            self._stream_out = sys.stderr.write
-            self._stream_flush = sys.stderr.flush
-        elif self.stream is not None and hasattr(self.stream, 'write'):
-            self._stream_out = self.stream.write
-            self._stream_flush = self.stream.flush
-        else:
-            print('Warning: No valid output stream.')
+        
+        try:
+            if self.stream == 1 and os.isatty(sys.stdout.fileno()):
+                self._stream_out = sys.stdout.write
+                self._stream_flush = sys.stdout.flush
+            elif self.stream == 2 and os.isatty(sys.stderr.fileno()):
+                self._stream_out = sys.stderr.write
+                self._stream_flush = sys.stderr.flush
+        except UnsupportedOperation: # a fix for IPython notebook "IOStream has no fileno."
+            if self.stream == 1:
+                self._stream_out = sys.stdout.write
+                self._stream_flush = sys.stdout.flush
+            elif self.stream == 2:
+                self._stream_out = sys.stderr.write
+                self._stream_flush = sys.stderr.flush
+        else: 
+            if self.stream is not None and hasattr(self.stream, 'write'):
+                self._stream_out = self.stream.write
+                self._stream_flush = self.stream.flush
+            else:
+                print('Warning: No valid output stream.')
+
+
 
     def _elapsed(self):
         """ Returns elapsed time at update. """
@@ -82,8 +95,13 @@ class Prog():
                       Total time elapsed: {:.3f} sec""".format(self.title, str_start, 
                                                                str_end, self.total_time)
         else:
-            cpu_total = self.process.cpu_percent()
-            mem_total = self.process.memory_percent()
+            try:
+                cpu_total = self.process.get_cpu_percent()
+                mem_total = self.process.get_memory_percent()
+            except AttributeError: # old version of psutil
+                cpu_total = self.process.cpu_percent()
+                mem_total = self.process.memory_percent()    
+
             return """Title: {}
                       Started: {}
                       Finished: {}

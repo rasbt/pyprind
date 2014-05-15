@@ -26,8 +26,12 @@ class ProgPercent(Prog):
         self.perc = 0
         self._print_update()
         if monitor:
-            self.process.cpu_percent()
-            self.process.memory_percent()
+            try:
+                self.process.get_cpu_percent()
+                self.process.get_memory_percent()
+            except AttributeError: # old version of psutil
+                cpu_total = self.process.cpu_percent()
+                mem_total = self.process.memory_percent()   
 
     def _print_update(self):
         """Prints formatted integer percentage and tracked time to the screen."""

@@ -5,6 +5,14 @@ object that let you track the progress of a loop structure or other iterative co
 Typical applications include the processing of large data sets to provide an intuitive estimate 
 at runtime about the progress of the computation.
 
+Example demonstration videos:  
+- [in a terminal shell](http://youtu.be/iWjSGe89Pvs)  
+- [in an IPython Notebook](http://youtu.be/XXy-fslQ09g)
+
+![Screenshot from iPython notebook](https://raw.githubusercontent.com/rasbt/pyprind/master/images/screenshot_ipython_nb_260.png)
+
+
+<br>
 <hr>
 I am really looking forward to your comments and suggestions to improve and extend this module! Just send me a quick note   
 via Twitter: [@rasbt](https://twitter.com/rasbt)  
@@ -388,6 +396,12 @@ The `pyprind` module can be found on GitHub at [https://github.com/rasbt/pyprind
 
 Changelog
 ==========
+
+**VERSION 2.6.0**
+
+- Added IPython Notebook support
+- Fixed to work with most recent psutil v. 0.6 for monitoring CPU and memory usage
+
 
 **VERSION 2.5.0**
 

@@ -1,3 +1,10 @@
+VERSION 2.6.0
+================
+
+- Added IPython Notebook support
+- Fixed to work with most recent psutil v. 0.6 for monitoring CPU and memory usage
+
+
 VERSION 2.5.0
 ================
 
