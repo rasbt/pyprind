@@ -23,7 +23,7 @@ at runtime about the progress of the computation.
 <center>
 <br>
 <br>
-The cells can also be printed with white background shown in this (<a href="http://127.0.0.1:8888/notebooks/pyprind/examples/pyprind_2.6.0_demo.ipynb#streams">section<a>)
+The cells can also be printed with white background shown in this (<a href="http://127.0.0.1:8888/notebooks/pyprind/examples/pyprind_2.6.0_demo.ipynb#streams">section</a>)
 </center>
 <a href="http://youtu.be/XXy-fslQ09g">![Screenshot from iPython notebook](https://raw.githubusercontent.com/rasbt/pyprind/master/images/screenshot_ipython_nb_260_2.png)</a>  
 
