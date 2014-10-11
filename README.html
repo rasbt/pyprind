@@ -360,6 +360,8 @@ at runtime about the progress of the computation.</p>
 
 <h2>Installation</h2>
 
+<p>[<a href="#sections">back to top</a>]</p>
+
 <p>You can use the following command to install PyPrind:<br/>
 <code>pip install pyprind</code><br/>
  or  <br/>
@@ -380,7 +382,7 @@ or<br/>
 
 <h2>Documentation</h2>
 
-<p><a href="#sections">back to top</a></p>
+<p>[<a href="#sections">back to top</a>]</p>
 
 <p>PyPrind consists of two class objects that can visualize the progress of a computation on the output screen.<br/>
 Progress bars are visualized via  a <code>ProgBar()</code> object, and alternatively, the progress can be tracked and shown as percentage via a <code>ProgPercent()</code> object.</p>
@@ -409,7 +411,7 @@ for i in range(n):
 
 <h4>Default Parameters</h4>
 
-<p><a href="#sections">back to top</a></p>
+<p>[<a href="#sections">back to top</a>]</p>
 
 <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">ProgBar</span>(Prog):
     <span style="color: #DD4422">&quot;&quot;&quot;</span>
@@ -469,7 +471,7 @@ for i in range(n):
 
 <h4>Setting the width of the progress bar</h4>
 
-<p><a href="#sections">back to top</a></p>
+<p>[<a href="#sections">back to top</a>]</p>
 
 <p><code>my_prog = pyprind.ProgBar(n, width=70) # default = 50</code>
 <br>
@@ -478,7 +480,7 @@ for i in range(n):
 
 <h4>Set whether CPU time should be reported or not</h4>
 
-<p><a href="#sections">back to top</a></p>
+<p>[<a href="#sections">back to top</a>]</p>
 
 <p>The optional <code>track_time</code> parameter can be set for both <code>ProgBar()</code> and <code>ProgPercent()</code> objects.</p>
 
@@ -495,7 +497,7 @@ the estimated finish time of the loop. <br/>
 
 <h4>Selecting an output stream</h4>
 
-<p><a href="#sections">back to top</a></p>
+<p>[<a href="#sections">back to top</a>]</p>
 
 <p>By default, <code>pyprind</code> objects writes output to the Standard error stream (<code>stderr</code>). If you<br/>
 want to direct the output to the Standard output (<code>stdout</code>), you can initialize <code>pyprind</code>
@@ -521,7 +523,7 @@ my_prbar = pyprind.ProgBar(n, stream=self.stdout)  # writes to given stream
 
 <h4>Giving a tracking object a title</h4>
 
-<p><a href="#sections">back to top</a></p>
+<p>[<a href="#sections">back to top</a>]</p>
 
 <p>If a tracking object is initialized with a title, it is printed when a new tracking<br/>
 object is initialized.
@@ -544,7 +546,7 @@ My Progress Bar
 
 <h4>Printing a tracking object</h4>
 
-<p><a href="#sections">back to top</a></p>
+<p>[<a href="#sections">back to top</a>]</p>
 
 <p>The <code>print()</code> function can be invoked after the tracking is completed to<br/>
 print the title and elapsed time to the screen.</p>
@@ -578,7 +580,7 @@ Title: My Progress Bar
 
 <h4>Printing a tracking object with CPU and memory usage</h4>
 
-<p><a href="#sections">back to top</a></p>
+<p>[<a href="#sections">back to top</a>]</p>
 
 <p>If we additionally want to <code>print()</code> the CPU and memory usage after a run has completed,
 we have to set the <code>monitor</code> argument to <code>True</code> when we initialize a new tracking object. (Note: the <code>monitor</code> mode requires the <code>psutil</code> package.)</p>
@@ -609,7 +611,7 @@ Title: My Progress Bar
 
 <h4>Small note on usage in a custom Django management command.</h4>
 
-<p><a href="#sections">back to top</a></p>
+<p>[<a href="#sections">back to top</a>]</p>
 
 <p>Django gives you a stdout object on the BaseCommand class. You will need to pass this to
 <code>pyprind</code> as done above. Also note that by default, Django appends a newline to every write.
@@ -625,7 +627,7 @@ This uglyfies <code>pyprind</code> output, so ensure the write function gets pas
 
 <h2>More Examples</h2>
 
-<p><a href="#sections">back to top</a></p>
+<p>[<a href="#sections">back to top</a>]</p>
 
 <p>A subset of examples is given in the section below, more examples can be found in this <a href="http://nbviewer.ipython.org/github/rasbt/pyprind/blob/master/examples/pyprind_demo.ipynb">IPython Demo Notebook</a>.</p>
 
@@ -635,7 +637,7 @@ This uglyfies <code>pyprind</code> output, so ensure the write function gets pas
 
 <h3>Example - Progress Bar (simple)</h3>
 
-<p><a href="#sections">back to top</a></p>
+<p>[<a href="#sections">back to top</a>]</p>
 
 <pre>import pyprind
 
@@ -662,7 +664,7 @@ Total time elapsed: 4.481 sec
 
 <h3>Example - Percentage Indicator (simple)</h3>
 
-<p><a href="#sections">back to top</a></p>
+<p>[<a href="#sections">back to top</a>]</p>
 
 <pre>import pyprind
 
@@ -687,7 +689,7 @@ for i in range(n):
 
 <h3>Example - Progress Bar (all arguments)</h3>
 
-<p><a href="#sections">back to top</a></p>
+<p>[<a href="#sections">back to top</a>]</p>
 
 <pre>import pyprind
 n = 1000000
@@ -719,7 +721,7 @@ Title: Progress Bar
 
 <h3>Example - Percent Indicator (all arguments)</h3>
 
-<p><a href="#sections">back to top</a></p>
+<p>[<a href="#sections">back to top</a>]</p>
 
 <pre>import pyprind
 n = 1000000
@@ -750,7 +752,7 @@ Title: My Percent Indicator
 
 <h2>Contact</h2>
 
-<p><a href="#sections">back to top</a></p>
+<p>[<a href="#sections">back to top</a>]</p>
 
 <p>If you have any questions or comments about <code>PyPrind</code>, please feel free to contact me via<br/>
 eMail: <a href="mailto:se.raschka@gmail.com">se.raschka@gmail.com</a><br/>
@@ -764,7 +766,7 @@ or Twitter: <a href="https://twitter.com/rasbt">@rasbt</a></p>
 
 <h2>Changelog</h2>
 
-<p><a href="#sections">back to top</a></p>
+<p>[<a href="#sections">back to top</a>]</p>
 
 <p><strong>VERSION 2.6.2</strong></p>
 
