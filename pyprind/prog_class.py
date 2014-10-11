@@ -88,6 +88,7 @@ class Prog():
     def __repr__(self):
         str_start = time.strftime('%m/%d/%Y %H:%M:%S', time.localtime(self.start))
         str_end = time.strftime('%m/%d/%Y %H:%M:%S', time.localtime(self.end))
+        self._stream_flush()
         if not self.monitor:
             return """Title: {}
                       Started: {}

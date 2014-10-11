@@ -1,10 +1,21 @@
-PyPrind
-=============
-The PyPrind (Python Progress Indicator) module provides a progress bar and a percentage indicator  
-object that let you track the progress of a loop structure or other iterative computation.  
+# PyPrind (Python Progress Indicator)
+
+
+The `PyPrind` (Python Progress Indicator) module provides a **progress bar** and a **percentage indicator** object that let you track the progress of a loop structure or other iterative computation.  
 Typical applications include the processing of large data sets to provide an intuitive estimate 
 at runtime about the progress of the computation.
 
+
+
+
+
+<br>
+
+![Screenshot from iPython notebook](https://raw.githubusercontent.com/rasbt/pyprind/master/images/overview.png)
+
+- [Open an IPython Demo Notebook in nbviewer](http://nbviewer.ipython.org/github/rasbt/pyprind/blob/master/examples/pyprind_demo.ipynb)
+
+<br>
 **Example demonstration videos:**  
   
 - [in a terminal shell](http://youtu.be/iWjSGe89Pvs)  
@@ -13,49 +24,30 @@ at runtime about the progress of the computation.
 <br>
 <br>
 
-<a href="http://youtu.be/XXy-fslQ09g">![Screenshot from iPython notebook](https://raw.githubusercontent.com/rasbt/pyprind/master/images/screenshot_ipython_nb_260.png)</a>  
+
+<a id='sections'>
+## Sections
 
 
+- [Installation](#installation)
+- [More Examples](#examples)
+- [Documentation](#documentation)
+- [Optional Parameters](#options)
+- [Contact](#contact)
+- [Changelog](#changelog)
 
-
-##<center>[Open the IPython Demo Notebook in nbviewer](http://nbviewer.ipython.org/github/rasbt/pyprind/blob/master/examples/pyprind_2.6.0_demo.ipynb)</center>
-
-<center>
-<br>
-<br>
-The cells can also be printed with white background shown in this (<a href="http://127.0.0.1:8888/notebooks/pyprind/examples/pyprind_2.6.0_demo.ipynb#streams">section</a>)
-</center>
-<a href="http://youtu.be/XXy-fslQ09g">![Screenshot from iPython notebook](https://raw.githubusercontent.com/rasbt/pyprind/master/images/screenshot_ipython_nb_260_white.png)</a>  
-
-
-
-<br>
-<hr>
-I am really looking forward to your comments and suggestions to improve and extend this module! Just send me a quick note   
-via Twitter: [@rasbt](https://twitter.com/rasbt)  
-or Email: [se.raschka@gmail.com](mailto:bluewoodtree@gmail.com)
-
-The `pyprind` module can be found on GitHub at [https://github.com/rasbt/pyprind](https://github.com/rasbt/pyprind)
-<hr>
 
 <br>
 <br>
 <br>
-####Sections
-<p><a href="#installation">Installation</a><br>
-<p><a href="#documentation">Documentation</a><br>
-<p><a href="#options">Optional Parameters</a><br>
-<p><a href="#examples">Examples</a><br>
-<p><a href="#contact">Contact</a><br>
-<p><a href="#changelog">Changelog</a><br>
-
 
 <p><a name="installation"></a></p>
 <br>
 <br>
 <br>
-Installation
-=============
+
+## Installation
+
 You can use the following command to install PyPrind:  
 `pip install pyprind`  
  or    
@@ -73,8 +65,10 @@ or
 <br>
 <br>
 <br>
-Documentation
-=============
+
+## Documentation
+[back to top](#sections)
+
 PyPrind consists of two class objects that can visualize the progress of a computation on the output screen.  
 Progress bars are visualized via  a `ProgBar()` object, and alternatively, the progress can be tracked and shown as percentage via a `ProgPercent()` object.  
 
@@ -96,10 +90,12 @@ for i in range(n):
 <br>
 <br>
 <br>
-Optional parameters :
---------------------------
+
+
+
 
 #### Default Parameters
+[back to top](#sections)
 
 <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">ProgBar</span>(Prog):
     <span style="color: #DD4422">&quot;&quot;&quot;</span>
@@ -157,14 +153,17 @@ Optional parameters :
 <br>
 <br>
 
-##### Setting the width of the progress bar
+#### Setting the width of the progress bar
+[back to top](#sections)
 
 `my_prog = pyprind.ProgBar(n, width=70)	# default = 50`
 <br>
 <br>
 <br>
 
-##### Set whether CPU time should be reported or not 
+#### Set whether CPU time should be reported or not 
+[back to top](#sections)
+
 The optional `track_time` parameter can be set for both `ProgBar()` and `ProgPercent()` objects.   
 
 `my_prbar = pyprind.ProgBar(n, track_time=False)  # default = True`  
@@ -178,7 +177,9 @@ the estimated finish time of the loop.
 <br>
 <br>
 
-##### Selecting an output stream  
+#### Selecting an output stream  
+[back to top](#sections)
+
 By default, `pyprind` objects writes output to the Standard error stream (`stderr`). If you  
 want to direct the output to the Standard output (`stdout`), you can initialize `pyprind` 
 with the argument `stream=2`.
@@ -197,7 +198,9 @@ my_prbar = pyprind.ProgBar(n, stream=self.stdout)  # writes to given stream
 <br>
 <br>
 <br>
-##### Giving a tracking object a title
+#### Giving a tracking object a title
+[back to top](#sections)
+
 If a tracking object is initialized with a title, it is printed when a new tracking  
 object is initialized.
 The title and elapsed time can be printed via the `print()` function after the tracking has finished.
@@ -214,7 +217,9 @@ My Progress Bar
 <br>
 <br>
 <br>
-##### Printing a tracking object
+#### Printing a tracking object
+[back to top](#sections)
+
 The `print()` function can be invoked after the tracking is completed to  
 print the title and elapsed time to the screen.  
 
@@ -243,7 +248,9 @@ Title: My Progress Bar
 <br>
 <br>
 <br>
-##### Printing a tracking object with CPU and memory usage
+#### Printing a tracking object with CPU and memory usage
+[back to top](#sections)
+
 If we additionally want to `print()` the CPU and memory usage after a run has completed, 
 we have to set the `monitor` argument to `True` when we initialize a new tracking object. (Note: the `monitor` mode requires the `psutil` package.)
 
@@ -272,7 +279,9 @@ Title: My Progress Bar
 </pre>
 
 
-##### Small note on usage in a custom Django management command.
+#### Small note on usage in a custom Django management command.
+[back to top](#sections)
+
 Django gives you a stdout object on the BaseCommand class. You will need to pass this to
 `pyprind` as done above. Also note that by default, Django appends a newline to every write.
 This uglyfies `pyprind` output, so ensure the write function gets passed `ending=""`.
@@ -285,17 +294,17 @@ This uglyfies `pyprind` output, so ensure the write function gets passed `ending
 <br>
 <br>
 
-Examples
-=============
+## More Examples
+[back to top](#sections)
 
-The following examples shall illustrate the typical usage of the PyPrind package.  
-A visualization can be viewed on YouTube: [http://youtu.be/iWjSGe89Pvs](http://youtu.be/iWjSGe89Pvs)
+A subset of examples is given in the section below, more examples can be found in this [IPython Demo Notebook](http://nbviewer.ipython.org/github/rasbt/pyprind/blob/master/examples/pyprind_demo.ipynb).
 
 <br>
 <br>
 <br>
-Example - Progress Bar (simple)
---------------------------
+
+### Example - Progress Bar (simple)
+[back to top](#sections)
 
 <pre>import pyprind
 
@@ -317,8 +326,9 @@ Total time elapsed: 4.481 sec
 <br>
 <br>
 <br>
-Example - Percentage Indicator (simple)
---------------------------
+
+### Example - Percentage Indicator (simple)
+[back to top](#sections)
 
 <pre>import pyprind
 
@@ -338,8 +348,8 @@ for i in range(n):
 <br>
 <br>
 
-Example - Progress Bar (all arguments)
---------------------------
+### Example - Progress Bar (all arguments)
+[back to top](#sections)
 
 <pre>import pyprind
 n = 1000000
@@ -365,8 +375,8 @@ Title: Progress Bar
 <br>
 <br>
 <br>
-Example - Percent Indicator (all arguments)
---------------------------
+### Example - Percent Indicator (all arguments)
+[back to top](#sections)
 
 <pre>import pyprind
 n = 1000000
@@ -388,31 +398,43 @@ Title: My Percent Indicator
                       Memory %: 0.097990
 </pre>
 
+<br>
+<br>
+<br>
 
-<p><a name="contact"></a></p>
-<br>
-<br>
-<br>
- Contact
-=============
+##  Contact
+[back to top](#sections)
 
-If you have any questions or comments about PyPrind, please feel free to contact me via  
+If you have any questions or comments about `PyPrind`, please feel free to contact me via  
 eMail: [se.raschka@gmail.com](mailto:se.raschka@gmail.com)  
 or Twitter: [@rasbt](https://twitter.com/rasbt)
 
 
 The `pyprind` module can be found on GitHub at [https://github.com/rasbt/pyprind](https://github.com/rasbt/pyprind)
 
-<br>
-<br>
 
-<p><a name="changelog"></a></p>
 <br>
 <br>
 <br>
 
-Changelog
-==========
+
+
+
+## Changelog
+[back to top](#sections)
+
+
+**VERSION 2.6.2**
+
+- Fixed bug that the report was squeezed after the bar and before the "time elapsed" string if printed immediately after the progress bar has reached 100%.
+
+**VERSION 2.6.1**
+
+
+- small bugfix on some system a warning was printed although
+  a valid output string was provided
+
+
 
 **VERSION 2.6.0**
 

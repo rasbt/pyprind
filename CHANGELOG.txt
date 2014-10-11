@@ -1,3 +1,9 @@
+VERSION 2.6.2
+================
+
+- Fixed bug that the report was squeezed after the bar and before the "time elapsed" string if printed immediately after the progress bar has reached 100%.
+
+
 VERSION 2.6.1
 ================
 

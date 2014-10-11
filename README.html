@@ -4,131 +4,281 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <style>
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote {
-    margin: 0;
-    padding: 0;
-}
 body {
-    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
-    font-size: 13px;
-    line-height: 18px;
-    color: #737373;
-    background-color: white;
-    margin: 10px 13px 10px 13px;
-}
-table {
-	margin: 10px 0 15px 0;
-	border-collapse: collapse;
-}
-td,th {	
-	border: 1px solid #ddd;
-	padding: 3px 10px;
-}
-th {
-	padding: 5px 10px;	
-}
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
 
 a {
-    color: #0069d6;
-}
-a:hover {
-    color: #0050a3;
-    text-decoration: none;
-}
-a img {
-    border: none;
-}
-p {
-    margin-bottom: 9px;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    color: #404040;
-    line-height: 36px;
-}
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
 h1 {
-    margin-bottom: 18px;
-    font-size: 30px;
-}
+  font-size: 28px;
+  color: black; }
+
 h2 {
-    font-size: 24px;
-}
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
 h3 {
-    font-size: 18px;
-}
+  font-size: 18px; }
+
 h4 {
-    font-size: 16px;
-}
+  font-size: 16px; }
+
 h5 {
-    font-size: 14px;
-}
+  font-size: 14px; }
+
 h6 {
-    font-size: 13px;
-}
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
 hr {
-    margin: 0 0 19px;
-    border: 0;
-    border-bottom: 1px solid #ccc;
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
 }
-blockquote {
-    padding: 13px 13px 21px 15px;
-    margin-bottom: 18px;
-    font-family:georgia,serif;
-    font-style: italic;
-}
-blockquote:before {
-    content:"\201C";
-    font-size:40px;
-    margin-left:-10px;
-    font-family:georgia,serif;
-    color:#eee;
-}
-blockquote p {
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
     font-size: 14px;
-    font-weight: 300;
-    line-height: 18px;
-    margin-bottom: 0;
+    font-weight: bold;
     font-style: italic;
-}
-code, pre {
-    font-family: Monaco, Andale Mono, Courier New, monospace;
-}
-code {
-    background-color: #fee9cc;
-    color: rgba(0, 0, 0, 0.75);
-    padding: 1px 3px;
-    font-size: 12px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-}
-pre {
-    display: block;
-    padding: 14px;
-    margin: 0 0 18px;
-    line-height: 16px;
-    font-size: 11px;
-    border: 1px solid #d9d9d9;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-}
-pre code {
-    background-color: #fff;
-    color:#737373;
-    font-size: 11px;
     padding: 0;
-}
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
 sup {
     font-size: 0.83em;
     vertical-align: super;
@@ -140,71 +290,75 @@ sup {
 @media screen and (min-width: 914px) {
     body {
         width: 854px;
-        margin:10px auto;
+        margin:0 auto;
     }
 }
 @media print {
-	body,code,pre code,h1,h2,h3,h4,h5,h6 {
-		color: black;
-	}
 	table, pre {
 		page-break-inside: avoid;
 	}
+	pre {
+		word-wrap: break-word;
+	}
 }
 </style>
-<title>Sections</title>
+<title>PyPrind (Python Progress Indicator)</title>
 
 </head>
 <body>
-<h1>PyPrind</h1>
+<h1>PyPrind (Python Progress Indicator)</h1>
 
-<p>The PyPrind (Python Progress Indicator) module provides a progress bar and a percentage indicator<br/>
-object that let you track the progress of a loop structure or other iterative computation.<br/>
+<p>The <code>PyPrind</code> (Python Progress Indicator) module provides a <strong>progress bar</strong> and a <strong>percentage indicator</strong> object that let you track the progress of a loop structure or other iterative computation.<br/>
 Typical applications include the processing of large data sets to provide an intuitive estimate
 at runtime about the progress of the computation.</p>
 
-<p>Example demonstration videos:<br/>
-- <a href="http://youtu.be/iWjSGe89Pvs">in a terminal shell</a><br/>
-- <a href="http://youtu.be/XXy-fslQ09g">in an IPython Notebook</a></p>
-
-<p><br>
-<br></p>
-
-<p><a href="http://youtu.be/XXy-fslQ09g"><img src="https://raw.githubusercontent.com/rasbt/pyprind/master/images/screenshot_ipython_nb_260.png" alt="Screenshot from iPython notebook" /></a></p>
-
 <p><br></p>
 
-<hr>
+<p><img src="https://raw.githubusercontent.com/rasbt/pyprind/master/images/overview.png" alt="Screenshot from iPython notebook" /></p>
+
+<ul>
+<li><a href="http://nbviewer.ipython.org/github/rasbt/pyprind/blob/master/examples/pyprind_demo.ipynb">Open an IPython Demo Notebook in nbviewer</a></li>
+</ul>
 
 
-<p>I am really looking forward to your comments and suggestions to improve and extend this module! Just send me a quick note <br/>
-via Twitter: <a href="https://twitter.com/rasbt">@rasbt</a><br/>
-or Email: <a href="mailto:bluewoodtree@gmail.com">se.raschka@gmail.com</a></p>
+<p><br>
+<strong>Example demonstration videos:</strong></p>
 
-<p>The <code>pyprind</code> module can be found on GitHub at <a href="https://github.com/rasbt/pyprind">https://github.com/rasbt/pyprind</a></p>
+<ul>
+<li><a href="http://youtu.be/iWjSGe89Pvs">in a terminal shell</a></li>
+<li><a href="http://youtu.be/XXy-fslQ09g">in an IPython Notebook</a></li>
+</ul>
 
-<hr>
+
+<p><br>
+<br></p>
+
+<p><a id='sections'></p>
+
+<h2>Sections</h2>
+
+<ul>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#examples">More Examples</a></li>
+<li><a href="#documentation">Documentation</a></li>
+<li><a href="#options">Optional Parameters</a></li>
+<li><a href="#contact">Contact</a></li>
+<li><a href="#changelog">Changelog</a></li>
+</ul>
 
 
 <p><br>
 <br>
 <br></p>
 
-<h4>Sections</h4>
+<p><a name="installation"></a></p>
 
-<p><p><a href="#installation">Installation</a><br>
-<p><a href="#documentation">Documentation</a><br>
-<p><a href="#options">Optional Parameters</a><br>
-<p><a href="#examples">Examples</a><br>
-<p><a href="#contact">Contact</a><br>
-<p><a href="#changelog">Changelog</a><br></p>
 
-<p><p><a name="installation"></a></p>
-<br>
+<p><br>
 <br>
 <br></p>
 
-<h1>Installation</h1>
+<h2>Installation</h2>
 
 <p>You can use the following command to install PyPrind:<br/>
 <code>pip install pyprind</code><br/>
@@ -217,12 +371,16 @@ or Email: <a href="mailto:bluewoodtree@gmail.com">se.raschka@gmail.com</a></p>
 or<br/>
 <code>python3 setup.py install</code></p>
 
-<p><p><a name="documentation"></a></p>
-<br>
+<p><a name="documentation"></a></p>
+
+
+<p><br>
 <br>
 <br></p>
 
-<h1>Documentation</h1>
+<h2>Documentation</h2>
+
+<p><a href="#sections">back to top</a></p>
 
 <p>PyPrind consists of two class objects that can visualize the progress of a computation on the output screen.<br/>
 Progress bars are visualized via  a <code>ProgBar()</code> object, and alternatively, the progress can be tracked and shown as percentage via a <code>ProgPercent()</code> object.</p>
@@ -232,79 +390,95 @@ Progress bars are visualized via  a <code>ProgBar()</code> object, and alternati
 <p>1) initialize a new <code>ProgBar()</code> or <code>ProgPercent()</code> object with the number of iterations of the computation that is to be performed<br/>
 2) update the <code>ProgBar()</code> or <code>ProgPercent()</code>  object for each iteration via the <code>.update()</code>method</p>
 
-<p><pre>n = 10000000
+<pre>n = 10000000
 my_prbar = pyprind.ProgBar(n)   # 1) initialization with number of iterations
-for i in range(n):<br/>
+for i in range(n):  
     # do some computation
     my_prbar.update()           # 2) update the progress visualization
-</pre></p>
+</pre>
 
-<p><p><a name="optional"></a></p>
-<br>
+
+
+
+<p><a name="optional"></a></p>
+
+
+<p><br>
 <br>
 <br></p>
 
-<h2>Optional parameters :</h2>
-
 <h4>Default Parameters</h4>
 
-<p><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">ProgBar</span>(Prog):
+<p><a href="#sections">back to top</a></p>
+
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">ProgBar</span>(Prog):
     <span style="color: #DD4422">&quot;&quot;&quot;</span>
 <span style="color: #DD4422">    Initializes a progress bar object that allows visuzalization</span>
-<span style="color: #DD4422">    of an iterational computation in the standard output screen. </span></p>
+<span style="color: #DD4422">    of an iterational computation in the standard output screen. </span>
 
-<p><span style="color: #DD4422">    Keyword Arguments:</span>
+<span style="color: #DD4422">    Keyword Arguments:</span>
 <span style="color: #DD4422">        iterations (int): number of iterations of the computation</span>
 <span style="color: #DD4422">        track_time (bool): default True. Prints elapsed time when loop has finished</span>
 <span style="color: #DD4422">        width (int): default 30. Sets the progress bar width in characters.</span>
 <span style="color: #DD4422">        stream (int): default 2. Takes 1 for stdout, 2 for stderr, or given stream object</span>
 <span style="color: #DD4422">        title (str): default &#39;&#39;. A title for the progress bar</span>
 <span style="color: #DD4422">        monitor (bool): default False. Monitors CPU and memory usage if True </span>
-<span style="color: #DD4422">            (requires &#39;psutil&#39; package).</span></p>
+<span style="color: #DD4422">            (requires &#39;psutil&#39; package).</span>
 
-<p><span style="color: #DD4422">    &quot;&quot;&quot;</span>
-</pre></div></p>
+<span style="color: #DD4422">    &quot;&quot;&quot;</span>
+</pre></div>
 
-<p><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">ProgPercent</span>(Prog):
+
+
+
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">ProgPercent</span>(Prog):
     <span style="color: #DD4422">&quot;&quot;&quot;</span>
 <span style="color: #DD4422">    Initializes a percentage indicator object that allows visuzalization</span>
-<span style="color: #DD4422">    of an iterational computation in the standard output screen. </span></p>
+<span style="color: #DD4422">    of an iterational computation in the standard output screen. </span>
 
-<p><span style="color: #DD4422">    Keyword Arguments:</span>
+<span style="color: #DD4422">    Keyword Arguments:</span>
 <span style="color: #DD4422">        iterations (int): number of iterations of the computation</span>
 <span style="color: #DD4422">        track_time (bool): default True. Prints elapsed time when loop has finished</span>
 <span style="color: #DD4422">        stream (int): default 2. Takes 1 for stdout, 2 for stderr, or given stream object</span>
 <span style="color: #DD4422">        title (str): default &#39;&#39;. A title for the progress bar</span>
 <span style="color: #DD4422">        monitor (bool): default False. Monitors CPU and memory usage if True </span>
-<span style="color: #DD4422">            (requires &#39;psutil&#39; package).</span></p>
+<span style="color: #DD4422">            (requires &#39;psutil&#39; package).</span>
 
-<p><span style="color: #DD4422">    &quot;&quot;&quot;</span>
-</pre></div></p>
+<span style="color: #DD4422">    &quot;&quot;&quot;</span>
+</pre></div>
 
-<p><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">update</span>(<span style="color: #007020">self</span>, iterations<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">1</span>):
+
+
+
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">update</span>(<span style="color: #007020">self</span>, iterations<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">1</span>):
         <span style="color: #DD4422">&quot;&quot;&quot;</span>
-<span style="color: #DD4422">        Updates the progress bar in every iteration of the task.</span></p>
+<span style="color: #DD4422">        Updates the progress bar in every iteration of the task.</span>
 
-<p><span style="color: #DD4422">        Keyword arguments:</span>
+<span style="color: #DD4422">        Keyword arguments:</span>
 <span style="color: #DD4422">            iterations (int): default argument can be changed to integer values</span>
 <span style="color: #DD4422">                &gt;=1 in order to update the progress indicators more than once </span>
-<span style="color: #DD4422">                per iteration.</span></p>
+<span style="color: #DD4422">                per iteration.</span>
 
-<p><span style="color: #DD4422">        &quot;&quot;&quot;</span>
-</pre></div></p>
+<span style="color: #DD4422">        &quot;&quot;&quot;</span>
+</pre></div>
+
 
 <p><br>
 <br>
 <br></p>
 
-<h5>Setting the width of the progress bar</h5>
+<h4>Setting the width of the progress bar</h4>
+
+<p><a href="#sections">back to top</a></p>
 
 <p><code>my_prog = pyprind.ProgBar(n, width=70) # default = 50</code>
 <br>
 <br>
 <br></p>
 
-<h5>Set whether CPU time should be reported or not</h5>
+<h4>Set whether CPU time should be reported or not</h4>
+
+<p><a href="#sections">back to top</a></p>
 
 <p>The optional <code>track_time</code> parameter can be set for both <code>ProgBar()</code> and <code>ProgPercent()</code> objects.</p>
 
@@ -319,96 +493,110 @@ the estimated finish time of the loop. <br/>
 <br>
 <br></p>
 
-<h5>Selecting an output stream</h5>
+<h4>Selecting an output stream</h4>
+
+<p><a href="#sections">back to top</a></p>
 
 <p>By default, <code>pyprind</code> objects writes output to the Standard error stream (<code>stderr</code>). If you<br/>
 want to direct the output to the Standard output (<code>stdout</code>), you can initialize <code>pyprind</code>
 with the argument <code>stream=2</code>.</p>
 
-<p><pre>
+<pre>
 my_prbar = pyprind.ProgBar(n, stream=1) # writes to stdout
 my_prbar = pyprind.ProgBar(n, stream=2) # writes to stderr, default
-</pre></p>
+</pre>
+
 
 <p><strong><em>You can also just use a given stream by passing it directly: <br/>
-Example:</em></strong>
+Example:</em></strong></p>
+
 <pre>
 my_prbar = pyprind.ProgBar(n, stream=self.stdout)  # writes to given stream
-</pre></p>
+</pre>
+
 
 <p><br>
 <br>
 <br></p>
 
-<h5>Giving a tracking object a title</h5>
+<h4>Giving a tracking object a title</h4>
+
+<p><a href="#sections">back to top</a></p>
 
 <p>If a tracking object is initialized with a title, it is printed when a new tracking<br/>
 object is initialized.
 The title and elapsed time can be printed via the <code>print()</code> function after the tracking has finished.</p>
 
-<p><pre>
-my_prbar = pyprind.ProgBar(n, title='My Progress Bar')</p>
+<pre>
+my_prbar = pyprind.ProgBar(n, title='My Progress Bar')
 
-<p>Screen output:
+Screen output:
 My Progress Bar
 0%                          100%
-[##############################] | ETA[sec]: 0.000</p>
+[##############################] | ETA[sec]: 0.000
 
-<p></pre>
-<br>
+</pre>
+
+
+<p><br>
 <br>
 <br></p>
 
-<h5>Printing a tracking object</h5>
+<h4>Printing a tracking object</h4>
+
+<p><a href="#sections">back to top</a></p>
 
 <p>The <code>print()</code> function can be invoked after the tracking is completed to<br/>
 print the title and elapsed time to the screen.</p>
 
-<p><pre>
+<pre>
 n = 1000000
     my_bar = pyprind.ProgBar(n, title='My Progress Bar')
     for i in range(n):
         # do some computation
         my_bar.update()
     print('\n\nPrint tracking object ...\n')
-    print(my_bar)</p>
+    print(my_bar)
 
-<p>Screen output:</p>
+Screen output:
 
-<p>My Progress Bar
+My Progress Bar
 0%                          100%
-[##############################] | ETA[sec]: 0.000
+[##############################] | ETA[sec]: 0.000 
 Total time elapsed: 6.399 sec
 Title: My Progress Bar
                       Started: 04/18/2014 19:12:07
                       Finished: 04/18/2014 19:12:14
-                      Total time elapsed: 6.399 sec</p>
+                      Total time elapsed: 6.399 sec
 
-<p></pre></p>
+</pre>
+
 
 <p><br>
 <br>
 <br></p>
 
-<h5>Printing a tracking object with CPU and memory usage</h5>
+<h4>Printing a tracking object with CPU and memory usage</h4>
+
+<p><a href="#sections">back to top</a></p>
 
 <p>If we additionally want to <code>print()</code> the CPU and memory usage after a run has completed,
 we have to set the <code>monitor</code> argument to <code>True</code> when we initialize a new tracking object. (Note: the <code>monitor</code> mode requires the <code>psutil</code> package.)</p>
 
-<p><pre>
+<pre>
 n = 1000000
     my_bar = pyprind.ProgBar(n, title='My Progress Bar', monitor=True)
     for i in range(n):
         # do some computation
         my_bar.update()
     print('\n\nPrint tracking object ...\n')
-    print(my_bar)</p>
+    print(my_bar)
 
-<p>Screen output:</p>
+Screen output:
 
-<p>My Progress Bar
+My Progress Bar
 0%                          100%
-[##############################] | ETA[sec]: 0.000
+[##############################] | ETA[sec]: 0.000 
 Total time elapsed: 6.391 sec
 Title: My Progress Bar
                       Started: 04/18/2014 19:16:55
@@ -416,144 +604,182 @@ Title: My Progress Bar
                       Total time elapsed: 6.391 sec
                       CPU %: 91.200000
                       Memory %: 0.098133
-</pre></p>
+</pre>
 
-<h5>Small note on usage in a custom Django management command.</h5>
+
+<h4>Small note on usage in a custom Django management command.</h4>
+
+<p><a href="#sections">back to top</a></p>
 
 <p>Django gives you a stdout object on the BaseCommand class. You will need to pass this to
 <code>pyprind</code> as done above. Also note that by default, Django appends a newline to every write.
 This uglyfies <code>pyprind</code> output, so ensure the write function gets passed <code>ending=""</code>.
 <code>pyprind</code> will NOT do this for you.</p>
 
-<p><p><a name="examples"></a></p></p>
+<p><a name="examples"></a></p>
+
 
 <p><br>
 <br>
 <br></p>
 
-<h1>Examples</h1>
+<h2>More Examples</h2>
 
-<p>The following examples shall illustrate the typical usage of the PyPrind package.<br/>
-A visualization can be viewed on YouTube: <a href="http://youtu.be/iWjSGe89Pvs">http://youtu.be/iWjSGe89Pvs</a></p>
+<p><a href="#sections">back to top</a></p>
+
+<p>A subset of examples is given in the section below, more examples can be found in this <a href="http://nbviewer.ipython.org/github/rasbt/pyprind/blob/master/examples/pyprind_demo.ipynb">IPython Demo Notebook</a>.</p>
 
 <p><br>
 <br>
 <br></p>
 
-<h2>Example - Progress Bar (simple)</h2>
+<h3>Example - Progress Bar (simple)</h3>
 
-<p><pre>import pyprind</p>
+<p><a href="#sections">back to top</a></p>
 
-<p>n = 10000000
+<pre>import pyprind
+
+n = 10000000
 my_prbar = pyprind.ProgBar(n)
 for i in range(n):
     # do some computation
     my_prbar.update()
-</pre></p>
+</pre>
+
 
 <p><strong>Screen Output</strong></p>
 
-<p><pre>sebastian > python3 ./examples/ex1_progress_bar.py
+<pre>sebastian > python3 ./examples/ex1_progress_bar.py 
 0%                                    100%
-[########################################] - ETA[sec]: 0.000<br/>
+[########################################] - ETA[sec]: 0.000  
 Total time elapsed: 4.481 sec
-</pre></p>
+</pre>
+
 
 <p><br>
 <br>
 <br></p>
 
-<h2>Example - Percentage Indicator (simple)</h2>
+<h3>Example - Percentage Indicator (simple)</h3>
 
-<p><pre>import pyprind</p>
+<p><a href="#sections">back to top</a></p>
 
-<p>n = 1000000
+<pre>import pyprind
+
+n = 1000000
 my_perc = pyprind.ProgPercent(n)
 for i in range(n):
     # do some computation
     my_perc.update()
-</pre></p>
+</pre>
+
 
 <p><strong>Screen Output</strong></p>
 
-<p><pre>sebastian > python3 ./examples/ex1_percentage_indicator.py
+<pre>sebastian > python3 ./examples/ex1_percentage_indicator.py 
 [ 34 %]   elapsed [sec]: 1.377  | ETA [sec]: 2.570
 </pre>
-<br>
+
+
+<p><br>
 <br>
 <br></p>
 
-<h2>Example - Progress Bar (all arguments)</h2>
+<h3>Example - Progress Bar (all arguments)</h3>
 
-<p><pre>import pyprind
+<p><a href="#sections">back to top</a></p>
+
+<pre>import pyprind
 n = 1000000
     my_bar = pyprind.ProgBar(n, stream=1, width=30, track_time=True, title='My Progress Bar', monitor=True)
     for i in range(n):
         # do some computation
         my_bar.update()
     print(my_bar)
-</pre></p>
+</pre>
 
-<p><strong>Screen Output</strong><br/>
+
+<p><strong>Screen Output</strong></p>
+
 <pre>My Progress Bar
 0%                          100%
-[##############################] | ETA[sec]: 0.000
+[##############################] | ETA[sec]: 0.000 
 Title: Progress Bar
                       Started: 04/18/2014 19:23:10
                       Finished: 04/18/2014 19:23:22
                       Total time elapsed: 11.272 sec
                       CPU %: 54.400000
                       Memory %: 0.098085
-</pre></p>
+</pre>
+
 
 <p><br>
 <br>
 <br></p>
 
-<h2>Example - Percent Indicator (all arguments)</h2>
+<h3>Example - Percent Indicator (all arguments)</h3>
 
-<p><pre>import pyprind
+<p><a href="#sections">back to top</a></p>
+
+<pre>import pyprind
 n = 1000000
     my_per = pyprind.ProgPercent(n, stream=1, track_time=True, title='My Percent Indicator', monitor=True)
     for i in range(n):
         # do some computation
         my_per.update()
     print(my_per)
-</pre></p>
+</pre>
 
-<p><strong>Screen Output</strong><br/>
+
+<p><strong>Screen Output</strong></p>
+
 <pre>My Percent Indicator
-[100 %] elapsed [sec]: 4.205 | ETA[sec]: 0.000
+[100 %] elapsed [sec]: 4.205 | ETA[sec]: 0.000 
 Title: My Percent Indicator
                       Started: 04/18/2014 19:23:26
                       Finished: 04/18/2014 19:23:38
                       Total time elapsed: 11.775 sec
                       CPU %: 44.000000
                       Memory %: 0.097990
-</pre></p>
+</pre>
 
-<p><p><a name="contact"></a></p>
-<br>
+
+<p><br>
 <br>
 <br></p>
 
-<h1> Contact</h1>
+<h2>Contact</h2>
 
-<p>If you have any questions or comments about PyPrind, please feel free to contact me via<br/>
+<p><a href="#sections">back to top</a></p>
+
+<p>If you have any questions or comments about <code>PyPrind</code>, please feel free to contact me via<br/>
 eMail: <a href="mailto:se.raschka@gmail.com">se.raschka@gmail.com</a><br/>
 or Twitter: <a href="https://twitter.com/rasbt">@rasbt</a></p>
 
 <p>The <code>pyprind</code> module can be found on GitHub at <a href="https://github.com/rasbt/pyprind">https://github.com/rasbt/pyprind</a></p>
 
 <p><br>
-<br></p>
-
-<p><p><a name="changelog"></a></p>
-<br>
 <br>
 <br></p>
 
-<h1>Changelog</h1>
+<h2>Changelog</h2>
+
+<p><a href="#sections">back to top</a></p>
+
+<p><strong>VERSION 2.6.2</strong></p>
+
+<ul>
+<li>Fixed bug that the report was squeezed after the bar and before the "time elapsed" string if printed immediately after the progress bar has reached 100%.</li>
+</ul>
+
+
+<p><strong>VERSION 2.6.1</strong></p>
+
+<ul>
+<li>small bugfix on some system a warning was printed although
+a valid output string was provided</li>
+</ul>
+
 
 <p><strong>VERSION 2.6.0</strong></p>
 

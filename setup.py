@@ -1,7 +1,7 @@
 from distutils.core import setup
 
 setup(name='PyPrind',
-      version='2.6.1',
+      version='2.6.2',
       description='Python Progress Indicator Utility',
       author='Sebastian Raschka',
       author_email='se.raschka@gmail.com',
