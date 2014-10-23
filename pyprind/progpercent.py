@@ -23,8 +23,8 @@ class ProgPercent(Prog):
     """
     def __init__(self, iterations, track_time=True, stream=2, title='', monitor=False):
         Prog.__init__(self, iterations, track_time, stream, title, monitor)
-        self.perc = 0
-        self._print_update()
+        self.last_progress = 0
+        self._print()
         if monitor:
             try:
                 self.process.get_cpu_percent()
@@ -33,29 +33,17 @@ class ProgPercent(Prog):
                 cpu_total = self.process.cpu_percent()
                 mem_total = self.process.memory_percent()   
 
-    def _print_update(self):
-        """Prints formatted integer percentage and tracked time to the screen."""
-        self._stream_out('\r[%3d %%]' % (self.perc))
-        if self.track:
-            self._stream_out(' elapsed[sec]: {:.3f}'.format(self._elapsed()))
-            if self._calc_eta():
-                self._stream_out(' | ETA[sec]: {:.3f} '.format(self._calc_eta()))  
-            self._stream_flush()
 
-    def update(self, iterations=1):
-        """
-        Updates the progress bar in every iteration of the task.
-
-        Keyword arguments:
-            iterations (int): default argument can be changed to integer values
-                >=1 in order to update the progress indicators more than once 
-                per iteration.
-
-        """
-        self.cnt += iterations
+    def _print(self):
+        """ Prints formatted integer percentage and tracked time to the screen."""
         next_perc = self._calc_percent()
-        if next_perc > self.perc:
-            self.perc = next_perc
-            self._print_update()
-            self._stream_flush()
-        self._finish()
+        if next_perc > self.last_progress and self.active:
+            self.last_progress = next_perc
+            self._stream_out('\r[%3d %%]' % (self.last_progress))
+            if self.track:
+                self._stream_out(' elapsed[sec]: {:.3f}'.format(self._elapsed()))
+                self._print_eta()
+            if self.item_id:
+                self._print_item_id()
+
+

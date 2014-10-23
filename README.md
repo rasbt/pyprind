@@ -11,9 +11,12 @@ at runtime about the progress of the computation.
 
 <br>
 
-![Screenshot from iPython notebook](https://raw.githubusercontent.com/rasbt/pyprind/master/images/overview.png)
+![Screenshot of Pypring executed in an IPython notebook](https://raw.githubusercontent.com/rasbt/pyprind/master/images/overview.png)
 
-- [Open an IPython Demo Notebook in nbviewer](http://nbviewer.ipython.org/github/rasbt/pyprind/blob/master/examples/pyprind_demo.ipynb)
+(Screenshot of Pypring executed in an IPython notebook)
+
+
+###[View more examples in an IPython Demo Notebook](http://nbviewer.ipython.org/github/rasbt/pyprind/blob/master/examples/pyprind_demo.ipynb)
 
 <br>
 **Example demonstration videos:**  
@@ -32,7 +35,7 @@ at runtime about the progress of the computation.
 - [Installation](#installation)
 - [More Examples](#examples)
 - [Documentation](#documentation)
-- [Optional Parameters](#options)
+- [Examples](#examples)
 - [Contact](#contact)
 - [Changelog](#changelog)
 
@@ -41,7 +44,7 @@ at runtime about the progress of the computation.
 <br>
 <br>
 
-<p><a name="installation"></a></p>
+<p><a id="installation"></a></p>
 <br>
 <br>
 <br>
@@ -62,7 +65,7 @@ or
 
 
 
-<p><a name="documentation"></a></p>
+<p><a id="documentation"></a></p>
 <br>
 <br>
 <br>
@@ -87,7 +90,7 @@ for i in range(n):
 </pre>
 
 
-<p><a name="optional"></a></p>
+<p><a id="optional"></a></p>
 <br>
 <br>
 <br>
@@ -135,20 +138,19 @@ for i in range(n):
 
 
 
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">update</span>(<span style="color: #007020">self</span>, iterations<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">1</span>, item_id<span style="color: #333333">=</span><span style="color: #008800; font-weight: bold">None</span>):
+    <span style="color: #DD4422">&quot;&quot;&quot;</span>
+<span style="color: #DD4422">    Updates the progress bar / percentage indicator in every iteration of the task.</span>
 
+<span style="color: #DD4422">    Keyword arguments:</span>
+<span style="color: #DD4422">        iterations (int): default argument can be changed to integer values</span>
+<span style="color: #DD4422">            &gt;=1 in order to update the progress indicators more than once </span>
+<span style="color: #DD4422">            per iteration.</span>
+<span style="color: #DD4422">        item_id (str): prints item id behind the progress bar.</span>
 
-
-<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">    <span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">update</span>(<span style="color: #007020">self</span>, iterations<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">1</span>):
-        <span style="color: #DD4422">&quot;&quot;&quot;</span>
-<span style="color: #DD4422">        Updates the progress bar in every iteration of the task.</span>
-
-<span style="color: #DD4422">        Keyword arguments:</span>
-<span style="color: #DD4422">            iterations (int): default argument can be changed to integer values</span>
-<span style="color: #DD4422">                &gt;=1 in order to update the progress indicators more than once </span>
-<span style="color: #DD4422">                per iteration.</span>
-
-<span style="color: #DD4422">        &quot;&quot;&quot;</span>
+<span style="color: #DD4422">    &quot;&quot;&quot;</span>  
 </pre></div>
+
 
 <br>
 <br>
@@ -289,13 +291,13 @@ This uglyfies `pyprind` output, so ensure the write function gets passed `ending
 `pyprind` will NOT do this for you.
 
 
-<p><a name="examples"></a></p>
+<p><a id="examples"></a></p>
 
 <br>
 <br>
 <br>
 
-## More Examples
+## Examples
 [[back to top](#sections)]
 
 A subset of examples is given in the section below, more examples can be found in this [IPython Demo Notebook](http://nbviewer.ipython.org/github/rasbt/pyprind/blob/master/examples/pyprind_demo.ipynb).
@@ -349,55 +351,7 @@ for i in range(n):
 <br>
 <br>
 
-### Example - Progress Bar (all arguments)
-[[back to top](#sections)]
-
-<pre>import pyprind
-n = 1000000
-    my_bar = pyprind.ProgBar(n, stream=1, width=30, track_time=True, title='My Progress Bar', monitor=True)
-    for i in range(n):
-        # do some computation
-        my_bar.update()
-    print(my_bar)
-</pre>
- 
-**Screen Output**  
-<pre>My Progress Bar
-0%                          100%
-[##############################] | ETA[sec]: 0.000 
-Title: Progress Bar
-                      Started: 04/18/2014 19:23:10
-                      Finished: 04/18/2014 19:23:22
-                      Total time elapsed: 11.272 sec
-                      CPU %: 54.400000
-                      Memory %: 0.098085
-</pre>
-
-<br>
-<br>
-<br>
-### Example - Percent Indicator (all arguments)
-[[back to top](#sections)]
-
-<pre>import pyprind
-n = 1000000
-    my_per = pyprind.ProgPercent(n, stream=1, track_time=True, title='My Percent Indicator', monitor=True)
-    for i in range(n):
-        # do some computation
-        my_per.update()
-    print(my_per)
-</pre>
- 
-**Screen Output**  
-<pre>My Percent Indicator
-[100 %] elapsed [sec]: 4.205 | ETA[sec]: 0.000 
-Title: My Percent Indicator
-                      Started: 04/18/2014 19:23:26
-                      Finished: 04/18/2014 19:23:38
-                      Total time elapsed: 11.775 sec
-                      CPU %: 44.000000
-                      Memory %: 0.097990
-</pre>
+###[View more examples in an IPython Demo Notebook](http://nbviewer.ipython.org/github/rasbt/pyprind/blob/master/examples/pyprind_demo.ipynb)
 
 <br>
 <br>
@@ -425,12 +379,30 @@ The `pyprind` module can be found on GitHub at [https://github.com/rasbt/pyprind
 [[back to top](#sections)]
 
 
+**VERSION 2.8.0**
+
+- A new `.stop()` method to stop the progress bar / percentage indicator early.
+- `.update()` method accepts an `item_id` argument now in order to display
+  which item is currently processed next to the progress bar / percentage indicator.
+  E.g.,  
+
+	Job1
+	0%                100%
+	[####################] | ETA[sec]: 0.000 | Item ID: file_xyz.csv
+
+
+**VERSION 2.7.0**
+
+- Version intentionally skipped to not cause confusion that
+  this is a tool exclusively for Python 2.7
+
+
 **VERSION 2.6.2**
 
 - Fixed bug that the report was squeezed after the bar and before the "time elapsed" string if printed immediately after the progress bar has reached 100%.
 
-**VERSION 2.6.1**
 
+**VERSION 2.6.1**
 
 - small bugfix on some system a warning was printed although
   a valid output string was provided

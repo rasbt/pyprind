@@ -1,3 +1,22 @@
+VERSION 2.8.0
+================
+
+- A new `.stop()` method to stop the progress bar / percentage indicator early.
+- `.update()` method accepts an `item_id` argument now in order to display
+  which item is currently processed next to the progress bar / percentage indicator.
+  E.g.,
+	Job1
+	0%                100%
+	[####################] | ETA[sec]: 0.000 | Item ID: file_xyz.csv
+
+
+VERSION 2.7.0
+================
+
+- Version intentionally skipped to not cause confusion that
+  this is a tool exclusively for Python 2.7
+
+
 VERSION 2.6.2
 ================
 

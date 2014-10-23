@@ -6,7 +6,7 @@
 
 from math import floor
 from pyprind.prog_class import Prog
-
+import time
 
 class ProgBar(Prog):
     """
@@ -37,6 +37,8 @@ class ProgBar(Prog):
             except AttributeError: # old version of psutil
                 cpu_total = self.process.cpu_percent()
                 mem_total = self.process.memory_percent()   
+        if self.item_id:
+            self._print_item_id()
 
     def _adjust_width(self):
         """Shrinks bar if number of iterations is less than the bar width"""
@@ -57,29 +59,15 @@ class ProgBar(Prog):
         # int() fix for Python 2 users
         self._stream_flush()
 
-    def _print_eta(self):
-        self._stream_out(' | ETA[sec]: {:.3f} '.format(self._calc_eta()))
-        self._stream_flush()
-
-    def _print_bar(self):
+    def _print(self):
         progress = floor(self._calc_percent() / 100 * self.bar_width)
-        if progress > self.last_progress:
+        if progress > self.last_progress and self.active:
             self._stream_out('\r')
             self._print_progress_bar(progress)
-            if self._calc_eta() and self.track:
+            if self.track:
                 self._print_eta()
+            if self.item_id:
+                self._print_item_id()
         self.last_progress = progress
-
-    def update(self, iterations=1):
-        """
-        Updates the progress bar in every iteration of the task.
-
-        Keyword arguments:
-            iterations (int): default argument can be changed to integer values
-                >=1 in order to update the progress indicators more than once 
-                per iteration.
-
-        """
-        self.cnt += iterations
-        self._print_bar()
-        self._finish() 
+    
+        
