@@ -42,7 +42,7 @@ A short video demonstration of the progress tracking can be found on YouTube:
 http://youtu.be/iWjSGe89Pvs
 
 
- Contact
+Contact
 =============
 
 If you have any questions or comments about PyPrind, please feel free to contact me via
