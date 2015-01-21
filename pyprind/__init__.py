@@ -17,6 +17,10 @@ Example - Progress Bar
    for i in range(n):
        # do some computation
        my_prbar.update()
+
+   for i in pyprind.prog_bar(range(n)):
+       # do something
+       pass
    ```
 
 Example - Percentage Indicator
@@ -28,11 +32,30 @@ Example - Percentage Indicator
    for i in range(n):
        # do some computation
        my_perc.update()
+
+   for i in pyprind.prog_percent(range(n)):
+       # do something
+       pass
    ```
 
 """
 
 from .progbar import ProgBar
 from .progpercent import ProgPercent
+
+
+def generator_factory(mother_class):
+    def generator_progress(iteritem, iterations=None, *args, **kw):
+        if iterations is None:
+            iterations = len(iteritem)
+        assert iterations
+        mbar = mother_class(iterations, *args, **kw)
+        for item in iteritem:
+            yield item
+            mbar.update()
+    return generator_progress
+
+prog_percent = generator_factory(ProgPercent)
+prog_bar = generator_factory(ProgBar)
 
 __version__ = '2.8.0'

@@ -46,4 +46,3 @@ class ProgPercent(Prog):
             if self.item_id:
                 self._print_item_id()
 
-
