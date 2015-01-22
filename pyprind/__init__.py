@@ -58,4 +58,4 @@ def generator_factory(mother_class):
 prog_percent = generator_factory(ProgPercent)
 prog_bar = generator_factory(ProgBar)
 
-__version__ = '2.8.0'
+__version__ = '2.9.0'

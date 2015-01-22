@@ -379,6 +379,20 @@ The `pyprind` module can be found on GitHub at [https://github.com/rasbt/pyprind
 [[back to top](#sections)]
 
 
+**VERSION 2.9.0**
+
+- New generator functions for progress bar and percentage indicators via:
+
+    for i in pyprind.prog_bar(range(n)):
+        # do something
+        pass
+
+    for i in pyprind.prog_percent(range(n)):
+        # do something
+        pass
+
+(by [Taylan Aydinli](https://github.com/taylan))
+
 **VERSION 2.8.0**
 
 - A new `.stop()` method to stop the progress bar / percentage indicator early.

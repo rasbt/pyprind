@@ -1,3 +1,20 @@
+VERSION 2.9.0
+================
+
+
+- New generator functions for progress bar and percentage indicators via:
+
+    for i in pyprind.prog_bar(range(n)):
+        # do something
+        pass
+
+    for i in pyprind.prog_percent(range(n)):
+        # do something
+        pass
+
+(by Taylan Aydinli)
+
+
 VERSION 2.8.0
 ================
 
