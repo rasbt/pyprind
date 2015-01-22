@@ -11,7 +11,14 @@ at runtime about the progress of the computation.
 
 <br>
 
+#### Progress Bars and Percentage Indicators
+
 ![Screenshot of PyPrind executed in an IPython notebook](https://raw.githubusercontent.com/rasbt/pyprind/master/images/overview_1.png)
+
+<br>
+<br>
+
+#### Advanced Tracking
 
 ![Screenshot of PyPrind executed in an IPython notebook](https://raw.githubusercontent.com/rasbt/pyprind/master/images/overview_2.png)
 
