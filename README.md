@@ -391,7 +391,7 @@ The `pyprind` module can be found on GitHub at [https://github.com/rasbt/pyprind
         # do something
         pass
 
-(by [Taylan Aydinli](https://github.com/taylan))
+(by [Olaf Gladis](https://github.com/hwmrocker))
 
 **VERSION 2.8.0**
 
