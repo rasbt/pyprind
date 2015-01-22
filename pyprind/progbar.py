@@ -9,19 +9,31 @@ from pyprind.prog_class import Prog
 import time
 
 class ProgBar(Prog):
-    """
+    """ 
     Initializes a progress bar object that allows visuzalization
     of an iterational computation in the standard output screen. 
-
-    Keyword Arguments:
-        iterations (int): number of iterations of the computation
-        track_time (bool): default True. Prints elapsed time when loop has finished
-        width (int): default 30. Sets the progress bar width in characters.
-        stream (int): default 2. Takes 1 for stdout, 2 for stderr, or given stream object
-        title (str): default ''. A title for the progress bar
-        monitor (bool): default False. Monitors CPU and memory usage if True 
-            (requires 'psutil' package).
-
+        
+    Parameters
+    ----------
+    iterations : `int`
+      Number of iterations for the iterative computation.
+    
+    track_time : `bool` (default = `True`) 
+      Prints elapsed time when loop has finished.
+      
+    width : `int` (default = 30)
+      Sets the progress bar width in characters.
+        
+    stream : `int` (default = 2). 
+      Setting the output stream. 
+      Takes `1` for stdout, `2` for stderr, or a custom stream object
+    
+    title : `str` (default = `''`). 
+      Setting a title for the progress bar.
+      
+    monitor : `bool` (default = False)
+      Monitors CPU and memory usage if `True` (requires `psutil` package).  
+      
     """
     def __init__(self, iterations, track_time=True, width=30, stream=2, title='', monitor=False):
         Prog.__init__(self, iterations, track_time, stream, title, monitor)

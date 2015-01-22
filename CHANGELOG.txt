@@ -1,3 +1,14 @@
+VERSION 2.9.1
+================
+
+- Minor reorganization of the generator interface.
+
+- Minor changes to the code documentation.
+
+- Added new test files.
+
+
+
 VERSION 2.9.0
 ================
 
@@ -12,7 +23,8 @@ VERSION 2.9.0
         # do something
         pass
 
-(by Taylan Aydinli)
+(by Olaf Gladis, https://github.com/hwmrocker)
+
 
 
 VERSION 2.8.0
@@ -31,7 +43,7 @@ VERSION 2.7.0
 ================
 
 - Version intentionally skipped to not cause confusion that
-  this is a tool exclusively for Python 2.7
+  this is a tool exclusively for Python 2.7.
 
 
 VERSION 2.6.2
@@ -43,8 +55,8 @@ VERSION 2.6.2
 VERSION 2.6.1
 ================
 
-- small bugfix on some system a warning was printed although
-  a valid output string was provided
+- Small bugfix on some system a warning was printed although
+  a valid output string was provided.
 
 
 VERSION 2.6.0
@@ -57,50 +69,51 @@ VERSION 2.6.0
 VERSION 2.5.0
 ================
 
-- new default argument `monitor=False` was added to `ProgBar()` and `ProgPercent()` objects to monitor memory and CPU usage (via `psutil`) if `monitor` is set to True.
+- New default argument `monitor=False` was added to `ProgBar()` and `ProgPercent()` objects to monitor memory and CPU usage (via `psutil`) if `monitor` is set to True.
 
 
 VERSION 2.4.0
 ================
 
-- default argument for `.update(iterations=1)` methods to increment the count by more than 1 per
+- Default argument for `.update(iterations=1)` methods to increment the count by more than 1 per
   iteration.
 
 
 VERSION 2.3.1
 ================
 
-- minor fix of the output formatting
+- Minor fix of the output formatting.
 
 
 VERSION 2.3.0
 ================
 
-- added native print() support
-  prints title and elapsed time of an tracked object after loop completed
-- data member self.end stores elapsed time when loop completed
-- data member self.title saves title of the tracking objects
+- Added native print() support
+  prints title and elapsed time of an tracked object after loop completed.
+- Data member self.end stores elapsed time when loop completed.
+- Data member self.title saves title of the tracking objects.
 
 
 VERSION 2.2.0
 ================
 
 - added ETA (estimated time until arrival) tracking to progress bar  
-  by Taylan Aydinli
-- better support for Python 2.x
+  (by Taylan Aydinli).
+- better support for Python 2.x.
+
 
 
 VERSION 2.1.1
 ================
 
-- changed visuals of the printed progress for percentage indicators  
+- Changed visuals of the printed progress for percentage indicators.
 
 
 VERSION 2.1.0
 ================
 
 - added ETA (estimated time until arrival) tracking to percentage indicator  
-  by Taylan Aydinli
+  (by Taylan Aydinli, https://github.com/taylan)
 
 
 VERSION 2.0.3
@@ -115,12 +128,12 @@ VERSION 2.0.2
 - Fixed bug that occurred for some Python 3.3.3 users
 specifically on Linux Red Hat 4.4.7-1, GCC v. 4.4.7
 that self.max_iter was cast to a float when `ProgBar()`
-object was seeded with n=48
+object was seeded with n=48.
 
 
 VERSION 2.0.1
 ================
-- fixed packaging of example files
+- Fixed packaging of example files.
 
 
 VERSION 2.0.0
@@ -134,13 +147,13 @@ VERSION 2.0.0
 
 
 - Does not redirect data to the standard output or error stream if program is not
-  outputting to a terminal
+  outputting to a terminal.
 
  
 
 VERSION 1.1.1
 ==============
-- fixed problem with packaging of example scripts
+- Fixed problem with packaging of example scripts.
 
 VERSION 1.1.0
 ===============
@@ -159,20 +172,20 @@ VERSION 1.0.4
 
 VERSION 1.0.3
 ===============
-- Reformatting of README files
-- minor updates in setup.py file
+- Reformatting of README files.
+- Minor updates in setup.py file.
 
 
 VERSION 1.0.2
 ===============
-- corrected errors in the README files
-- added docstring to the __init__.py
+- Corrected errors in the README files.
+- Added docstring to the __init__.py
 
 
 VERSION 1.0.1
 ===============
 
-- added more README formats
-- added class descriptions
-- added example scripts to the distribution
+- Added more README formats.
+- Added class descriptions.
+- Added example scripts to the distribution.
 
