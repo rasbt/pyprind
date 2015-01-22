@@ -42,20 +42,10 @@ Example - Percentage Indicator
 
 from .progbar import ProgBar
 from .progpercent import ProgPercent
+from .generator_factory import prog_percent
+from .generator_factory import prog_bar
 
 
-def generator_factory(mother_class):
-    def generator_progress(iteritem, iterations=None, *args, **kw):
-        if iterations is None:
-            iterations = len(iteritem)
-        assert iterations
-        mbar = mother_class(iterations, *args, **kw)
-        for item in iteritem:
-            yield item
-            mbar.update()
-    return generator_progress
 
-prog_percent = generator_factory(ProgPercent)
-prog_bar = generator_factory(ProgBar)
 
-__version__ = '2.9.0'
+__version__ = '2.9.1'
