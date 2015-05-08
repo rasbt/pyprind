@@ -1,3 +1,8 @@
+[![PyPI version](https://badge.fury.io/py/pyprind.svg)](http://badge.fury.io/py/pyprind)
+![Python 2.7](https://img.shields.io/badge/python-2.7-blue.svg)
+![Python 3.4](https://img.shields.io/badge/python-3.4-blue.svg)
+![Python 3.4](https://img.shields.io/badge/license-GPLv3-blue.svg)
+
 # PyPrind (Python Progress Indicator)
 
 
@@ -17,6 +22,8 @@ at runtime about the progress of the computation.
 
 <br>
 <br>
+
+<a id='advanced_tracking'>
 
 #### Advanced Tracking
 
@@ -41,6 +48,33 @@ at runtime about the progress of the computation.
 - [Examples](#examples)
 - [Contact](#contact)
 - [Changelog](https://raw.githubusercontent.com/rasbt/pyprind/master/CHANGELOG.txt)
+
+
+<p><a id="installation"></a></p>
+<br>
+<br>
+<br>
+
+# Installation
+[[back to top](#sections)]
+
+The most convenient way to install PyPrind is via tools like `pip` or `easy_install`:
+
+- `pip install pyprind`  
+
+-  `easy_install pyprind`  
+
+
+
+PyPrind comes without any dependencies except for the optional [psutil](https://pypi.python.org/pypi/psutil) to [monitor CPU and memory usages](#advanced_tracking). You can install `psutil` via `pip install pyprind` or install it automatically with PyPrind:  
+ `pip install pyprind -r requirements.txt` 
+
+
+
+Alternatively, you can install PyPrind the classic way: Download the package from the Python Package Index [https://pypi.python.org/pypi/PyPrind](https://pypi.python.org/pypi/PyPrind), unzip it, navigate into the unzipped directory, and use the command
+
+`python setup.py install`  
+
 
 
 

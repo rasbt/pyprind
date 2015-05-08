@@ -48,4 +48,4 @@ from .generator_factory import prog_bar
 
 
 
-__version__ = '2.9.1'
+__version__ = '2.9.2'

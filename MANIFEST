@@ -12,7 +12,7 @@ examples/ex2_progressbar_allargs.py
 examples/ex3_percentage_indicator_monitor.py
 examples/ex3_progress_bar_monitor.py
 pyprind/__init__.py
+pyprind/generator_factory.py
 pyprind/prog_class.py
 pyprind/progbar.py
 pyprind/progpercent.py
-test/test_small_progbar.py

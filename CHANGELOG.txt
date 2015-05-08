@@ -1,10 +1,16 @@
+VERSION 2.9.2
+================
+
+- support for psutil >= 2.0 and < 2.0.
+- removed psutil from the setup requirements and made it's installation 
+  optional via "pip install pyprind -r requirements.txt"
+ 
+
 VERSION 2.9.1
 ================
 
 - Minor reorganization of the generator interface.
-
 - Minor changes to the code documentation.
-
 - Added new test files.
 
 
