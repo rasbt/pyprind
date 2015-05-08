@@ -139,11 +139,11 @@ class Prog():
                                                                str_end, self.total_time)
         else:
             try:
+                cpu_total = self.process.cpu_percent()
+                mem_total = self.process.memory_percent()
+            except AttributeError: # old version of psutil
                 cpu_total = self.process.get_cpu_percent()
                 mem_total = self.process.get_memory_percent()
-            except AttributeError: # old version of psutil
-                cpu_total = self.process.cpu_percent()
-                mem_total = self.process.memory_percent()    
 
             return 'Title: {}\n'\
                    '  Started: {}\n'\
