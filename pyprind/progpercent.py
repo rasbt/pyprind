@@ -37,11 +37,11 @@ class ProgPercent(Prog):
         self._print()
         if monitor:
             try:
+                self.process.cpu_percent()
+                self.process.memory_percent()
+            except AttributeError: # old version of psutil
                 self.process.get_cpu_percent()
                 self.process.get_memory_percent()
-            except AttributeError: # old version of psutil
-                cpu_total = self.process.cpu_percent()
-                mem_total = self.process.memory_percent()   
 
 
     def _print(self):
