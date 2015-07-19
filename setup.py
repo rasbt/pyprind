@@ -1,25 +1,25 @@
 from distutils.core import setup
 
 setup(name='PyPrind',
-      version='2.9.2',
+      version='2.9.3',
       description='Python Progress Indicator Utility',
       author='Sebastian Raschka',
       author_email='se.raschka@gmail.com',
       url='https://github.com/rasbt/pyprind',
       packages=['pyprind'],
-      data_files = [('', ['LICENSE.txt']),
-                    ('', ['README.html']),
-                    ('', ['CHANGELOG.txt']),
-                    ('', ['requirements.txt']),
-                    ('examples', ['examples/ex1_percentage_indicator_stderr.py']),
-                    ('examples', ['examples/ex1_percentage_indicator_stdout.py']),
-                    ('examples', ['examples/ex1_progress_bar_stderr.py']),
-                    ('examples', ['examples/ex1_progress_bar_stdout.py']),
-                    ('examples', ['examples/ex2_percent_indicator_allargs.py']),
-                    ('examples', ['examples/ex2_progressbar_allargs.py']),
-                    ('examples', ['examples/ex3_percentage_indicator_monitor.py']),
-                    ('examples', ['examples/ex3_progress_bar_monitor.py']),
-                   ],
+      data_files=[('', ['LICENSE.txt']),
+                  ('', ['README.html']),
+                  ('', ['CHANGELOG.txt']),
+                  ('', ['requirements.txt']),
+                  ('examples', ['examples/ex1_percentage_indicator_stderr.py']),
+                  ('examples', ['examples/ex1_percentage_indicator_stdout.py']),
+                  ('examples', ['examples/ex1_progress_bar_stderr.py']),
+                  ('examples', ['examples/ex1_progress_bar_stdout.py']),
+                  ('examples', ['examples/ex2_percent_indicator_allargs.py']),
+                  ('examples', ['examples/ex2_progressbar_allargs.py']),
+                  ('examples', ['examples/ex3_percentage_indicator_monitor.py']),
+                  ('examples', ['examples/ex3_progress_bar_monitor.py']),
+                  ],
       license='GPLv3',
       platforms='any',
       classifiers=[
@@ -46,8 +46,7 @@ Contact
 =============
 
 If you have any questions or comments about PyPrind, please feel free to contact me via
-eMail: se.raschka@gmail.com
+email: se.raschka@gmail.com
 or Twitter: https://twitter.com/rasbt
 
-""",
-    )
+""",)

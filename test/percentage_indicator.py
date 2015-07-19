@@ -10,7 +10,6 @@ perc = pyprind.ProgPercent(n)
 for i in range(n):
     perc.update()
 
- 
 print('\n%s' % (80 * '='))
 print('%s\n' % (80 * '='))
 print('Testing stdout Stream\n')
@@ -43,7 +42,7 @@ print('\n%s' % (80 * '='))
 print('%s\n' % (80 * '='))
 print('Testing Item Tracking\n')
 
-items = ['file_%s.csv' %i for i in range(0,n)]
+items = ['file_%s.csv' % i for i in range(0, n)]
 perc = pyprind.ProgPercent(len(items))
 for i in items:
     # do some computation

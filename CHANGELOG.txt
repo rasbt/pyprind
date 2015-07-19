@@ -1,3 +1,10 @@
+VERSION 2.9.3
+================
+- some PEP8 adjustments and code cleanup
+- new `bar` argument for ProgressBar to use
+  your favorite bar style (by Konstantin Tolstikhin)
+
+
 VERSION 2.9.2
 ================
 
