@@ -59,3 +59,14 @@ bar = pyprind.ProgBar(len(items))
 for i in items:
     # do some computation
     bar.update(item_id=i)
+
+
+
+print('\n%s' % (80 * '='))
+print('%s\n' % (80 * '='))
+print("Testing Progress Bar Character ('>', default: '#')\n")
+
+n = 1000000
+bar = pyprind.ProgBar(n, bar_char='>')
+for i in range(n):
+    bar.update()
