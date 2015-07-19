@@ -35,10 +35,11 @@ class ProgBar(Prog):
       Monitors CPU and memory usage if `True` (requires `psutil` package).  
       
     """
-    def __init__(self, iterations, track_time=True, width=30, stream=2, title='', monitor=False):
+    def __init__(self, iterations, track_time=True, width=30, bar_char='#', stream=2, title='', monitor=False):
         Prog.__init__(self, iterations, track_time, stream, title, monitor)
         self.bar_width = width
         self._adjust_width()
+        self.bar_char = bar_char
         self.last_progress = 0
         self._print_labels()
         self._print_progress_bar(0)
@@ -67,7 +68,7 @@ class ProgBar(Prog):
 
     def _print_progress_bar(self, progress):
         remaining = self.bar_width - progress
-        self._stream_out('[{}{}]'.format('#' * int(progress), ' ' * int(remaining)))
+        self._stream_out('[{}{}]'.format(self.bar_char * int(progress), ' ' * int(remaining)))
         # int() fix for Python 2 users
         self._stream_flush()
 
