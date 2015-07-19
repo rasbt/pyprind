@@ -131,13 +131,13 @@ class Prog():
         str_start = time.strftime('%m/%d/%Y %H:%M:%S', time.localtime(self.start))
         str_end = time.strftime('%m/%d/%Y %H:%M:%S', time.localtime(self.end))
         self._stream_flush()
-        if not self.monitor:
-            return 'Title: {}\n'\
-                   '  Started: {}\n'\
-                   '  Finished: {}\n'\
-                   '  Total time elapsed: {:.3f} sec'.format(self.title, str_start, 
-                                                               str_end, self.total_time)
-        else:
+
+        time_info = 'Title: {}\n'\
+                    '  Started: {}\n'\
+                    '  Finished: {}\n'\
+                    '  Total time elapsed: {:.3f} sec'.format(self.title, str_start, 
+                                                              str_end, self.total_time)
+        if self.monitor:
             try:
                 cpu_total = self.process.cpu_percent()
                 mem_total = self.process.memory_percent()
@@ -145,12 +145,12 @@ class Prog():
                 cpu_total = self.process.get_cpu_percent()
                 mem_total = self.process.get_memory_percent()
 
-            return 'Title: {}\n'\
-                   '  Started: {}\n'\
-                   '  Finished: {}\n'\
-                   '  Total time elapsed: {:.3f} sec\n'\
-                   '  CPU %: {:2f}\n'\
-                   '  Memory %: {:2f}'.format(self.title, str_start, str_end, self.total_time, cpu_total, mem_total)
+            cpu_mem_info = '  CPU %: {:2f}\n'\
+                           '  Memory %: {:2f}'.format(cpu_total, mem_total)
+
+            return time_info + '\n' + cpu_mem_info
+        else:
+            return time_info
 
     def __str__(self):
         return self.__repr__()
