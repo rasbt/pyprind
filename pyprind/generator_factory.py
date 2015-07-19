@@ -1,6 +1,7 @@
 from .progbar import ProgBar
 from .progpercent import ProgPercent
 
+
 def generator_factory(mother_class):
     def generator_progress(iteritem, iterations=None, *args, **kw):
         if iterations is None:
@@ -14,5 +15,3 @@ def generator_factory(mother_class):
 
 prog_percent = generator_factory(ProgPercent)
 prog_bar = generator_factory(ProgBar)
-    
-        

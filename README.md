@@ -29,7 +29,8 @@ at runtime about the progress of the computation.
 
 ![Screenshot of PyPrind executed in an IPython notebook](https://raw.githubusercontent.com/rasbt/pyprind/master/images/overview_2.png)
 
-
+#### Choose Your Favorite Bar Style
+![Screenshot of PyPrind executed in an IPython notebook](https://raw.githubusercontent.com/rasbt/pyprind/master/images/overview_3.png)
 
 
 ###[View more examples in an IPython Demo Notebook](http://nbviewer.ipython.org/github/rasbt/pyprind/blob/master/examples/pyprind_demo.ipynb)
