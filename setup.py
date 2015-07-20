@@ -1,4 +1,4 @@
-from distutils.core import setup
+from setuptools import setup
 
 setup(name='PyPrind',
       version='2.9.3',
@@ -10,7 +10,6 @@ setup(name='PyPrind',
       data_files=[('', ['LICENSE.txt']),
                   ('', ['README.html']),
                   ('', ['CHANGELOG.txt']),
-                  ('', ['requirements.txt']),
                   ('examples', ['examples/ex1_percentage_indicator_stderr.py']),
                   ('examples', ['examples/ex1_percentage_indicator_stdout.py']),
                   ('examples', ['examples/ex1_progress_bar_stderr.py']),
