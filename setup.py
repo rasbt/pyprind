@@ -10,7 +10,6 @@ setup(name='PyPrind',
       data_files=[('', ['LICENSE.txt']),
                   ('', ['README.html']),
                   ('', ['CHANGELOG.txt']),
-                  ('', ['requirements.txt']),
                   ('examples', ['examples/ex1_percentage_indicator_stderr.py']),
                   ('examples', ['examples/ex1_percentage_indicator_stdout.py']),
                   ('examples', ['examples/ex1_progress_bar_stderr.py']),
@@ -36,11 +35,8 @@ object that let you track the progress of a loop structure or other iterative co
 Typical applications include the processing of large data sets to provide an intuitive estimate
 at runtime about the progress of the computation.
 
-For more details and examples please see the package documentation.
-
-A short video demonstration of the progress tracking can be found on YouTube:
-http://youtu.be/iWjSGe89Pvs
-
+For more details and examples please see the package documentation
+https://github.com/rasbt/pyprind/blob/master/README.md.
 
 Contact
 =============
