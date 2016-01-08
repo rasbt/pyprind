@@ -113,7 +113,7 @@ class Prog():
     		ans += str(minutes) + ' min '
     	if (time):
     		ans += str(sec) + ' sec     '  # To erase the initial sec
-    	return ans;
+    	return ans
 
     def _finish(self):
         """ Determines if maximum number of iterations (seed) is reached. """
