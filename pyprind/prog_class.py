@@ -95,6 +95,25 @@ class Prog():
     def _no_stream(self, text=None):
         """ Called when no valid output stream is available. """
         pass
+    
+    def _get_time(self, time):
+    	ans = ''
+    	days = int(time // 86400)
+    	time -= 86400 * days
+    	hrs = int(time // 3600)
+    	time -= 3600 * hrs 
+    	minutes = int(time // 60)
+    	time -= 60 * minutes
+    	sec = int(round(time))
+    	if (days):
+    		ans += str(days) + ' day '
+    	if (hrs):
+    		ans += str(hrs) + ' hour '
+    	if (minutes):
+    		ans += str(minutes) + ' min '
+    	if (time):
+    		ans += str(sec) + ' sec     '  # To erase the initial sec
+    	return ans;
 
     def _finish(self):
         """ Determines if maximum number of iterations (seed) is reached. """
@@ -104,7 +123,7 @@ class Prog():
             self.last_progress -= 1  # to force a refreshed _print()
             self._print()
             if self.track:
-                self._stream_out('\nTotal time elapsed: {:.3f} sec'.format(self.total_time))
+                self._stream_out('\nTotal time elapsed: ' + self._get_time(self.total_time))
             self._stream_out('\n')
             self.active = False
 
@@ -117,7 +136,7 @@ class Prog():
     def _print_eta(self):
         """ Prints the estimated time left."""
         self._calc_eta()
-        self._stream_out(' | ETA[sec]: {:.3f} '.format(self.eta))
+        self._stream_out(' | ETA: ' + self._get_time(self.eta))
         self._stream_flush()
 
     def _print_item_id(self):
@@ -133,9 +152,9 @@ class Prog():
         time_info = 'Title: {}\n'\
                     '  Started: {}\n'\
                     '  Finished: {}\n'\
-                    '  Total time elapsed: {:.3f} sec'.format(
+                    '  Total time elapsed: '.format(
                             self.title, str_start,
-                            str_end, self.total_time)
+                            str_end) + self._get_time(self.total_time)
         if self.monitor:
             try:
                 cpu_total = self.process.cpu_percent()
