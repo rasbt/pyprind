@@ -96,24 +96,11 @@ class Prog():
         """ Called when no valid output stream is available. """
         pass
     
-    def _get_time(self, time):
-    	ans = ''
-    	days = int(time // 86400)
-    	time -= 86400 * days
-    	hrs = int(time // 3600)
-    	time -= 3600 * hrs 
-    	minutes = int(time // 60)
-    	time -= 60 * minutes
-    	sec = int(round(time))
-    	if (days):
-    		ans += str(days) + ' day '
-    	if (hrs):
-    		ans += str(hrs) + ' hour '
-    	if (minutes):
-    		ans += str(minutes) + ' min '
-    	if (time):
-    		ans += str(sec) + ' sec     '  # To erase the initial sec
-    	return ans
+    def _get_time(self, _time):
+		if (_time < 86400):
+			return time.strftime("%H:%M:%S", time.gmtime(_time))
+		else:
+			return str(_time//3600) + time.strftime("%H:%M:%S", time.gmtime(_time))[2:]
 
     def _finish(self):
         """ Determines if maximum number of iterations (seed) is reached. """
