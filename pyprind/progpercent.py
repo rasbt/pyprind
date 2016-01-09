@@ -51,7 +51,7 @@ class ProgPercent(Prog):
             self.last_progress = next_perc
             self._stream_out('\r[%3d %%]' % (self.last_progress))
             if self.track:
-                self._stream_out(' elapsed: ' + self._get_time(self._elapsed()))
+                self._stream_out(' Time elapsed: ' + self._get_time(self._elapsed()))
                 self._print_eta()
             if self.item_id:
                 self._print_item_id()
