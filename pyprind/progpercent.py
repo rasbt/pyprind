@@ -1,8 +1,9 @@
-# Sebastian Raschka 2014
-#
-# Progress Percentage class to instantiate a percentage indicator object
-# that is printed to the standard output screen to visualize the
-# progress in a iterative Python procedure
+# PyPrind
+# Author: Sebastian Raschka <mail@sebastianraschka.com>
+# Contributors: https://github.com/rasbt/pyprind/graphs/contributors
+# License: BSD 3 clause
+# Code Repository: https://github.com/rasbt/pyprind
+# PyPI: https://pypi.python.org/pypi/PyPrind
 
 from pyprind.prog_class import Prog
 
@@ -51,8 +52,7 @@ class ProgPercent(Prog):
             self.last_progress = next_perc
             self._stream_out('\r[%3d %%]' % (self.last_progress))
             if self.track:
-                self._stream_out(' elapsed[sec]: {:.3f}'.format(
-                                                            self._elapsed()))
+                self._stream_out(' Time elapsed: ' + self._get_time(self._elapsed()))
                 self._print_eta()
             if self.item_id:
                 self._print_item_id()

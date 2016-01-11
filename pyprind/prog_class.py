@@ -1,3 +1,10 @@
+# PyPrind
+# Author: Sebastian Raschka <mail@sebastianraschka.com>
+# Contributors: https://github.com/rasbt/pyprind/graphs/contributors
+# License: BSD 3 clause
+# Code Repository: https://github.com/rasbt/pyprind
+# PyPI: https://pypi.python.org/pypi/PyPrind
+
 import time
 import sys
 import os
@@ -96,6 +103,12 @@ class Prog():
         """ Called when no valid output stream is available. """
         pass
 
+    def _get_time(self, _time):
+        if (_time < 86400):
+            return time.strftime("%H:%M:%S", time.gmtime(_time))
+        else:
+            return str(int(_time//3600)) + ':' + time.strftime("%M:%S", time.gmtime(_time))
+
     def _finish(self):
         """ Determines if maximum number of iterations (seed) is reached. """
         if self.cnt == self.max_iter:
@@ -104,7 +117,7 @@ class Prog():
             self.last_progress -= 1  # to force a refreshed _print()
             self._print()
             if self.track:
-                self._stream_out('\nTotal time elapsed: {:.3f} sec'.format(self.total_time))
+                self._stream_out('\nTotal time elapsed: ' + self._get_time(self.total_time))
             self._stream_out('\n')
             self.active = False
 
@@ -117,12 +130,12 @@ class Prog():
     def _print_eta(self):
         """ Prints the estimated time left."""
         self._calc_eta()
-        self._stream_out(' | ETA[sec]: {:.3f} '.format(self.eta))
+        self._stream_out(' | ETA: ' + self._get_time(self.eta))
         self._stream_flush()
 
     def _print_item_id(self):
         """ Prints an item id behind the tracking object."""
-        self._stream_out('| Item ID: %s' % self.item_id)
+        self._stream_out(' | Item ID: %s' % self.item_id)
         self._stream_flush()
 
     def __repr__(self):
@@ -133,9 +146,9 @@ class Prog():
         time_info = 'Title: {}\n'\
                     '  Started: {}\n'\
                     '  Finished: {}\n'\
-                    '  Total time elapsed: {:.3f} sec'.format(
+                    '  Total time elapsed: '.format(
                             self.title, str_start,
-                            str_end, self.total_time)
+                            str_end) + self._get_time(self.total_time)
         if self.monitor:
             try:
                 cpu_total = self.process.cpu_percent()

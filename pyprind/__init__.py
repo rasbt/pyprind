@@ -1,5 +1,9 @@
-# Sebastian Raschka 01/27/2014
-# PyPrind - Python Progress Indicator module
+# PyPrind
+# Author: Sebastian Raschka <mail@sebastianraschka.com>
+# Contributors: https://github.com/rasbt/pyprind/graphs/contributors
+# License: BSD 3 clause
+# Code Repository: https://github.com/rasbt/pyprind
+# PyPI: https://pypi.python.org/pypi/PyPrind
 
 """ The PyPrind (Python Progress Indicator) module lets you visualize the
 progress of a programming task in Python via a progress bar or a
