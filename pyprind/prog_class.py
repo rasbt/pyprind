@@ -1,3 +1,10 @@
+# PyPrind
+# Author: Sebastian Raschka <mail@sebastianraschka.com>
+# Contributors: https://github.com/rasbt/pyprind/graphs/contributors
+# License: BSD 3 clause
+# Code Repository: https://github.com/rasbt/pyprind
+# PyPI: https://pypi.python.org/pypi/PyPrind
+
 import time
 import sys
 import os
@@ -95,12 +102,12 @@ class Prog():
     def _no_stream(self, text=None):
         """ Called when no valid output stream is available. """
         pass
-    
+
     def _get_time(self, _time):
-		if (_time < 86400):
-			return time.strftime("%H:%M:%S", time.gmtime(_time))
-		else:
-			return str(int(_time//3600)) + ':' + time.strftime("%M:%S", time.gmtime(_time))
+        if (_time < 86400):
+            return time.strftime("%H:%M:%S", time.gmtime(_time))
+        else:
+            return str(int(_time//3600)) + ':' + time.strftime("%M:%S", time.gmtime(_time))
 
     def _finish(self):
         """ Determines if maximum number of iterations (seed) is reached. """
@@ -128,7 +135,7 @@ class Prog():
 
     def _print_item_id(self):
         """ Prints an item id behind the tracking object."""
-        self._stream_out('| Item ID: %s' % self.item_id)
+        self._stream_out(' | Item ID: %s' % self.item_id)
         self._stream_flush()
 
     def __repr__(self):

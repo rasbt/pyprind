@@ -1,8 +1,9 @@
-# Sebastian Raschka 2014
-#
-# Progress Bar class to instantiate a progress bar object
-# that is printed to the standard output screen to visualize the
-# progress in a iterative Python procedure
+# PyPrind
+# Author: Sebastian Raschka <mail@sebastianraschka.com>
+# Contributors: https://github.com/rasbt/pyprind/graphs/contributors
+# License: BSD 3 clause
+# Code Repository: https://github.com/rasbt/pyprind
+# PyPI: https://pypi.python.org/pypi/PyPrind
 
 from math import floor
 from pyprind.prog_class import Prog
