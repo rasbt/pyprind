@@ -2,7 +2,6 @@
 [![License](https://img.shields.io/badge/license-new%20BSD-blue.svg)](https://github.com/rasbt/pyprind/blob/master/LICENSE.txt)
 ![Python 2.7](https://img.shields.io/badge/python-2.7-blue.svg)
 ![Python 3.4](https://img.shields.io/badge/python-3.4-blue.svg)
-![Python 3.4](https://img.shields.io/badge/license-GPLv3-blue.svg)
 
 # PyPrind (Python Progress Indicator)
 
