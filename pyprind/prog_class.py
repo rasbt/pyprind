@@ -60,7 +60,7 @@ class Prog():
         self._finish()
 
     def _check_stream(self):
-        """Determines which output stream (stdout, stderr, or custom) to use."""
+        """Determines which output stream (stdout, stderr, or custom) to use"""
         if self.stream:
             try:
                 if self.stream == 1 and os.isatty(sys.stdout.fileno()):
@@ -69,7 +69,9 @@ class Prog():
                 elif self.stream == 2 and os.isatty(sys.stderr.fileno()):
                     self._stream_out = sys.stderr.write
                     self._stream_flush = sys.stderr.flush
-            except UnsupportedOperation:  # a fix for IPython notebook "IOStream has no fileno."
+
+            # a fix for IPython notebook "IOStream has no fileno."
+            except UnsupportedOperation:
                 if self.stream == 1:
                     self._stream_out = sys.stdout.write
                     self._stream_flush = sys.stdout.flush
@@ -107,7 +109,9 @@ class Prog():
         if (_time < 86400):
             return time.strftime("%H:%M:%S", time.gmtime(_time))
         else:
-            return str(int(_time//3600)) + ':' + time.strftime("%M:%S", time.gmtime(_time))
+            s = (str(int(_time//3600)) + ':' +
+                 time.strftime("%M:%S", time.gmtime(_time)))
+            return s
 
     def _finish(self):
         """ Determines if maximum number of iterations (seed) is reached. """
@@ -117,7 +121,8 @@ class Prog():
             self.last_progress -= 1  # to force a refreshed _print()
             self._print()
             if self.track:
-                self._stream_out('\nTotal time elapsed: ' + self._get_time(self.total_time))
+                self._stream_out('\nTotal time elapsed: ' +
+                                 self._get_time(self.total_time))
             self._stream_out('\n')
             self.active = False
 
@@ -139,8 +144,10 @@ class Prog():
         self._stream_flush()
 
     def __repr__(self):
-        str_start = time.strftime('%m/%d/%Y %H:%M:%S', time.localtime(self.start))
-        str_end = time.strftime('%m/%d/%Y %H:%M:%S', time.localtime(self.end))
+        str_start = time.strftime('%m/%d/%Y %H:%M:%S',
+                                  time.localtime(self.start))
+        str_end = time.strftime('%m/%d/%Y %H:%M:%S',
+                                time.localtime(self.end))
         self._stream_flush()
 
         time_info = 'Title: {}\n'\
@@ -157,8 +164,8 @@ class Prog():
                 cpu_total = self.process.get_cpu_percent()
                 mem_total = self.process.get_memory_percent()
 
-            cpu_mem_info = '  CPU %: {:2f}\n'\
-                           '  Memory %: {:2f}'.format(cpu_total, mem_total)
+            cpu_mem_info = '  CPU %: {:.2f}\n'\
+                           '  Memory %: {:.2f}'.format(cpu_total, mem_total)
 
             return time_info + '\n' + cpu_mem_info
         else:

@@ -46,13 +46,15 @@ class ProgPercent(Prog):
                 self.process.get_memory_percent()
 
     def _print(self):
-        """ Prints formatted integer percentage and tracked time to the screen."""
+        """ Prints formatted percentage and tracked time to the screen."""
         next_perc = self._calc_percent()
-        if next_perc > self.last_progress and self.active:
+        if (next_perc > self.last_progress or
+                self.force_flush) and self.active:
             self.last_progress = next_perc
             self._stream_out('\r[%3d %%]' % (self.last_progress))
             if self.track:
-                self._stream_out(' Time elapsed: ' + self._get_time(self._elapsed()))
+                self._stream_out(' Time elapsed: ' +
+                                 self._get_time(self._elapsed()))
                 self._print_eta()
             if self.item_id:
                 self._print_item_id()

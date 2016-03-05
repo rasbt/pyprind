@@ -1,5 +1,4 @@
 import sys
-sys.path = ['/Users/Sebastian/Dropbox/_ot/code/pyprind'] + sys.path
 import time
 import pyprind
 
