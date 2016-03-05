@@ -1,7 +1,12 @@
+[![Build Status](https://travis-ci.org/rasbt/pyprind.svg?branch=master)](https://travis-ci.org/rasbt/pyprind)
+[![Code Health](https://landscape.io/github/rasbt/pyprind/master/landscape.svg?style=flat)](https://landscape.io/github/rasbt/pyprind/master)
+[![Coverage Status](https://coveralls.io/repos/rasbt/pyprind/badge.svg?branch=master&service=github)](https://coveralls.io/github/rasbt/pyprind?branch=master)
+![Python 2.7](https://img.shields.io/badge/python-2.7-blue.svg)
+![Python 3.5](https://img.shields.io/badge/python-3.5-blue.svg)
 [![PyPI version](https://badge.fury.io/py/pyprind.svg)](http://badge.fury.io/py/pyprind)
 [![License](https://img.shields.io/badge/license-new%20BSD-blue.svg)](https://github.com/rasbt/pyprind/blob/master/LICENSE.txt)
-![Python 2.7](https://img.shields.io/badge/python-2.7-blue.svg)
-![Python 3.4](https://img.shields.io/badge/python-3.4-blue.svg)
+
+
 
 # PyPrind (Python Progress Indicator)
 
@@ -12,7 +17,7 @@ at runtime about the progress of the computation.
 
 
 
-
+![PyPrind Demo](./images/pyprind-1.gif "PyPrind Demo")
 
 <br>
 
@@ -110,64 +115,67 @@ Alternatively, the progress can be tracked via the equivalent generator function
 
 <br>
 
-#### Complete Parameter List for ProgBar Objects
+#### Complete Parameter of Parameters and Options
 
-    class ProgBar(Prog):
-        """
-        Initializes a progress bar object that allows visuzalization
-        of an iterational computation in the standard output screen.
+##### ProgBar
 
-        Parameters
-        ----------
-        iterations : `int`
-          Number of iterations for the iterative computation.
+*`ProgBar(iterations, track_time=True, width=30, bar_char='#',
+               stream=2, title='', monitor=False, update_interval=None))`*
 
-        track_time : `bool` (default = `True`)
-          Prints elapsed time when loop has finished.
+- iterations : `int`  
+    Number of iterations for the iterative computation.
+- track_time : `bool` (default: `True`)  
+    Prints elapsed time when loop has finished.
+- width : `int` (default: 30)  
+    Sets the progress bar width in characters.
+- stream : `int` (default: 2).  
+    Setting the output stream.
+    Takes `1` for stdout, `2` for stderr, or a custom stream object
+- title : `str` (default:  `''`)  
+    Setting a title for the progress bar.
+- monitor : `bool` (default: `False`)  
+    Monitors CPU and memory usage if `True` (requires `psutil` package).
+- update_interval : float or int (default: `None`)  
+    The update_interval in seconds controls how often the progress
+    is flushed to the screen.
+    Automatic mode if `update_interval=None`.
 
-        width : `int` (default = 30)
-          Sets the progress bar width in characters.
+##### ProgPercent
 
-        stream : `int` (default = 2).
-          Setting the output stream.
-          Takes `1` for stdout, `2` for stderr, or a custom stream object
+*`ProgPercent(iterations, track_time=True,
+               stream=2, title='', monitor=False, update_interval=None)`*
 
-        title : `str` (default = `''`).
-          Setting a title for the progress bar.
+- iterations : `int`  
+    Number of iterations for the iterative computation.  
+- track_time : `bool` (default: `True`)  
+    Prints elapsed time when loop has finished.
+- stream : `int` (default: 2).  
+    Setting the output stream.
+    Takes `1` for stdout, `2` for stderr, or a custom stream object
+- title : `str` (default : `''`).  
+    Setting a title for the percentage indicator.
+- monitor : `bool` (default: `False`)  
+    Monitors CPU and memory usage if `True` (requires `psutil` package).
+- update_interval : float or int (default: `None`)  
+    The update_interval in seconds controls how often the progress
+    is flushed to the screen.
+    Automatic mode if `update_interval=None`.
 
-        monitor : `bool` (default = False)
-          Monitors CPU and memory usage if `True` (requires `psutil` package).  
+##### update method
 
-        """
+*`update(iterations=1, item_id=None, force_flush=False)`*
+
+- iterations : int (default: 1)
+    default argument can be changed to integer values
+    `>=1` in order to update the progress indicators more than once
+    per iteration.
+- item_id : str (default: None)
+    Print an item_id sring behind the progress bar
+- force_flush : bool (default: False)
+    If True, flushes the progress indicator to the output screen
+    in each iteration.
 
 <br>
-
-#### Complete Parameter List for ProgPercent Objects
-
-    class ProgPercent(Prog):    
-        """
-        Initializes a progress bar object that allows visuzalization
-        of an iterational computation in the standard output screen.
-
-        Parameters
-        ----------
-        iterations : `int`
-          Number of iterations for the iterative computation.
-
-        track_time : `bool` (default = `True`)
-          Prints elapsed time when loop has finished.
-
-        stream : `int` (default = 2).
-          Setting the output stream.
-          Takes `1` for stdout, `2` for stderr, or a custom stream object
-
-        title : `str` (default = `''`).
-          Setting a title for the percentage indicator.
-
-        monitor : `bool` (default = False)
-          Monitors CPU and memory usage if `True` (requires `psutil` package).  
-
-        """
 
 
 <p><a id="examples"></a></p>

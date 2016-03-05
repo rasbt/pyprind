@@ -18,7 +18,8 @@ from io import UnsupportedOperation
 
 
 class Prog():
-    def __init__(self, iterations, track_time, stream, title, monitor):
+    def __init__(self, iterations, track_time, stream, title,
+                 monitor, update_interval=None):
         """ Initializes tracking object. """
         self.cnt = 0
         self.title = title
@@ -29,6 +30,7 @@ class Prog():
         self.item_id = None
         self.eta = None
         self.total_time = 0.0
+        self.last_time = self.start
         self.monitor = monitor
         self.stream = stream
         self.active = True
@@ -36,6 +38,7 @@ class Prog():
         self._stream_flush = self._no_stream
         self._check_stream()
         self._print_title()
+        self.update_interval = update_interval
 
         if self.monitor:
             import psutil
@@ -43,21 +46,26 @@ class Prog():
         if self.track:
             self.eta = 1
 
-    def update(self, iterations=1, item_id=None):
+    def update(self, iterations=1, item_id=None, force_flush=False):
         """
-        Updates the progress bar / percentage indicator in
-        every iteration of the task.
+        Updates the progress bar / percentage indicator.
 
-        Keyword arguments:
-            iterations (int): default argument can be changed to integer values
-                >=1 in order to update the progress indicators more than once
-                per iteration.
-            item_id (str): prints item id behind the progress bar.
+        Parameters
+        ----------
+        iterations : int (default: 1)
+            default argument can be changed to integer values
+            >=1 in order to update the progress indicators more than once
+            per iteration.
+        item_id : str (default: None)
+            Print an item_id sring behind the progress bar
+        force_flush : bool (default: False)
+            If True, flushes the progress indicator to the output screen
+            in each iteration.
 
         """
         self.item_id = item_id
         self.cnt += iterations
-        self._print()
+        self._print(force_flush=force_flush)
         self._finish()
 
     def stop(self):
@@ -93,7 +101,8 @@ class Prog():
 
     def _elapsed(self):
         """ Returns elapsed time at update. """
-        return time.time() - self.start
+        self.last_time = time.time()
+        return self.last_time - self.start
 
     def _calc_eta(self):
         """ Calculates estimated time left until completion. """

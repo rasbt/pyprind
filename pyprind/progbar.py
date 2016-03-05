@@ -24,28 +24,28 @@ class ProgBar(Prog):
     Parameters
     ----------
     iterations : `int`
-      Number of iterations for the iterative computation.
-
-    track_time : `bool` (default = `True`)
-      Prints elapsed time when loop has finished.
-
-    width : `int` (default = 30)
-      Sets the progress bar width in characters.
-
-    stream : `int` (default = 2).
-      Setting the output stream.
-      Takes `1` for stdout, `2` for stderr, or a custom stream object
-
-    title : `str` (default = `''`).
-      Setting a title for the progress bar.
-
-    monitor : `bool` (default = False)
-      Monitors CPU and memory usage if `True` (requires `psutil` package).
+        Number of iterations for the iterative computation.
+    track_time : `bool` (default: `True`)
+        Prints elapsed time when loop has finished.
+    width : `int` (default: 30)
+        Sets the progress bar width in characters.
+    stream : `int` (default: 2).
+        Setting the output stream.
+        Takes `1` for stdout, `2` for stderr, or a custom stream object
+    title : `str` (default:  `''`)
+        Setting a title for the progress bar.
+    monitor : `bool` (default: False)
+        Monitors CPU and memory usage if `True` (requires `psutil` package).
+    update_interval : float or int (default: None)
+        The update_interval in seconds controls how often the progress
+        is flushed to the screen.
+        Automatic mode if update_interval=None.
 
     """
     def __init__(self, iterations, track_time=True, width=30, bar_char='#',
-                 stream=2, title='', monitor=False):
-        Prog.__init__(self, iterations, track_time, stream, title, monitor)
+                 stream=2, title='', monitor=False, update_interval=None):
+        Prog.__init__(self, iterations, track_time,
+                      stream, title, monitor, update_interval)
         self.bar_width = width
         self._adjust_width()
         self.bar_char = bar_char
@@ -82,9 +82,16 @@ class ProgBar(Prog):
         # int() fix for Python 2 users
         self._stream_flush()
 
-    def _print(self):
+    def _print(self, force_flush=False):
         progress = floor(self._calc_percent() / 100 * self.bar_width)
-        if progress > self.last_progress and self.active:
+        if self.update_interval:
+            do_update = time.time() - self.last_time >= self.update_interval
+        elif force_flush:
+            do_update = True
+        else:
+            do_update = progress > self.last_progress
+
+        if do_update and self.active:
             self._stream_out('\r')
             self._print_progress_bar(progress)
             if self.track:

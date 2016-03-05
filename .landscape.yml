@@ -1,0 +1,11 @@
+max-line-length: 120
+
+doc-warnings: yes
+
+#ignore-paths:
+#  - 
+
+ignore-patterns:
+    - ^example/doc_.*\.py$
+    - (^|/)docs(/|$)
+    - __init__.py
