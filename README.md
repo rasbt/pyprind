@@ -165,13 +165,13 @@ Alternatively, the progress can be tracked via the equivalent generator function
 
 *`update(iterations=1, item_id=None, force_flush=False)`*
 
-- iterations : int (default: 1)
+- iterations : int (default: `1`)  
     default argument can be changed to integer values
     `>=1` in order to update the progress indicators more than once
     per iteration.
-- item_id : str (default: None)
+- item_id : str (default: `None`)  
     Print an item_id sring behind the progress bar
-- force_flush : bool (default: False)
+- force_flush : bool (default: `False`)  
     If True, flushes the progress indicator to the output screen
     in each iteration.
 
