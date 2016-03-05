@@ -21,9 +21,11 @@ at runtime about the progress of the computation.
 
 <br>
 
-#### Progress Bars and Percentage Indicators
+#### Progress Bars and Percentage Generators
+
 
 ![Screenshot of PyPrind executed in an IPython notebook](https://raw.githubusercontent.com/rasbt/pyprind/master/images/overview_1.png)
+
 
 <br>
 <br>
@@ -34,9 +36,14 @@ at runtime about the progress of the computation.
 
 ![Screenshot of PyPrind executed in an IPython notebook](https://raw.githubusercontent.com/rasbt/pyprind/master/images/overview_2.png)
 
+<br>
+<br>
+
 #### Choose Your Favorite Bar Style
 ![Screenshot of PyPrind executed in an IPython notebook](https://raw.githubusercontent.com/rasbt/pyprind/master/images/overview_3.png)
 
+<br>
+<br>
 
 ###[View more examples in an IPython Demo Notebook](http://nbviewer.ipython.org/github/rasbt/pyprind/blob/master/examples/pyprind_demo.ipynb)
 
@@ -188,7 +195,7 @@ Alternatively, the progress can be tracked via the equivalent generator function
 
 [[back to top](#sections)]
 
-Examples for using the progress bar and percentage indicator objects can be found in the [IPython Demo Notebook](http://nbviewer.ipython.org/github/rasbt/pyprind/blob/master/examples/pyprind_demo.ipynb).
+Examples for using the progress bar and percentage indicator objects can be found in the [IPython Demo Notebook](https://github.com/rasbt/pyprind/blob/master/examples/pyprind_demo.ipynb).
 
 <p><a id="contact"></a></p>
 
