@@ -1,3 +1,9 @@
+Version 2.9.5
+================
+- new `update_interval` parameter to control the update frequency in seconds
+- new `force_flush` parameter to print the progress after every iteration
+
+
 Version 2.9.4
 ================
 - new time formatting in hh:mm:ss format (by Divyanshu Sharma, https://github.com/Div44)
@@ -14,9 +20,9 @@ VERSION 2.9.3
 VERSION 2.9.2
 ================
 - support for psutil >= 2.0 and < 2.0.
-- removed psutil from the setup requirements and made it's installation 
+- removed psutil from the setup requirements and made it's installation
   optional via "pip install pyprind -r requirements.txt"
- 
+
 
 VERSION 2.9.1
 ================
@@ -119,7 +125,7 @@ VERSION 2.1.0
 
 VERSION 2.0.3
 ================
-- Accepts a given outputstream for the `stream` parameter. 
+- Accepts a given outputstream for the `stream` parameter.
 
 
 VERSION 2.0.2
@@ -185,4 +191,3 @@ VERSION 1.0.1
 - Added more README formats.
 - Added class descriptions.
 - Added example scripts to the distribution.
-

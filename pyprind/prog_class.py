@@ -1,9 +1,15 @@
-# PyPrind
-# Author: Sebastian Raschka <mail@sebastianraschka.com>
-# Contributors: https://github.com/rasbt/pyprind/graphs/contributors
-# License: BSD 3 clause
-# Code Repository: https://github.com/rasbt/pyprind
-# PyPI: https://pypi.python.org/pypi/PyPrind
+"""
+Sebastian Raschka 2014-2016
+Python Progress Indicator Utility
+
+Author: Sebastian Raschka <sebastianraschka.com>
+License: BSD 3 clause
+
+Contributors: https://github.com/rasbt/pyprind/graphs/contributors
+Code Repository: https://github.com/rasbt/pyprind
+PyPI: https://pypi.python.org/pypi/PyPrind
+"""
+
 
 import time
 import sys
@@ -12,7 +18,8 @@ from io import UnsupportedOperation
 
 
 class Prog():
-    def __init__(self, iterations, track_time, stream, title, monitor):
+    def __init__(self, iterations, track_time, stream, title,
+                 monitor, update_interval=None):
         """ Initializes tracking object. """
         self.cnt = 0
         self.title = title
@@ -23,6 +30,7 @@ class Prog():
         self.item_id = None
         self.eta = None
         self.total_time = 0.0
+        self.last_time = self.start
         self.monitor = monitor
         self.stream = stream
         self.active = True
@@ -30,6 +38,7 @@ class Prog():
         self._stream_flush = self._no_stream
         self._check_stream()
         self._print_title()
+        self.update_interval = update_interval
 
         if self.monitor:
             import psutil
@@ -37,21 +46,26 @@ class Prog():
         if self.track:
             self.eta = 1
 
-    def update(self, iterations=1, item_id=None):
+    def update(self, iterations=1, item_id=None, force_flush=False):
         """
-        Updates the progress bar / percentage indicator in
-        every iteration of the task.
+        Updates the progress bar / percentage indicator.
 
-        Keyword arguments:
-            iterations (int): default argument can be changed to integer values
-                >=1 in order to update the progress indicators more than once
-                per iteration.
-            item_id (str): prints item id behind the progress bar.
+        Parameters
+        ----------
+        iterations : int (default: 1)
+            default argument can be changed to integer values
+            >=1 in order to update the progress indicators more than once
+            per iteration.
+        item_id : str (default: None)
+            Print an item_id sring behind the progress bar
+        force_flush : bool (default: False)
+            If True, flushes the progress indicator to the output screen
+            in each iteration.
 
         """
         self.item_id = item_id
         self.cnt += iterations
-        self._print()
+        self._print(force_flush=force_flush)
         self._finish()
 
     def stop(self):
@@ -60,7 +74,7 @@ class Prog():
         self._finish()
 
     def _check_stream(self):
-        """Determines which output stream (stdout, stderr, or custom) to use."""
+        """Determines which output stream (stdout, stderr, or custom) to use"""
         if self.stream:
             try:
                 if self.stream == 1 and os.isatty(sys.stdout.fileno()):
@@ -69,7 +83,9 @@ class Prog():
                 elif self.stream == 2 and os.isatty(sys.stderr.fileno()):
                     self._stream_out = sys.stderr.write
                     self._stream_flush = sys.stderr.flush
-            except UnsupportedOperation:  # a fix for IPython notebook "IOStream has no fileno."
+
+            # a fix for IPython notebook "IOStream has no fileno."
+            except UnsupportedOperation:
                 if self.stream == 1:
                     self._stream_out = sys.stdout.write
                     self._stream_flush = sys.stdout.flush
@@ -85,7 +101,8 @@ class Prog():
 
     def _elapsed(self):
         """ Returns elapsed time at update. """
-        return time.time() - self.start
+        self.last_time = time.time()
+        return self.last_time - self.start
 
     def _calc_eta(self):
         """ Calculates estimated time left until completion. """
@@ -107,7 +124,9 @@ class Prog():
         if (_time < 86400):
             return time.strftime("%H:%M:%S", time.gmtime(_time))
         else:
-            return str(int(_time//3600)) + ':' + time.strftime("%M:%S", time.gmtime(_time))
+            s = (str(int(_time//3600)) + ':' +
+                 time.strftime("%M:%S", time.gmtime(_time)))
+            return s
 
     def _finish(self):
         """ Determines if maximum number of iterations (seed) is reached. """
@@ -117,7 +136,8 @@ class Prog():
             self.last_progress -= 1  # to force a refreshed _print()
             self._print()
             if self.track:
-                self._stream_out('\nTotal time elapsed: ' + self._get_time(self.total_time))
+                self._stream_out('\nTotal time elapsed: ' +
+                                 self._get_time(self.total_time))
             self._stream_out('\n')
             self.active = False
 
@@ -139,8 +159,10 @@ class Prog():
         self._stream_flush()
 
     def __repr__(self):
-        str_start = time.strftime('%m/%d/%Y %H:%M:%S', time.localtime(self.start))
-        str_end = time.strftime('%m/%d/%Y %H:%M:%S', time.localtime(self.end))
+        str_start = time.strftime('%m/%d/%Y %H:%M:%S',
+                                  time.localtime(self.start))
+        str_end = time.strftime('%m/%d/%Y %H:%M:%S',
+                                time.localtime(self.end))
         self._stream_flush()
 
         time_info = 'Title: {}\n'\
@@ -157,8 +179,8 @@ class Prog():
                 cpu_total = self.process.get_cpu_percent()
                 mem_total = self.process.get_memory_percent()
 
-            cpu_mem_info = '  CPU %: {:2f}\n'\
-                           '  Memory %: {:2f}'.format(cpu_total, mem_total)
+            cpu_mem_info = '  CPU %: {:.2f}\n'\
+                           '  Memory %: {:.2f}'.format(cpu_total, mem_total)
 
             return time_info + '\n' + cpu_mem_info
         else:
