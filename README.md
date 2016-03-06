@@ -82,7 +82,7 @@ The most convenient way to install PyPrind is via tools like `pip` or `easy_inst
 
 
 
-PyPrind comes without any dependencies except for the optional [psutil](https://pypi.python.org/pypi/psutil) to [monitor CPU and memory usages](#advanced_tracking). You can install `psutil` via `pip install pyprind` or install it automatically with PyPrind:  
+PyPrind comes without any dependencies except for the optional [psutil](https://pypi.python.org/pypi/psutil) to [monitor CPU and memory usages](#advanced_tracking). You can install `psutil` via `pip install psutil` or install it automatically with PyPrind:  
  `pip install pyprind -r requirements.txt`
 
 
