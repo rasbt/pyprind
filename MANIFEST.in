@@ -1,5 +1,5 @@
 include LICENSE
 include README.md
 include CONTRIBUTING.md
-inlcude CHANGELOG.md
+include CHANGELOG.md
 include tests/*
