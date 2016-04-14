@@ -1,3 +1,8 @@
+Version 2.9.7
+================
+- requirements.txt for `psutil`, now supports `pip install pyprind -r requirements.txt`
+
+
 Version 2.9.5
 ================
 - new `update_interval` parameter to control the update frequency in seconds
