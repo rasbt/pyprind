@@ -4,10 +4,6 @@
 # The behavior of the script is controlled by environment variabled defined
 # in the .travis.yml in the top level folder of the project.
 
-# License: 3-clause BSD
-
-set -e
-
 
 # Deactivate the travis-provided virtual environment and setup a
 # conda-based environment instead
@@ -21,23 +17,18 @@ chmod +x miniconda.sh && ./miniconda.sh -b
 export PATH=/home/travis/miniconda/bin:$PATH
 conda update --yes conda
 
-# Configure the conda environment and put it in the path using the
-# provided versions
-if [[ "$LATEST" == "true" ]]; then
-    conda create -n testenv --yes python=$PYTHON_VERSION pip nose psutil
-else
-    conda create -n testenv --yes python=$PYTHON_VERSION pip nose \
-        psutil=$PSUTIL_VERSION
-fi
+conda create -n testenv --yes python=$PYTHON_VERSION pip nose
 
 source activate testenv
 
-if [[ "$COVERAGE" == "true" ]]; then
-    pip install coverage coveralls
-fi
+pip install psutil
 
-# Build pyprind in the install.sh script to collapse the verbose
-# build output in the travis output when it succeeds.
-python --version
-python -c "import psutil; print('psutil%s' % psutil.__version__)"
-python setup.py build_ext --inplace
+if [[ "$FROM" == "github" ]]; then
+    pip install git+git://github.com/rasbt/pyprind.git#egg=pyprind
+
+elif [[ "$FROM" == "pypi" ]]; then
+    pip install pyprind
+
+else
+    python setup.py install
+fi
