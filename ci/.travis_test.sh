@@ -9,11 +9,6 @@
 set -e
 
 python --version
+python -c "import pyprind; print('pyprind %s' % pyprind.__version__)"
 
-if [[ "$COVERAGE" == "true" ]]; then
-    nosetests -s -v --with-coverage --cover-package=pyprind
-
-else
-    nosetests -s -v pyprind
-fi
-#make test-doc test-sphinxext
+nosetests -s -v
