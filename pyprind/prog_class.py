@@ -124,13 +124,13 @@ class Prog():
         if (_time < 86400):
             return time.strftime("%H:%M:%S", time.gmtime(_time))
         else:
-            s = (str(int(_time//3600)) + ':' +
+            s = (str(int(_time // 3600)) + ':' +
                  time.strftime("%M:%S", time.gmtime(_time)))
             return s
 
     def _finish(self):
         """ Determines if maximum number of iterations (seed) is reached. """
-        if self.cnt == self.max_iter:
+        if self.cnt >= self.max_iter:
             self.total_time = self._elapsed()
             self.end = time.time()
             self.last_progress -= 1  # to force a refreshed _print()
@@ -168,9 +168,10 @@ class Prog():
         time_info = 'Title: {}\n'\
                     '  Started: {}\n'\
                     '  Finished: {}\n'\
-                    '  Total time elapsed: '.format(
-                            self.title, str_start,
-                            str_end) + self._get_time(self.total_time)
+                    '  Total time elapsed: '.format(self.title,
+                                                    str_start,
+                                                    str_end)\
+                    + self._get_time(self.total_time)
         if self.monitor:
             try:
                 cpu_total = self.process.cpu_percent()
