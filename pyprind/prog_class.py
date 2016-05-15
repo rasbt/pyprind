@@ -16,6 +16,12 @@ import sys
 import os
 from io import UnsupportedOperation
 
+try:
+    import psutil
+    psutil_import = True
+except ImportError:
+    psutil_import = False
+
 
 class Prog():
     def __init__(self, iterations, track_time, stream, title,
@@ -40,9 +46,12 @@ class Prog():
         self._print_title()
         self.update_interval = update_interval
 
-        if self.monitor:
-            import psutil
-            self.process = psutil.Process()
+        if monitor:
+            if not psutil_import:
+                raise ValueError('psutil package is required when using'
+                                 ' the `monitor` option.')
+            else:
+                self.process = psutil.Process()
         if self.track:
             self.eta = 1
 

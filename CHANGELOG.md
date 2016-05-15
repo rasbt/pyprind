@@ -1,3 +1,8 @@
+Version 2.9.8
+================
+- raise `ValueError` if `monitor` is set to `True` and `psutils` is not installed
+
+
 Version 2.9.7
 ================
 - requirements.txt for `psutil`, now supports `pip install pyprind -r requirements.txt`
