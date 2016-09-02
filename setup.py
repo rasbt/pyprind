@@ -12,9 +12,12 @@ PyPI: https://pypi.python.org/pypi/PyPrind
 
 
 from setuptools import setup, find_packages
+from pip.req import parse_requirements
 import pyprind
 
 VERSION = pyprind.__version__
+install_requirements = parse_requirements('requirements.txt', session=False)
+requires = [str(i.req) for i in install_requirements]
 
 setup(name='PyPrind',
       version=VERSION,
@@ -25,12 +28,12 @@ setup(name='PyPrind',
       packages=find_packages(),
       package_data={'': ['LICENSE',
                          'README.md',
-                         'requirements.txt',
                          'CHANGELOG.md',
                          'CONTRIBUTING.md'],
                     'tests': ['tests/test_percentage_indicator.py',
                               'tests/test_progress_bar.py']},
       include_package_data=True,
+      install_requires=requires,
       license='BSD 3-Clause',
       platforms='any',
       classifiers=[

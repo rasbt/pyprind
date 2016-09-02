@@ -43,9 +43,10 @@ class ProgBar(Prog):
 
     """
     def __init__(self, iterations, track_time=True, width=30, bar_char='#',
-                 stream=2, title='', monitor=False, update_interval=None):
+                 stream=2, title='', monitor=False, update_interval=None,
+                 email=True):
         Prog.__init__(self, iterations, track_time,
-                      stream, title, monitor, update_interval)
+                      stream, title, monitor, update_interval, email)
         self.bar_width = width
         self._adjust_width()
         self.bar_char = bar_char
