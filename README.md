@@ -11,7 +11,8 @@
 # PyPrind (Python Progress Indicator)
 
 
-The `PyPrind` (Python Progress Indicator) module provides a **progress bar** and a **percentage indicator** object that let you track the progress of a loop structure or other iterative computation.  
+The `PyPrind` (Python Progress Indicator) module provides a **progress bar** and a
+**percentage indicator** object that let you track the progress of a loop structure or other iterative computation.  
 Typical applications include the processing of large data sets to provide an intuitive estimate
 at runtime about the progress of the computation.
 
@@ -23,8 +24,65 @@ at runtime about the progress of the computation.
 
 #### Progress Bars and Percentage Generators
 
+```python
+import pyprind
 
-![Screenshot of PyPrind executed in an IPython notebook](https://raw.githubusercontent.com/rasbt/pyprind/master/images/overview_1.png)
+for i in pyprind.prog_bar(range(n)):
+    time.sleep(timesleep) # your computation here
+```
+```
+0%                          100%
+[##############################] | ETA: 00:00:00
+Total time elapsed: 00:00:05
+```
+
+<br>
+<br>
+
+```python
+for i in pyprind.prog_percent(range(n)):
+    time.sleep(timesleep) # your computation here
+```
+
+```
+[10 %] Time elapsed: 00:00:01 | ETA: 00:00:04
+```
+
+#### While-loops
+
+The `ProgBar` and `ProgPercent` classes also support while loops if desired.
+The objects are updated inside the loop using the `update` method as shown below:
+
+```python
+import random
+import pyprind
+import time
+
+timesleep = 0.05
+random.seed(1)
+collection = set()
+
+n = 100
+bar = pyprind.ProgBar(n, track_time=False, title='while example')
+
+while len(collection) < n:
+    r = random.randint(0, 10**5)
+    if r % 7 and r not in collection:
+        collection.add(r)
+        bar.update()
+        time.sleep(timesleep)
+
+print(bar)
+```
+```
+while example
+0%                          100%
+[##############################]
+Title: while example
+  Started: 09/07/2016 13:06:58
+  Finished: 09/07/2016 13:07:03
+  Total time elapsed: 00:00:05
+```
 
 
 <br>
@@ -34,13 +92,59 @@ at runtime about the progress of the computation.
 
 #### Advanced Tracking
 
-![Screenshot of PyPrind executed in an IPython notebook](https://raw.githubusercontent.com/rasbt/pyprind/master/images/overview_2.png)
+If you have the `psutil` package installed, you can set the `monitor=True` to track CPU and memory usage:
+
+```python
+bar = pyprind.ProgBar(n, monitor=True)
+for i in range(n):
+    time.sleep(timesleep) # your computation here
+    bar.update()
+print(bar)
+```
+
+```
+0%                          100%
+[##############################] | ETA: 00:00:00
+Total time elapsed: 00:00:05
+Title:
+  Started: 09/07/2016 13:14:09
+  Finished: 09/07/2016 13:14:14
+  Total time elapsed: 00:00:05
+  CPU %: 1.90
+  Memory %: 0.48
+```
 
 <br>
 <br>
 
 #### Choose Your Favorite Bar Style
-![Screenshot of PyPrind executed in an IPython notebook](https://raw.githubusercontent.com/rasbt/pyprind/master/images/overview_3.png)
+
+```python
+bar = pyprind.ProgBar(n, bar_char='█')
+for i in range(n):
+    time.sleep(0.1) # do some computation
+    bar.update()
+```
+
+```
+0%                          100%
+[██████████████████████████████] | ETA: 00:00:00
+Total time elapsed: 00:00:10
+```
+
+#### Note to PyCharm users
+
+If you are using the PyCharm IDE, you need to pass the `sys.stdout` or `sys.err`
+as a `stream` argument to display the progress indicators correctly in the IDE. For example,
+
+```python
+import sys
+
+bar = pyprind.ProgBar(n, stream=sys.stdout)
+for i in range(n):
+    time.sleep(0.1) # do some computation
+    bar.update()
+```
 
 <br>
 <br>
@@ -87,7 +191,8 @@ PyPrind comes without any dependencies except for the optional [psutil](https://
 
 
 
-Alternatively, you can install PyPrind the classic way: Download the package from the Python Package Index [https://pypi.python.org/pypi/PyPrind](https://pypi.python.org/pypi/PyPrind), unzip it, navigate into the unzipped directory, and use the command
+Alternatively, you can install PyPrind the classic way: Download the package from the Python Package Index [https://pypi.python.org/pypi/PyPrind](https://pypi.python.org/pypi/PyPrind), unzip it,
+navigate into the unzipped directory, and use the command
 
 `python setup.py install`  
 
@@ -108,17 +213,22 @@ Alternatively, you can install PyPrind the classic way: Download the package fro
 PyPrind consists of two class objects that can visualize the progress of a computation on the output screen.  
 Progress bars are available via `ProgBar`, and percentage indicators can be used via a `ProgPercent`.  
 
+```python
 	n = 10000000
 	bar = pyprind.ProgBar(n)   # 1) initialization with number of iterations
 	for i in range(n):
     	# do some computation
     	bar.update()           # 2) update the progress visualization
+```
 
 Alternatively, the progress can be tracked via the equivalent generator functions `prog_bar` and `prog_percent`:
 
+```python
 	for i in pyprind.prog_bar(range(n)):
     	# do something
     	pass
+```
+
 
 <br>
 
