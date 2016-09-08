@@ -1,3 +1,7 @@
+Version 2.9.9
+================
+- added PyCharm support
+
 Version 2.9.8
 ================
 - raise `ValueError` if `monitor` is set to `True` and `psutils` is not installed

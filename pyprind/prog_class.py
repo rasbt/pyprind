@@ -85,16 +85,21 @@ class Prog():
     def _check_stream(self):
         """Determines which output stream (stdout, stderr, or custom) to use"""
         if self.stream:
+
             try:
-                if self.stream == 1 and os.isatty(sys.stdout.fileno()):
-                    self._stream_out = sys.stdout.write
-                    self._stream_flush = sys.stdout.flush
-                elif self.stream == 2 and os.isatty(sys.stderr.fileno()):
-                    self._stream_out = sys.stderr.write
-                    self._stream_flush = sys.stderr.flush
+                supported = ('PYCHARM_HOSTED' in os.environ or
+                             os.isatty(sys.stdout.fileno()))
 
             # a fix for IPython notebook "IOStream has no fileno."
-            except UnsupportedOperation:
+            except(UnsupportedOperation):
+                supported = True
+
+            else:
+                if self.stream is not None and hasattr(self.stream, 'write'):
+                    self._stream_out = self.stream.write
+                    self._stream_flush = self.stream.flush
+
+            if supported:
                 if self.stream == 1:
                     self._stream_out = sys.stdout.write
                     self._stream_flush = sys.stdout.flush
@@ -105,8 +110,8 @@ class Prog():
                 if self.stream is not None and hasattr(self.stream, 'write'):
                     self._stream_out = self.stream.write
                     self._stream_flush = self.stream.flush
-        else:
-            print('Warning: No valid output stream.')
+                else:
+                    print('Warning: No valid output stream.')
 
     def _elapsed(self):
         """ Returns elapsed time at update. """
