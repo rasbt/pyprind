@@ -1,6 +1,12 @@
+Version 2.10.0
+================
+- Fixes an issue with Jupyter Notebook 4.3.1 when the `ETA` got printed on new lines
+
+
 Version 2.9.9
 ================
 - added PyCharm support
+
 
 Version 2.9.8
 ================

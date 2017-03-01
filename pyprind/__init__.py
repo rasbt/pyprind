@@ -1,5 +1,5 @@
 """
-Sebastian Raschka 2014-2016
+Sebastian Raschka 2014-2017
 Python Progress Indicator Utility
 
 Author: Sebastian Raschka <sebastianraschka.com>
@@ -17,4 +17,4 @@ from .generator_factory import prog_percent
 from .generator_factory import prog_bar
 
 
-__version__ = '2.9.9'
+__version__ = '2.10.0'

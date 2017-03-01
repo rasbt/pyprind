@@ -1,5 +1,5 @@
 """
-Sebastian Raschka 2014-2016
+Sebastian Raschka 2014-2017
 Python Progress Indicator Utility
 
 Author: Sebastian Raschka <sebastianraschka.com>
@@ -45,6 +45,7 @@ class Prog():
         self._check_stream()
         self._print_title()
         self.update_interval = update_interval
+        self._cached_output = ''
 
         if monitor:
             if not psutil_import:
@@ -161,16 +162,14 @@ class Prog():
             self._stream_out('{}\n'.format(self.title))
             self._stream_flush()
 
-    def _print_eta(self):
+    def _cache_eta(self):
         """ Prints the estimated time left."""
         self._calc_eta()
-        self._stream_out(' | ETA: ' + self._get_time(self.eta))
-        self._stream_flush()
+        self._cached_output += ' | ETA: ' + self._get_time(self.eta)
 
-    def _print_item_id(self):
+    def _cache_item_id(self):
         """ Prints an item id behind the tracking object."""
-        self._stream_out(' | Item ID: %s' % self.item_id)
-        self._stream_flush()
+        self._cached_output += ' | Item ID: %s' % self.item_id
 
     def __repr__(self):
         str_start = time.strftime('%m/%d/%Y %H:%M:%S',
