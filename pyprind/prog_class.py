@@ -9,12 +9,25 @@ Contributors: https://github.com/rasbt/pyprind/graphs/contributors
 Code Repository: https://github.com/rasbt/pyprind
 PyPI: https://pypi.python.org/pypi/PyPrind
 """
-
-
+import smtplib
+import socket
 import time
 import sys
 import os
 from io import UnsupportedOperation
+from email.mime.text import MIMEText
+from .email_notification import AESCipher
+
+
+try:
+    from StringIO import StringIO
+except ImportError:
+    from io import StringIO
+
+try:
+    import configparser
+except ImportError:
+    import ConfigParser as configparser
 
 try:
     import psutil
@@ -25,7 +38,7 @@ except ImportError:
 
 class Prog():
     def __init__(self, iterations, track_time, stream, title,
-                 monitor, update_interval=None):
+                 monitor, update_interval=None, email=False):
         """ Initializes tracking object. """
         self.cnt = 0
         self.title = title
@@ -55,6 +68,49 @@ class Prog():
                 self.process = psutil.Process()
         if self.track:
             self.eta = 1
+        self.config = self.load_email_config() if email else False
+
+    def load_email_config(self):
+        dir_path = os.path.dirname(os.path.abspath(__file__))
+        file_path = os.path.join(dir_path, 'email_settings.ini.enc')
+        if not os.path.exists(file_path):
+            print('The email config cannot be found, please call'
+                  ' pyprind.setup_email function')
+            return False
+        return self.parse_email_config()
+
+    @staticmethod
+    def parse_email_config():
+        buf = StringIO()
+        cipher = AESCipher()
+        raw_data = cipher.decrypt()
+        buf.write(raw_data)
+        buf.seek(0, os.SEEK_SET)
+        config = configparser.ConfigParser()
+        config.readfp(buf)
+        return config
+
+    def send_email(self, message):
+        email_address = self.config.get('Email', 'username')
+        msg = MIMEText(message, 'plain')
+        msg['From'] = email_address
+        msg['To'] = email_address
+        msg['Subject'] = 'Your task has finished'
+        password = self.config.get('Email', 'password')
+        self.config.get('Email', 'smtp_port')
+        s = smtplib.SMTP_SSL()
+        s.connect(self.config.get('Email', 'smtp_server'),
+                  self.config.get('Email', 'smtp_port'))
+        try:
+            s.login(email_address, password)
+        except smtplib.SMTPAuthenticationError as e:
+            print('Error occurred while sending email: %s' % e)
+            return False
+        try:
+            s.sendmail(email_address, [email_address], msg.as_string())
+            s.quit()
+        except socket.error as e:
+            print('Error occurred while sending email: %s' % e)
 
     def update(self, iterations=1, item_id=None, force_flush=False):
         """
@@ -151,8 +207,9 @@ class Prog():
             self.last_progress -= 1  # to force a refreshed _print()
             self._print()
             if self.track:
-                self._stream_out('\nTotal time elapsed: ' +
-                                 self._get_time(self.total_time))
+                message = '\nTotal time elapsed: ' + \
+                      self._get_time(self.total_time)
+                self._stream_out(message)
             self._stream_out('\n')
             self.active = False
 
@@ -195,8 +252,12 @@ class Prog():
 
             cpu_mem_info = '  CPU %: {:.2f}\n'\
                            '  Memory %: {:.2f}'.format(cpu_total, mem_total)
-
-            return time_info + '\n' + cpu_mem_info
+            time_elapsed = '\nTotal time elapsed: ' + \
+                           self._get_time(self.total_time)
+            body_message = time_info + '\n' + cpu_mem_info
+            if self.config:
+                self.send_email("{}\n{}".format(time_elapsed, body_message))
+            return body_message
         else:
             return time_info
 

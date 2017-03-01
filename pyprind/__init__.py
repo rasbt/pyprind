@@ -15,6 +15,7 @@ from .progbar import ProgBar
 from .progpercent import ProgPercent
 from .generator_factory import prog_percent
 from .generator_factory import prog_bar
+from .email_notification import setup_email
 
 
 __version__ = '2.10.0'
