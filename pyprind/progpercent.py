@@ -1,5 +1,5 @@
 """
-Sebastian Raschka 2014-2016
+Sebastian Raschka 2014-2017
 Python Progress Indicator Utility
 
 Author: Sebastian Raschka <sebastianraschka.com>
@@ -52,6 +52,9 @@ class ProgPercent(Prog):
                 self.process.get_cpu_percent()
                 self.process.get_memory_percent()
 
+    def _cache_percent_indicator(self, last_progress):
+        self._cached_output += '[%3d %%]' % (last_progress)
+
     def _print(self, force_flush=False):
         """ Prints formatted percentage and tracked time to the screen."""
         next_perc = self._calc_percent()
@@ -64,10 +67,13 @@ class ProgPercent(Prog):
 
         if do_update and self.active:
             self.last_progress = next_perc
-            self._stream_out('\r[%3d %%]' % (self.last_progress))
+            self._cache_percent_indicator(self.last_progress)
             if self.track:
-                self._stream_out(' Time elapsed: ' +
-                                 self._get_time(self._elapsed()))
-                self._print_eta()
+                self._cached_output += ' Time elapsed: ' + \
+                                       self._get_time(self._elapsed())
+                self._cache_eta()
             if self.item_id:
-                self._print_item_id()
+                self._cache_item_id()
+            self._stream_out('\r%s' % self._cached_output)
+            self._stream_flush()
+            self._cached_output = ''

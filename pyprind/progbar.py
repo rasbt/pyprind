@@ -1,5 +1,5 @@
 """
-Sebastian Raschka 2014-2016
+Sebastian Raschka 2014-2017
 Python Progress Indicator Utility
 
 Author: Sebastian Raschka <sebastianraschka.com>
@@ -51,7 +51,7 @@ class ProgBar(Prog):
         self.bar_char = bar_char
         self.last_progress = 0
         self._print_labels()
-        self._print_progress_bar(0)
+
         if monitor:
             try:
                 self.process.cpu_percent()
@@ -60,7 +60,7 @@ class ProgBar(Prog):
                 self.process.get_cpu_percent()
                 self.process.get_memory_percent()
         if self.item_id:
-            self._print_item_id()
+            self._cache_item_id()
 
     def _adjust_width(self):
         """Shrinks bar if number of iterations is less than the bar width"""
@@ -75,12 +75,10 @@ class ProgBar(Prog):
         self._stream_out('0% {} 100%\n'.format(' ' * (self.bar_width - 6)))
         self._stream_flush()
 
-    def _print_progress_bar(self, progress):
+    def _cache_progress_bar(self, progress):
         remaining = self.bar_width - progress
-        self._stream_out('[{}{}]'.format(self.bar_char * int(progress),
-                                         ' ' * int(remaining)))
-        # int() fix for Python 2 users
-        self._stream_flush()
+        self._cached_output += '[{}{}]'.format(self.bar_char * int(progress),
+                                                 ' ' * int(remaining))
 
     def _print(self, force_flush=False):
         progress = floor(self._calc_percent() / 100 * self.bar_width)
@@ -92,10 +90,13 @@ class ProgBar(Prog):
             do_update = progress > self.last_progress
 
         if do_update and self.active:
-            self._stream_out('\r')
-            self._print_progress_bar(progress)
+
+            self._cache_progress_bar(progress)
             if self.track:
-                self._print_eta()
+                self._cache_eta()
             if self.item_id:
-                self._print_item_id()
+                self._cache_item_id()
+            self._stream_out('\r%s' % self._cached_output)
+            self._stream_flush()
+            self._cached_output = ''
         self.last_progress = progress
