@@ -16,7 +16,7 @@ import sys
 import os
 from io import UnsupportedOperation
 from email.mime.text import MIMEText
-from .email_notification import AESCipher
+from .email_notification import AESCipher, get_pyprind_config_dir
 
 
 try:
@@ -70,7 +70,7 @@ class Prog():
         self.config = self.load_email_config() if email else False
 
     def load_email_config(self):
-        dir_path = os.path.dirname(os.path.abspath(__file__))
+        dir_path = get_pyprind_config_dir()
         file_path = os.path.join(dir_path, 'email_settings.ini.enc')
         if not os.path.exists(file_path):
             print('The email config cannot be found, please call'
@@ -83,7 +83,7 @@ class Prog():
         buf = StringIO()
         cipher = AESCipher()
         raw_data = cipher.decrypt()
-        buf.write(raw_data)
+        buf.write(raw_data.decode())
         buf.seek(0, os.SEEK_SET)
         config = configparser.ConfigParser()
         config.readfp(buf)
@@ -99,7 +99,7 @@ class Prog():
         self.config.get('Email', 'smtp_port')
         s = smtplib.SMTP_SSL()
         s.connect(self.config.get('Email', 'smtp_server'),
-                  self.config.get('Email', 'smtp_port'))
+                  self.config.getint('Email', 'smtp_port'))
         try:
             s.login(email_address, password)
         except smtplib.SMTPAuthenticationError as e:
@@ -255,6 +255,8 @@ class Prog():
                 self.send_email("{}\n{}".format(time_elapsed, body_message))
             return body_message
         else:
+            if self.config:
+                self.send_email(time_info)
             return time_info
 
     def __str__(self):

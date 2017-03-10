@@ -18,4 +18,4 @@ from .generator_factory import prog_bar
 from .email_notification import setup_email
 
 
-__version__ = '2.9.8'
+__version__ = '2.9.9dev0'

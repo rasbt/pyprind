@@ -33,10 +33,11 @@ class AESCipher(object):
         return s[:-ord(s[len(s) - 1:])]
 
     def get_current_path(self):
-        self.file = os.path.join(self.dir_path, 'email_settings.ini.enc')
+        self.file = os.path.join(get_pyprind_config_dir(),
+                                 'email_settings.ini.enc')
 
     def generate_key(self):
-        key_path = os.path.join(self.dir_path, 'pyprind.key')
+        key_path = os.path.join(get_pyprind_config_dir(), 'pyprind.key')
         if not os.path.exists(key_path):
             with open(key_path, 'wb') as key_file:
                 key_file.write(os.urandom(16))
@@ -45,7 +46,7 @@ class AESCipher(object):
         return key
 
     def encrypt(self, text):
-        text = self.pad(text)
+        text = str.encode(self.pad(text))
         iv = Random.new().read(AES.block_size)
         cipher = AES.new(self.key, AES.MODE_CBC, iv)
         encrypted_mes = base64.b64encode(iv + cipher.encrypt(text))
@@ -53,7 +54,7 @@ class AESCipher(object):
             f.write(encrypted_mes)
 
     def decrypt(self):
-        with open(self.file, 'rb') as f:
+        with open(self.file, 'r') as f:
             enc = base64.b64decode(f.read())
         iv = enc[:16]
         cipher = AES.new(self.key, AES.MODE_CBC, iv)
@@ -61,8 +62,11 @@ class AESCipher(object):
 
 
 def setup_email(smtp_server, smtp_port, username, password):
-    dir_path = os.path.dirname(os.path.abspath(__file__))
-    file_path = os.path.join(dir_path, 'email_settings.ini.enc')
+    """Create and encrypt email config file"""
+    pyprind_dir = get_pyprind_config_dir()
+    if not os.path.exists(pyprind_dir):
+        os.makedirs(pyprind_dir)
+    file_path = os.path.join(pyprind_dir, 'email_settings.ini.enc')
     cipher = AESCipher()
     config = configparser.ConfigParser()
     config.add_section('Email')
@@ -70,7 +74,13 @@ def setup_email(smtp_server, smtp_port, username, password):
     config.set('Email', 'smtp_port', str(smtp_port))
     config.set('Email', 'username', username)
     config.set('Email', 'password', password)
-    with open(file_path, 'wb') as f:
+    with open(file_path, 'w') as f:
         config.write(f)
-    with open(file_path, 'rb') as af:
+    with open(file_path, 'r') as af:
         cipher.encrypt(af.read())
+
+
+def get_pyprind_config_dir():
+    home = os.path.expanduser("~")
+    config_path = os.path.join(home, '.pyprind')
+    return config_path
