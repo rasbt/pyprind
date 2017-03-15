@@ -127,60 +127,79 @@ Alternatively, the progress can be tracked via the equivalent generator function
 ##### ProgBar
 
 *`ProgBar(iterations, track_time=True, width=30, bar_char='#',
-               stream=2, title='', monitor=False, update_interval=None))`*
+               stream=2, title='', monitor=False, update_interval=None, email=False))`*
 
-- iterations : `int`  
+- iterations : `int`
     Number of iterations for the iterative computation.
-- track_time : `bool` (default: `True`)  
+- track_time : `bool` (default: `True`)
     Prints elapsed time when loop has finished.
-- width : `int` (default: 30)  
+- width : `int` (default: 30)
     Sets the progress bar width in characters.
-- stream : `int` (default: 2).  
+- stream : `int` (default: 2).
     Setting the output stream.
     Takes `1` for stdout, `2` for stderr, or a custom stream object
-- title : `str` (default:  `''`)  
+- title : `str` (default:  `''`)
     Setting a title for the progress bar.
-- monitor : `bool` (default: `False`)  
+- monitor : `bool` (default: `False`)
     Monitors CPU and memory usage if `True` (requires `psutil` package).
-- update_interval : float or int (default: `None`)  
+- update_interval : float or int (default: `None`)
     The update_interval in seconds controls how often the progress
     is flushed to the screen.
     Automatic mode if `update_interval=None`.
+- email : `bool` (default: False)
+        If `True` sends an email notification after finishing the task
 
 ##### ProgPercent
 
 *`ProgPercent(iterations, track_time=True,
-               stream=2, title='', monitor=False, update_interval=None)`*
+               stream=2, title='', monitor=False, update_interval=None, email=False)`*
 
-- iterations : `int`  
-    Number of iterations for the iterative computation.  
-- track_time : `bool` (default: `True`)  
+- iterations : `int`
+    Number of iterations for the iterative computation.
+- track_time : `bool` (default: `True`)
     Prints elapsed time when loop has finished.
-- stream : `int` (default: 2).  
+- stream : `int` (default: 2).
     Setting the output stream.
     Takes `1` for stdout, `2` for stderr, or a custom stream object
-- title : `str` (default : `''`).  
+- title : `str` (default : `''`).
     Setting a title for the percentage indicator.
-- monitor : `bool` (default: `False`)  
+- monitor : `bool` (default: `False`)
     Monitors CPU and memory usage if `True` (requires `psutil` package).
-- update_interval : float or int (default: `None`)  
+- update_interval : float or int (default: `None`)
     The update_interval in seconds controls how often the progress
     is flushed to the screen.
     Automatic mode if `update_interval=None`.
+- email : `bool` (default: False)
+        If `True` sends an email notification after finishing the task
 
 ##### update method
 
 *`update(iterations=1, item_id=None, force_flush=False)`*
 
-- iterations : int (default: `1`)  
+- iterations : int (default: `1`)
     default argument can be changed to integer values
     `>=1` in order to update the progress indicators more than once
     per iteration.
-- item_id : str (default: `None`)  
+- item_id : str (default: `None`)
     Print an item_id sring behind the progress bar
-- force_flush : bool (default: `False`)  
+- force_flush : bool (default: `False`)
     If True, flushes the progress indicator to the output screen
     in each iteration.
+
+
+
+##### Enable email notifications
+
+*`pyprind.setup_email(smtp_server, smtp_port, username, password)`*
+
+- smtp_server : str
+- smtp_port : int
+- username : str
+your full email username example (pyprind@pyprind.com)
+- password : str
+your password
+
+If you want to use email notifications you can call function *`pyprind.setup_email`* only once and it will create an encrypted file with your email config and will be using it, if you want to change the email config just call *`pyprind.setup_email`*  with new parameters and it will rewrite the email config file.
 
 <br>
 
