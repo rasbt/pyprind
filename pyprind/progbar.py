@@ -50,7 +50,6 @@ class ProgBar(Prog):
         self._adjust_width()
         self.bar_char = bar_char
         self.last_progress = 0
-        self._print_labels()
 
         if monitor:
             try:
@@ -71,16 +70,13 @@ class ProgBar(Prog):
             # reported that self.max_iter was converted to
             # float. Thus this fix to prevent float multiplication of chars.
 
-    def _print_labels(self):
-        self._stream_out('0% {} 100%\n'.format(' ' * (self.bar_width - 6)))
-        self._stream_flush()
-
     def _cache_progress_bar(self, progress):
         remaining = self.bar_width - progress
-        self._cached_output += '[{}{}]'.format(self.bar_char * int(progress),
+        self._cached_output += '0% [{}{}] 100%'.format(self.bar_char * int(progress),
                                                ' ' * int(remaining))
 
     def _print(self, force_flush=False):
+        self._stream_flush()
         progress = floor(self._calc_percent() / 100 * self.bar_width)
         if self.update_interval:
             do_update = time.time() - self.last_time >= self.update_interval

@@ -1,3 +1,9 @@
+
+Version 2.11.0
+================
+- Use only 1 line to print the progress bar (instead of the previous too lines)
+
+
 Version 2.10.0
 ================
 - Fixes an issue with Jupyter Notebook 4.3.1 when the `ETA` got printed on new lines

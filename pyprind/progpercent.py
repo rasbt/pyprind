@@ -57,6 +57,7 @@ class ProgPercent(Prog):
 
     def _print(self, force_flush=False):
         """ Prints formatted percentage and tracked time to the screen."""
+        self._stream_flush()
         next_perc = self._calc_percent()
         if self.update_interval:
             do_update = time.time() - self.last_time >= self.update_interval
