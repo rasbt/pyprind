@@ -1,4 +1,8 @@
 
+Version 2.11.1
+================
+- Flushes both `stdout` and `stderr` prior to `ProgressBar` initialization to avoid cluttering environments with previously cached print statements.
+
 Version 2.11.0
 ================
 - Use only 1 line to print the progress bar (instead of the previous too lines)
