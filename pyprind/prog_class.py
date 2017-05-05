@@ -47,6 +47,9 @@ class Prog():
         self.update_interval = update_interval
         self._cached_output = ''
 
+        sys.stdout.flush()
+        sys.stderr.flush()
+
         if monitor:
             if not psutil_import:
                 raise ValueError('psutil package is required when using'
