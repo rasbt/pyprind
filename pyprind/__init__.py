@@ -17,4 +17,4 @@ from .generator_factory import prog_percent
 from .generator_factory import prog_bar
 
 
-__version__ = '2.11.1'
+__version__ = '2.11.2'

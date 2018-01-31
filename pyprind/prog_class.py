@@ -148,7 +148,7 @@ class Prog():
 
     def _finish(self):
         """ Determines if maximum number of iterations (seed) is reached. """
-        if self.cnt >= self.max_iter:
+        if self.active and self.cnt >= self.max_iter:
             self.total_time = self._elapsed()
             self.end = time.time()
             self.last_progress -= 1  # to force a refreshed _print()

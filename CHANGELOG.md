@@ -1,4 +1,8 @@
 
+Version 2.11.2
+================
+- Fixes issue where new lines are printed upon iterating over a completed progress bar object.
+
 Version 2.11.1
 ================
 - Flushes both `stdout` and `stderr` prior to `ProgressBar` initialization to avoid cluttering environments with previously cached print statements.
