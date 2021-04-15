@@ -91,7 +91,7 @@ class ProgBar(Prog):
                 self._cache_eta()
             if self.item_id:
                 self._cache_item_id()
-            self._stream_out('\r%s' % self._cached_output)
+            self._stream_out('%s' % self._cached_output)
             self._stream_flush()
             self._cached_output = ''
         self.last_progress = progress
