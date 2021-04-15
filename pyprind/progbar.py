@@ -72,7 +72,7 @@ class ProgBar(Prog):
 
     def _cache_progress_bar(self, progress):
         remaining = self.bar_width - progress
-        self._cached_output += '0% [{}{}] 100%'.format(self.bar_char * int(progress),
+        self._cached_output += '\r0% [{}{}] 100%'.format(self.bar_char * int(progress),
                                                ' ' * int(remaining))
 
     def _print(self, force_flush=False):
