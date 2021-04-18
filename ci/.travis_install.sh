@@ -29,7 +29,7 @@ conda update -q conda
 conda update -q pip
 conda info -a
 
-conda create -n testenv --yes python=$PYTHON_VERSION pip nose
+conda create -n testenv --yes python=$PYTHON_VERSION pip nose psutil
 
 conda init bash
 source activate testenv
