@@ -1,13 +1,17 @@
 language: python
 virtualenv:
-  system_site_packages: true
+  system_site_packages: false
 env:
   matrix:
-    - PYTHON_VERSION="3.8" FROM="setup.py"
-    - PYTHON_VERSION="3.8" FROM="github"
-    - PYTHON_VERSION="3.8" FROM="pypi"
+    - PYTHON_VERSION="2.7"
+    - PYTHON_VERSION="3.7"
 install: source ./ci/.travis_install.sh
 script: bash ./ci/.travis_test.sh
+after_success:
+    # Ignore coveralls failures as the coveralls server is not very reliable
+    # but we don't want travis to report a failure in the github UI just
+    # because the coverage report failed to be published.
+    - if [[ "$COVERAGE" == "true" ]]; then coveralls || echo "failed"; fi
 cache: apt
 sudo: false
 notifications:
