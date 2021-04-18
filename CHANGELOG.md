@@ -1,6 +1,11 @@
+Version 2.11.3
+================
+
+- Fixes and issue where newlines appeared everywhere on certain machines.
 
 Version 2.11.2
 ================
+
 - Fixes issue where new lines are printed upon iterating over a completed progress bar object.
 
 Version 2.11.1

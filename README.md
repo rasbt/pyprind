@@ -1,9 +1,7 @@
 [![Build Status](https://travis-ci.org/rasbt/pyprind.svg?branch=master)](https://travis-ci.org/rasbt/pyprind)
-[![Code Health](https://landscape.io/github/rasbt/pyprind/master/landscape.svg?style=flat)](https://landscape.io/github/rasbt/pyprind/master)
 [![Coverage Status](https://coveralls.io/repos/rasbt/pyprind/badge.svg?branch=master&service=github)](https://coveralls.io/github/rasbt/pyprind?branch=master)
 ![Python 2.7](https://img.shields.io/badge/python-2.7-blue.svg)
-![Python 3.5](https://img.shields.io/badge/python-3.5-blue.svg)
-[![PyPI version](https://badge.fury.io/py/pyprind.svg)](http://badge.fury.io/py/pyprind)
+![Python 3](https://img.shields.io/badge/python-3-blue.svg)
 [![License](https://img.shields.io/badge/license-new%20BSD-blue.svg)](https://github.com/rasbt/pyprind/blob/master/LICENSE.txt)
 
 
@@ -315,14 +313,3 @@ Examples for using the progress bar and percentage indicator objects can be foun
 
 
 
-
-#  Contact
-
-[[back to top](#sections)]
-
-If you have any questions or comments about `PyPrind`, please feel free to contact me via  
-eMail: [mail@sebastianraschka.com](mailto:mail@sebastianraschka.com)  
-or Twitter: [@rasbt](https://twitter.com/rasbt)
-
-
-The `pyprind` module is available on GitHub at [https://github.com/rasbt/pyprind](https://github.com/rasbt/pyprind).
